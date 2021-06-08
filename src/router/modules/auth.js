@@ -166,10 +166,5 @@ export default [
         meta: { title: "Routes.ChangePassWord" }
       }
     ]
-  },
-  {
-    path: "/campaign",
-    name: "Rebate",
-    component: () => import("@/views/campaign/Rebate.vue")
   }
 ];

@@ -6,46 +6,11 @@
  */
 import auth from "./modules/auth";
 import userCenter from "./modules/userCenter";
-import teamUp from "@/router/modules/teamUp";
 
 export default [
-  {
-    path: "/",
-    name: "Home",
-    component: () =>
-      import(/* webpackChunkName: "Home" */ "@/views/Home/Home.vue"),
-    meta: {
-      keepAlive: true
-    }
-  },
   ...auth,
   ...userCenter,
-  ...teamUp,
-  // 待兑换积分优惠卷
-  {
-    path: "/integral_coupon/:id",
-    name: "IntegralCoupon",
-    component: () =>
-      import(
-        /* webpackChunkName: "IntegralCoupon" */ "@/views/integral/IntegralRewardCoupon.vue"
-      )
-  },
-  // 待兑换积分实物奖品
-  {
-    path: "/integral_product/:id",
-    name: "IntegralProduct",
-    component: () =>
-      import(
-        /* webpackChunkName: "IntegralProduct" */ "@/views/integral/IntegralRewardProduct"
-      )
-  },
-  //积分任务
-  {
-    path: "/offers",
-    name: "Offers",
-    component: () =>
-      import(/* webpackChunkName: "Offers"*/ "@/views/integral/Offers")
-  },
+
   // 隐私政策
   {
     path: "/privacy",
