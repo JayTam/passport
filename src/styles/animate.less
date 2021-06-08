@@ -1,0 +1,144 @@
+/**
+ *  平移效果
+ */
+.slide-in-enter-active,
+.slide-out-enter-active {
+  transition: opacity, transform 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28) 0s;
+}
+
+.slide-in-ease-enter-active,
+.slide-out-ease-enter-active {
+  transition: opacity, transform 0.2s ease 0s;
+}
+
+.slide-in-enter,
+.slide-in-ease-enter {
+  transform: translateX(-20%);
+  opacity: 0;
+}
+
+.slide-out-enter,
+.slide-out-ease-enter {
+  transform: translateX(20%);
+  opacity: 0;
+}
+
+.slide-in-enter-to,
+.slide-out-enter-to,
+.slide-in-ease-enter-to,
+.slide-out-ease-enter-to {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/**
+ * 旋转效果
+ */
+
+.rotate-in-enter-active,
+.rotate-out-enter-active {
+  transition: opacity, transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28) 0s;
+}
+
+.rotate-in-enter {
+  transform: rotateY(-90deg);
+  opacity: 0;
+}
+
+.rotate-out-enter {
+  transform: rotateY(90deg);
+  opacity: 0;
+}
+
+.rotate-in-enter-to,
+.rotate-out-enter-to {
+  transform: rotateY(0);
+  opacity: 1;
+}
+
+/**
+ * 放大、缩小效果
+ */
+
+.zoom-in-enter-active,
+.zoom-out-enter-active {
+  transition: opacity, transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28) 0s;
+}
+
+.zoom-in-enter {
+  transform: scale(0.8);
+  opacity: 0;
+}
+
+.zoom-in-enter-to {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.zoom-out-enter {
+  transform: scale(1.2);
+  opacity: 0;
+}
+
+.zoom-out-enter-to {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/**
+ * 渐隐效果
+ */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+/**
+ * 抖动动画
+ */
+@keyframes shake-horizontal-animation {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(3px);
+  }
+  40% {
+    transform: translateX(-3px);
+  }
+  60% {
+    transform: translateX(3px);
+  }
+  80% {
+    transform: translateX(-3px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes shake-vertical-animation {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateY(3px);
+  }
+  40% {
+    transform: translateY(-3px);
+  }
+  60% {
+    transform: translateY(3px);
+  }
+  80% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

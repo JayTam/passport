@@ -1,0 +1,29 @@
+// type 验证码类型
+// http://passport.doc.public.a.royole.club/api/%E5%85%AC%E5%85%B1%E6%B6%88%E6%81%AF%E4%BD%93/#%E9%AA%8C%E8%AF%81%E7%A0%81%E7%B1%BB%E5%9E%8B
+export const CAPTCHA_TYPE = {
+  TEXT: 0,
+  EMAIL: 1,
+  VOICE: 2,
+  PHOTO: 3,
+  BIND_PHONE: 4,
+  SECRUITY_PHONE: 5,
+  BIND_EMAIL: 6,
+  BIND_PHONE_IMAGE: 7,
+  BIND_EMAIL_IMAGE: 8,
+  ACCOUNT_PHONE: 9,
+  ACCOUNT_EMAIL: 10,
+  ACCOUNT_PHONE_IMAGE: 11,
+  ACCOUNT_EMAIL_IMAGE: 12
+};
+
+// purpose 验证码用途
+// http://passport.doc.public.a.royole.club/api/%E5%85%AC%E5%85%B1%E6%B6%88%E6%81%AF%E4%BD%93/#%E9%AA%8C%E8%AF%81%E7%A0%81%E7%94%A8%E9%80%94
+export const CAPTCHA_PURPOSE = {
+  LOGIN: 0,
+  MODIFY_ACCOUNT_PHONE: 1,
+  MODIFY_ACCOUNT_EMAIL: 2,
+  MODIFY_ACCOUNT_PWD: 3,
+  DELETE_RESOURCE: 4,
+  SEND: 5,
+  CHECK: 6
+};
