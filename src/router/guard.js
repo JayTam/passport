@@ -1,7 +1,7 @@
 import {
   subAppIdPersistence,
   passportTokenPersistence,
-  redirectUriPersistence
+  redirectUriPersistence,
 } from "@/utils";
 import store from "../store/index";
 import { authorizedLogin } from "@/apis/auth";
@@ -17,7 +17,7 @@ export function registerBeforeRoute(router) {
       "/login",
       "/signup",
       "/forget",
-      "/auth"
+      "/auth",
     ].includes(to.matched?.[0]?.path);
     const isLoginRoute = ["/login", "/auth"].includes(to.matched?.[0]?.path);
     const isWhiteRoute =
@@ -97,7 +97,7 @@ export function registerBeforeRoute(router) {
      */
     if (isLogged && isLoginSignUpRoute) {
       return next({
-        name: "Home"
+        name: "Home",
       });
     }
 
@@ -111,8 +111,8 @@ export function registerBeforeRoute(router) {
         query: {
           ...to.query,
           ...from.query,
-          redirect_uri: encodeURIComponent(window.location.href)
-        }
+          redirect_uri: encodeURIComponent(window.location.href),
+        },
       });
     }
 
