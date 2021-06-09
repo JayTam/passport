@@ -22,7 +22,7 @@ import TeButton from "../../../components/Button";
 
 export default {
   name: "ForgetPassword",
-  components: { TeButton }
+  components: { TeButton },
 };
 </script>
 

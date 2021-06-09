@@ -1,43 +1,21 @@
 <template>
   <photo-view></photo-view>
-  <Desc type="Login"></Desc>
-  <other-channer type="Login"></other-channer>
   <te-form :model="form" ref="formRef">
-    <te-form-item
-      :label="$t('Auth.UserIdEmail')"
-      prop="account"
-      :rules="accountRules"
-    >
-      <template #label-right>
-        <te-button
-          type="text"
-          size="mini"
-          :tab-index="-1"
-          :to="{ name: 'LoginPhone' }"
-          replace
-        >
-          {{ $t("Auth.LoginPhone") }}
-        </te-button>
-      </template>
-      <te-input v-model="form.account"></te-input>
-    </te-form-item>
-
     <te-form-item
       :label="$t('Auth.Password')"
       prop="password"
       :rules="passwordRules"
     >
-      <template #label-right>
-        <te-button
-          type="text"
-          size="mini"
-          :tab-index="-1"
-          :to="{ name: 'ForgetPassword' }"
-        >
-          {{ $t("Auth.ForgotPassword") }}
-        </te-button>
-      </template>
       <te-input v-model="form.password" type="password" />
+    </te-form-item>
+
+    <te-form-item
+      :label="$t('Auth.RepeatPassword')"
+      prop="rePassword"
+      :rules="passwordRules"
+      style="margin-bottom: 120px"
+    >
+      <te-input v-model="form.rePassword" type="password" />
     </te-form-item>
 
     <te-form-item>
@@ -47,55 +25,60 @@
         dark
         :loading="loading"
         @click="handleSubmit"
-        >{{ $t("Auth.Login") }}</te-button
+        >{{ $t("Auth.CompleteAccount") }}</te-button
       >
     </te-form-item>
-
-    <div class="tips">
-      <p class="tips__text">{{ $t("Auth.NotaMember") }}</p>
-      <te-button
-        type="text"
-        size="mini"
-        :to="{ name: 'SignUpPhone' }"
-        replace
-        >{{ $t("Auth.SignUpNow") }}</te-button
-      >
-    </div>
   </te-form>
 </template>
 
 <script>
 import { reactive, ref, toRefs } from "vue";
+import { useRouter } from "vue-router";
 import { useValidate } from "@/composables/useValidate";
+import { Toast } from "vant";
+import { signUpEmail, signUpPhone } from "@/apis/auth";
 import { toastPassportAxiosError } from "@/utils";
-import { useStore } from "vuex";
 import TeFormItem from "../../../components/Form/FormItem";
 import TeForm from "../../../components/Form/Form";
 import TeInput from "../../../components/Form/Input";
 import TeButton from "../../../components/Button";
+import { useStore } from "vuex";
 import PhotoView from "../../../components/PhotoView";
-import Desc from "../../../components/desc";
-import OtherChanner from "../../../components/OtherChanner";
 
 export default {
-  name: "PcLoginAccount",
+  name: "PcSignUpSetPassword",
   components: {
     TeButton,
     TeForm,
     TeFormItem,
     TeInput,
     PhotoView,
-    Desc,
-    OtherChanner,
   },
   setup() {
     const formRef = ref(null);
     const loading = ref(false);
+    const router = useRouter();
     const store = useStore();
+
+    /**
+     *  如果地址栏没携带 [phone code] 或者 [email code] 参数，不符合注册流程，重定向到注册页面
+     */
+    const { phone, email, code } = router.currentRoute.value.query;
+    if ((!email && !phone) || (email && phone) || !code) {
+      router
+        .push({ name: "SignUpPhone" })
+        .then(() => Toast.fail("Registration error, please re-register"));
+    }
+    // 手机号注册，还是邮箱注册
+    const flowType = email ? "email" : "phone";
+
     const state = reactive({
       form: {
-        account: "",
+        phone,
+        email,
+        code,
         password: "",
+        rePassword: "",
       },
     });
 
@@ -103,7 +86,14 @@ export default {
       try {
         loading.value = true;
         await formRef.value.validate();
-        await store.dispatch("auth/loginAccount", state.form);
+        const { phone, password, code } = state.form;
+        let response;
+        if (flowType === "phone") {
+          response = await signUpPhone(phone, password, code);
+        } else {
+          response = await signUpEmail(email, password, code);
+        }
+        await store.dispatch("auth/loginSuccess", response.data);
       } catch (error) {
         toastPassportAxiosError(error);
       } finally {
@@ -118,8 +108,6 @@ export default {
       loading,
       handleSubmit,
       PhotoView,
-      Desc,
-      OtherChanner,
     };
   },
 };

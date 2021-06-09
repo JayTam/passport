@@ -76,7 +76,7 @@ export default [
         name: "SignUpPhone",
         component: () =>
           import(
-            /* webpackChunkName: "SignUpPhone" */ "@/views/auth/signUp/SignUpPhone.vue"
+            /* webpackChunkName: "SignUpPhone" */ "@/views/auth/signUp/PcSignUpPhone.vue"
           ),
         meta: { title: "Routes.SignUp" },
       },
@@ -85,7 +85,7 @@ export default [
         name: "SignUpEmail",
         component: () =>
           import(
-            /* webpackChunkName: "SignUpEmail" */ "@/views/auth/signUp/SignUpEmail.vue"
+            /* webpackChunkName: "SignUpEmail" */ "@/views/auth/signUp/PcSignUpEmail.vue"
           ),
         meta: { title: "Routes.SignUp" },
       },
@@ -94,7 +94,7 @@ export default [
         name: "SignUpSetPassword",
         component: () =>
           import(
-            /* webpackChunkName: "SignUpSetPassword" */ "@/views/auth/signUp/SignUpSetPassword.vue"
+            /* webpackChunkName: "SignUpSetPassword" */ "@/views/auth/signUp/PcSignUpSetPassword.vue"
           ),
         meta: { title: "Routes.PasswordUserID" },
       },

@@ -7,6 +7,9 @@ import VueI18n from "./languages";
 // 样式
 import "normalize.css";
 import "./styles/index.less";
+// 字体图标
+import "./fonts/iconfont";
+import "./styles/iconfont.css";
 
 // 拦截 auth.mms.tevo.online
 redirectToTenantUrl();
@@ -15,7 +18,8 @@ redirectToTenantUrl();
 store.dispatch("tenant/getTenantInfo");
 
 // 导入全部svg
-const requireAll = requireContext => requireContext.keys().map(requireContext);
+const requireAll = (requireContext) =>
+  requireContext.keys().map(requireContext);
 requireAll(require.context("./assets/icons", true, /\.svg$/));
 
 const app = createApp(App)
@@ -71,7 +75,7 @@ import {
   Collapse,
   CollapseItem,
   Overlay,
-  Loading
+  Loading,
 } from "vant";
 import enUS from "vant/es/locale/lang/en-US";
 import zhCN from "vant/es/locale/lang/zh-CN";
@@ -89,12 +93,12 @@ if (IsLanguage) {
 Toast.setDefaultOptions(IsLanguage ? "加载" : "loading", {
   forbidClick: true,
   duration: 0,
-  message: IsLanguage ? "加载..." : "loading..."
+  message: IsLanguage ? "加载..." : "loading...",
 });
 Dialog.setDefaultOptions({
   confirmButtonText: IsLanguage ? "确定" : "OK",
   cancelButtonText: IsLanguage ? "取消" : "Cancel",
-  confirmButtonColor: WARNING_COLOR
+  confirmButtonColor: WARNING_COLOR,
 });
 
 app

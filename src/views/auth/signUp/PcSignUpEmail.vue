@@ -1,81 +1,76 @@
 <template>
   <photo-view></photo-view>
-  <Desc type="Login"></Desc>
-  <other-channer type="Login"></other-channer>
+  <Desc type="signUp"></Desc>
+  <other-channer type="signUp"></other-channer>
   <te-form :model="form" ref="formRef">
     <te-form-item
-      :label="$t('Auth.PhoneNumber')"
-      prop="fullPhone"
-      :rules="phoneFindRules"
+      :label="$t('Auth.Email')"
+      prop="email"
+      :rules="emailSignUpRule"
     >
       <template #label-right>
         <te-button
           type="text"
           size="mini"
-          :tab-index="-1"
-          :to="{ name: 'LoginAccount' }"
+          :to="{ name: 'SignUpPhone' }"
           replace
         >
-          {{ $t("Auth.LoginWithUserIDorEmail") }}
+          {{ $t("Auth.SignUpWithPhone") }}
         </te-button>
       </template>
       <div>
-        <te-phone-input
-          v-model:phone="form.phone"
-          v-model:code="form.phoneAreaCode"
-        />
+        <te-input v-model="form.email" />
       </div>
     </te-form-item>
 
     <captcha-form-item
-      :label="$t('Auth.VerificationCode')"
       v-model="form.code"
+      :label="$t('Auth.VerificationCode')"
       prop="code"
-      account-prop="fullPhone"
-      :type="CAPTCHA_TYPE.TEXT"
-      :purpose="CAPTCHA_PURPOSE.LOGIN"
-    >
-      <template #label-right>
-        <te-button
-          type="text"
-          size="mini"
-          :tab-index="-1"
-          :to="{ name: 'ForgetPassword' }"
-        >
-          {{ $t("Auth.ForgotPassword") }}
-        </te-button>
-      </template>
-    </captcha-form-item>
+      account-prop="email"
+      :type="CAPTCHA_TYPE.EMAIL"
+      :purpose="CAPTCHA_PURPOSE.CHECK"
+    ></captcha-form-item>
+
+    <div class="tips" style="margin-bottom: 14px;">
+      <p class="tips__text">{{ $t("Auth.ByClick") }}</p>
+      <te-button type="text" size="mini" :to="{ name: 'UserAgreement' }">
+        {{ $t("Auth.TermsOfService") }}
+      </te-button>
+      <te-button type="text" size="mini" :to="{ name: 'Privacy' }">
+        {{ $t("Auth.PrivacyPolicy") }}
+      </te-button>
+    </div>
 
     <te-form-item>
       <te-button
         type="warning"
         block
         dark
-        :loading="loading"
+        :loading="submitLoading"
         @click="handleSubmit"
-        >{{ $t("Auth.Login") }}</te-button
+        >{{ $t("Auth.CreateAccount") }}</te-button
       >
     </te-form-item>
 
     <div class="tips">
-      <p class="tips__text">{{ $t("Auth.NotaMember") }}</p>
-      <te-button type="text" size="mini" :to="{ name: 'SignUpPhone' }" replace>
-        {{ $t("Auth.SignUpNow") }}
+      <p class="tips__text">{{ $t("Auth.AlreadyAMember") }}</p>
+      <te-button type="text" size="mini" :to="{ name: 'LoginAccount' }" replace>
+        {{ $t("Auth.Login") }}
       </te-button>
     </div>
   </te-form>
 </template>
 
 <script>
-import { computed, reactive, ref, toRefs } from "vue";
-import { useStore } from "vuex";
-import { useValidate } from "@/composables/useValidate";
+import { reactive, ref, toRefs } from "vue";
+import { useRouter } from "vue-router";
 import { toastPassportAxiosError } from "@/utils";
 import TeFormItem from "../../../components/Form/FormItem";
 import TeForm from "../../../components/Form/Form";
+import TeInput from "../../../components/Form/Input";
 import TeButton from "../../../components/Button";
-import TePhoneInput from "../../../components/Form/PhoneInput";
+import { useValidate } from "@/composables/useValidate";
 import CaptchaFormItem from "@/views/auth/components/CaptchaFormItem";
 import { CAPTCHA_PURPOSE, CAPTCHA_TYPE } from "@/constants";
 import PhotoView from "../../../components/PhotoView";
@@ -83,42 +78,44 @@ import Desc from "../../../components/desc";
 import OtherChanner from "../../../components/OtherChanner";
 
 export default {
-  name: "PcLoginPhone",
+  name: "PcSignUpEmail",
   components: {
     CaptchaFormItem,
-    TePhoneInput,
     TeButton,
     TeForm,
     TeFormItem,
+    TeInput,
     PhotoView,
     Desc,
     OtherChanner,
   },
   setup() {
+    const router = useRouter();
     const formRef = ref(null);
-    const store = useStore();
     const state = reactive({
       form: {
-        phone: "",
-        phoneAreaCode: "+62",
-        fullPhone: computed(() => state.form.phoneAreaCode + state.form.phone),
+        email: "",
         code: "",
       },
-      loading: false,
+      submitLoading: false,
+      codeLoading: false,
     });
 
+    /**
+     * 校验短信验证码正确性，然后跳转到设置密码页
+     */
     const handleSubmit = async () => {
       try {
-        state.loading = true;
+        state.submitLoading = true;
         await formRef.value.validate();
-        await store.dispatch("auth/loginPhone", {
-          phone: state.form.fullPhone,
-          code: state.form.code,
+        await router.push({
+          name: "SignUpSetPassword",
+          query: { email: state.form.email, code: state.form.code },
         });
       } catch (e) {
         toastPassportAxiosError(e);
       } finally {
-        state.loading = false;
+        state.submitLoading = false;
       }
     };
 

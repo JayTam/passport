@@ -1,12 +1,15 @@
 <template>
   <te-form :model="form" ref="formRef">
     <te-form-item
-      :label="$t('Auth.Email')"
-      prop="email"
-      :rules="emailFindRules"
+      :label="$t('Auth.PhoneNumber')"
+      prop="fullPhone"
+      :rules="phoneFindRules"
     >
       <div>
-        <te-input v-model="form.email" />
+        <te-phone-input
+          v-model:phone="form.phone"
+          v-model:code="form.phoneAreaCode"
+        />
       </div>
     </te-form-item>
 
@@ -14,8 +17,8 @@
       v-model="form.code"
       :label="$t('Auth.VerificationCode')"
       prop="code"
-      account-prop="email"
-      :type="CAPTCHA_TYPE.EMAIL"
+      account-prop="fullPhone"
+      :type="CAPTCHA_TYPE.TEXT"
       :purpose="CAPTCHA_PURPOSE.MODIFY_ACCOUNT_PWD"
     ></captcha-form-item>
 
@@ -33,30 +36,32 @@
 </template>
 
 <script>
-import { reactive, ref, toRefs } from "vue";
+import { computed, reactive, ref, toRefs } from "vue";
 import { useRouter } from "vue-router";
 import { toastPassportAxiosError } from "@/utils";
 import { useValidate } from "@/composables/useValidate";
 import TeFormItem from "../../../components/Form/FormItem";
 import TeForm from "../../../components/Form/Form";
-import TeInput from "../../../components/Form/Input";
 import TeButton from "../../../components/Button";
+import TePhoneInput from "../../../components/Form/PhoneInput";
 import CaptchaFormItem from "@/views/auth/components/CaptchaFormItem";
 import { CAPTCHA_PURPOSE, CAPTCHA_TYPE } from "@/constants";
 
 export default {
-  name: "VerificationEmail",
-  components: { CaptchaFormItem, TeButton, TeForm, TeFormItem, TeInput },
+  name: "VerificationPhone",
+  components: { CaptchaFormItem, TePhoneInput, TeButton, TeForm, TeFormItem },
   setup() {
     const router = useRouter();
     const formRef = ref(null);
     const state = reactive({
       form: {
-        email: "",
-        code: "",
+        phone: "",
+        phoneAreaCode: "+62",
+        fullPhone: computed(() => state.form.phoneAreaCode + state.form.phone),
+        code: ""
       },
       submitLoading: false,
-      codeLoading: false,
+      codeLoading: false
     });
 
     /**
@@ -68,7 +73,7 @@ export default {
         await formRef.value.validate();
         await router.push({
           name: "ResetPassword",
-          query: { email: state.form.email, code: state.form.code },
+          query: { phone: state.form.fullPhone, code: state.form.code }
         });
       } catch (e) {
         toastPassportAxiosError(e);
@@ -83,9 +88,9 @@ export default {
       formRef,
       handleSubmit,
       CAPTCHA_PURPOSE,
-      CAPTCHA_TYPE,
+      CAPTCHA_TYPE
     };
-  },
+  }
 };
 </script>
 
