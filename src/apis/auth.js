@@ -16,8 +16,8 @@ export function loginAccount(account, password) {
     data: {
       account,
       password,
-      behavior: LOGIN_BEHAVIOR.LOGIN
-    }
+      behavior: LOGIN_BEHAVIOR.LOGIN,
+    },
   });
 }
 
@@ -33,8 +33,8 @@ export function loginPhone(phone, code) {
     url: "/login/phone",
     data: {
       phone,
-      code
-    }
+      code,
+    },
   });
 }
 
@@ -45,8 +45,8 @@ export function loginThirdRequestToken(type) {
     params: {
       type,
       app_id: LOGIN_THIRD_APP_ID_LIST[type],
-      redirect_url: process.env.VUE_APP_THRID_LOGIN_REDIRECT_URL
-    }
+      redirect_url: process.env.VUE_APP_THRID_LOGIN_REDIRECT_URL,
+    },
   });
 }
 
@@ -63,8 +63,8 @@ export function loginThirdFirstStep(code, type) {
     data: {
       code,
       type,
-      app_id: LOGIN_THIRD_APP_ID_LIST[type]
-    }
+      app_id: LOGIN_THIRD_APP_ID_LIST[type],
+    },
   });
 }
 
@@ -85,8 +85,8 @@ export function loginThirdSecondStep(code, type, verifier) {
       verifier,
       app_id: LOGIN_THIRD_APP_ID_LIST[type],
       behavior: LOGIN_BEHAVIOR.LOGIN,
-      redirect_url: process.env.VUE_APP_THRID_LOGIN_REDIRECT_URL
-    }
+      redirect_url: process.env.VUE_APP_THRID_LOGIN_REDIRECT_URL,
+    },
   });
 }
 
@@ -104,8 +104,8 @@ export function bindThirdLogin(code, type, verifier) {
     data: {
       code,
       type,
-      verifier
-    }
+      verifier,
+    },
   });
 }
 
@@ -119,8 +119,8 @@ export function unbindThirdLogin(type, openId) {
     url: `/account/${store.state.user.uid}/third`,
     data: {
       open_id: openId,
-      type
-    }
+      type,
+    },
   });
 }
 
@@ -141,9 +141,9 @@ export function signUpEmail(email, password, code) {
         password,
         repeat_password: password,
         code,
-        registe_type: 0
-      }
-    }
+        registe_type: 0,
+      },
+    },
   });
 }
 
@@ -165,9 +165,9 @@ export function signUpPhone(phone, password, code) {
         password,
         repeat_password: password,
         code,
-        registe_type: 1
-      }
-    }
+        registe_type: 1,
+      },
+    },
   });
 }
 
@@ -186,8 +186,8 @@ export function resetPasswordPhone(phone, password, code) {
       account: phone,
       new_password: password,
       repeat_password: password,
-      code
-    }
+      code,
+    },
   });
 }
 
@@ -206,8 +206,8 @@ export function resetPasswordEmail(email, password, code) {
       account: email,
       new_password: password,
       repeat_password: password,
-      code
-    }
+      code,
+    },
   });
 }
 
@@ -221,8 +221,8 @@ export function hasRegistered(account) {
     method: "GET",
     url: "/account/registe",
     params: {
-      account
-    }
+      account,
+    },
   });
 }
 
@@ -238,7 +238,7 @@ export function authorizedLogin(appId) {
   return request({
     method: "GET",
     url: "/auth/token/exchange",
-    headers
+    headers,
   });
 }
 
@@ -248,7 +248,7 @@ export function authorizedLogin(appId) {
 export function logout() {
   return request({
     method: "DELETE",
-    url: "/logout?not_revoke_subapp=false&not_revoke_exchangeapp=false"
+    url: "/logout?not_revoke_subapp=false&not_revoke_exchangeapp=false",
   });
 }
 
@@ -262,8 +262,8 @@ export function changebindemail(email, code, old_code) {
     data: {
       email,
       code,
-      old_code
-    }
+      old_code,
+    },
   });
 }
 
@@ -277,8 +277,8 @@ export function changebindphone(phone, code, old_code) {
     data: {
       phone,
       code,
-      old_code
-    }
+      old_code,
+    },
   });
 }
 
@@ -293,7 +293,7 @@ export function changepassword(old_password, new_password, repeat_password) {
     data: {
       old_password,
       new_password,
-      repeat_password
-    }
+      repeat_password,
+    },
   });
 }

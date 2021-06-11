@@ -39,7 +39,7 @@
         block
         @click="toThirdUrl(LOGIN_THIRD_TYPE.GOOGLE)"
       >
-        {{ isLogin ? $t("Auth.LogInFacebook") : $t("Auth.GoogleSignUp") }}
+        {{ isLogin ? $t("Auth.LogInGoogle") : $t("Auth.GoogleSignUp") }}
       </te-button>
 
       <te-button
@@ -83,8 +83,8 @@ export default {
       default: "login",
       validator(val) {
         return ["login", "signup"].includes(val);
-      }
-    }
+      },
+    },
   },
   emits: ["update:show", "update:type"],
   setup(props, { emit }) {
@@ -96,11 +96,11 @@ export default {
       },
       set(val) {
         emit("update:show", val);
-      }
+      },
     });
 
     const isLogin = computed(() => props.type === "login");
-    const toThirdUrl = type => redirectToThird(type, LOGIN_BEHAVIOR.LOGIN);
+    const toThirdUrl = (type) => redirectToThird(type, LOGIN_BEHAVIOR.LOGIN);
     const toLogin = async () => {
       const routeName = isLogin.value ? "LoginAccount" : "SignUpPhone";
       const isHomeRoute = route.name === "Home";
@@ -109,7 +109,7 @@ export default {
       } else {
         await router.push({
           name: routeName,
-          query: { redirect_uri: encodeURIComponent(window.location.href) }
+          query: { redirect_uri: encodeURIComponent(window.location.href) },
         });
       }
     };
@@ -119,9 +119,9 @@ export default {
       toThirdUrl,
       toLogin,
       isLogin,
-      LOGIN_THIRD_TYPE
+      LOGIN_THIRD_TYPE,
     };
-  }
+  },
 };
 </script>
 

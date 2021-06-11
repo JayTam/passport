@@ -90,15 +90,19 @@ export default {
 </script>
 
 <style lang="less" scoped>
+form {
+  width: 80%;
+  margin: 0 auto;
+}
 .tips {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
 
   &__text {
     font-size: 12px;
-    line-height: 16px;
+    line-height: 24px;
     color: @color-info;
   }
 }

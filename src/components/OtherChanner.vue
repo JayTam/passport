@@ -31,10 +31,6 @@ export default {
         text1: "Continue with Facebook",
         text2: "Continue with Google",
       },
-      resetPassword: {
-        text1: "Phone verfication",
-        text2: "Email verfication",
-      },
       current: {},
     };
   },

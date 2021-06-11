@@ -1,9 +1,15 @@
 import {
   captchaValidateRulesCurrying,
   registerValidatorGenerator,
-  validatorGenerator
+  validatorGenerator,
 } from "@/utils";
-import { CAPTCHA_REG, EMAIL_REG, PASSWORD_REG, PHONE_REG_LIKE } from "@/utils";
+import {
+  CAPTCHA_REG,
+  EMAIL_REG,
+  PASSWORD_REG,
+  PHONE_REG_LIKE,
+  NAME_REG,
+} from "@/utils";
 import { useI18n } from "vue-i18n";
 export function useValidate() {
   const { t } = useI18n();
@@ -15,15 +21,20 @@ export function useValidate() {
       t("UseValidate.wrongVerificationCode"),
       [
         requiredRule,
-        { pattern: CAPTCHA_REG, message: t("UseValidate.mustBe6Numbers") }
+        { pattern: CAPTCHA_REG, message: t("UseValidate.mustBe6Numbers") },
       ]
     ),
     // 以下是直接可用的规则
     accountRules: [requiredRule],
+
+    userNameRules: [
+      requiredRule,
+      { pattern: NAME_REG, message: "用户名格式为4-20位字母或数字" },
+    ],
     passwordRules: [
       requiredRule,
       { min: 8, max: 16, message: t("UseValidate.mustBeBetween8And16") },
-      { pattern: PASSWORD_REG, message: t("UseValidate.twoTypes") }
+      { pattern: PASSWORD_REG, message: t("UseValidate.twoTypes") },
     ],
     phoneRules: [
       requiredRule,
@@ -31,8 +42,8 @@ export function useValidate() {
         validator: validatorGenerator(
           PHONE_REG_LIKE,
           t("UseValidate.invalidPhone")
-        )
-      }
+        ),
+      },
     ],
     // 手机号注册
     phoneSignUpRules: [
@@ -41,14 +52,14 @@ export function useValidate() {
         validator: validatorGenerator(
           PHONE_REG_LIKE,
           t("UseValidate.invalidPhone")
-        )
+        ),
       },
       {
         validator: registerValidatorGenerator(
           t("UseValidate.phoneAlreadyRegistered"),
           true
-        )
-      }
+        ),
+      },
     ],
     // 用手机号找回密码
     phoneFindRules: [
@@ -57,18 +68,18 @@ export function useValidate() {
         validator: validatorGenerator(
           PHONE_REG_LIKE,
           t("UseValidate.invalidPhone")
-        )
+        ),
       },
       {
         validator: registerValidatorGenerator(
           t("UseValidate.phoneUnregistered"),
           false
-        )
-      }
+        ),
+      },
     ],
     emailRules: [
       requiredRule,
-      { pattern: EMAIL_REG, message: t("UseValidate.invalidEmail") }
+      { pattern: EMAIL_REG, message: t("UseValidate.invalidEmail") },
     ],
     emailSignUpRule: [
       requiredRule,
@@ -77,8 +88,8 @@ export function useValidate() {
         validator: registerValidatorGenerator(
           t("UseValidate.emailAreadyRegistered"),
           true
-        )
-      }
+        ),
+      },
     ],
     emailFindRules: [
       requiredRule,
@@ -87,8 +98,8 @@ export function useValidate() {
         validator: registerValidatorGenerator(
           t("UseValidate.emailUnregistered"),
           false
-        )
-      }
-    ]
+        ),
+      },
+    ],
   };
 }

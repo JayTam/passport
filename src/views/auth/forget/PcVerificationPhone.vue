@@ -58,10 +58,10 @@ export default {
         phone: "",
         phoneAreaCode: "+62",
         fullPhone: computed(() => state.form.phoneAreaCode + state.form.phone),
-        code: ""
+        code: "",
       },
       submitLoading: false,
-      codeLoading: false
+      codeLoading: false,
     });
 
     /**
@@ -73,7 +73,7 @@ export default {
         await formRef.value.validate();
         await router.push({
           name: "ResetPassword",
-          query: { phone: state.form.fullPhone, code: state.form.code }
+          query: { phone: state.form.fullPhone, code: state.form.code },
         });
       } catch (e) {
         toastPassportAxiosError(e);
@@ -88,22 +88,26 @@ export default {
       formRef,
       handleSubmit,
       CAPTCHA_PURPOSE,
-      CAPTCHA_TYPE
+      CAPTCHA_TYPE,
     };
-  }
+  },
 };
 </script>
 
 <style lang="less" scoped>
+form {
+  width: 80%;
+  margin: 0 auto;
+}
 .tips {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
 
   &__text {
     font-size: 12px;
-    line-height: 16px;
+    line-height: 24px;
     color: @color-info;
   }
 }

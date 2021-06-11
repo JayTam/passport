@@ -68,8 +68,8 @@ export default {
         email,
         code,
         password: "",
-        rePassword: ""
-      }
+        rePassword: "",
+      },
     });
 
     const handleSubmit = async () => {
@@ -96,13 +96,17 @@ export default {
       ...useValidate(),
       formRef,
       loading,
-      handleSubmit
+      handleSubmit,
     };
-  }
+  },
 };
 </script>
 
 <style lang="less" scoped>
+form {
+  width: 80%;
+  margin: 0 auto;
+}
 .tips {
   display: flex;
   flex-flow: row nowrap;

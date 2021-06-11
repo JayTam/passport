@@ -35,7 +35,6 @@ export default {
   .content {
     width: 350px;
     margin: 0 auto;
-    text-align: center;
   }
 }
 </style>

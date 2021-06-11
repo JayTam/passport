@@ -1,6 +1,7 @@
 import PcLoginLayout from "@/layouts/PcLoginLayout";
 
 export default [
+  // 手机,邮箱登录
   {
     path: "/login",
     component: PcLoginLayout,
@@ -25,6 +26,7 @@ export default [
       },
     ],
   },
+  // 忘记密码,手机邮箱验证,重置密码
   {
     path: "/forget",
     component: PcLoginLayout,
@@ -34,7 +36,7 @@ export default [
         name: "ForgetPassword",
         component: () =>
           import(
-            /* webpackChunkName: "ForgetPassword" */ "@/views/auth/forget/ForgetPassword"
+            /* webpackChunkName: "ForgetPassword" */ "@/views/auth/forget/PcForgetPassword"
           ),
         meta: { title: "Routes.ResetPassword" },
       },
@@ -43,7 +45,7 @@ export default [
         name: "VerificationPhone",
         component: () =>
           import(
-            /* webpackChunkName: "VerificationPhone" */ "@/views/auth/forget/VerificationPhone"
+            /* webpackChunkName: "VerificationPhone" */ "@/views/auth/forget/PcVerificationPhone"
           ),
         meta: { title: "Routes.PhoneVerification" },
       },
@@ -52,7 +54,7 @@ export default [
         name: "VerificationEmail",
         component: () =>
           import(
-            /* webpackChunkName: "VerificationEmail" */ "@/views/auth/forget/VerificationEmail"
+            /* webpackChunkName: "VerificationEmail" */ "@/views/auth/forget/PcVerificationEmail"
           ),
         meta: { title: "Routes.EmailVerification" },
       },
@@ -61,12 +63,13 @@ export default [
         name: "ResetPassword",
         component: () =>
           import(
-            /* webpackChunkName: "ResetPassword" */ "@/views/auth/forget/ResetPassword"
+            /* webpackChunkName: "ResetPassword" */ "@/views/auth/forget/PcResetPassword"
           ),
         meta: { title: "Routes.ResetPassword" },
       },
     ],
   },
+  // 手机,邮箱注册,设置密码,设置个人信息
   {
     path: "/signup",
     component: PcLoginLayout,
@@ -98,6 +101,11 @@ export default [
           ),
         meta: { title: "Routes.PasswordUserID" },
       },
+      {
+        path: "editProfile",
+        name: "editProfile",
+        component: () => import("@/views/auth/editProfile/editProfile.vue"),
+      },
     ],
   },
   //TODO:将要第三方登陆callback页放在 /login 下
@@ -116,6 +124,7 @@ export default [
       },
     ],
   },
+  // 更换邮箱、手机号、密码
   {
     path: "/change",
     component: PcLoginLayout,
