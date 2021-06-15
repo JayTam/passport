@@ -8,6 +8,15 @@ export default [
     children: [
       {
         path: "",
+        name: "home",
+        component: () =>
+          import(
+            /* webpackChunkName: "PcLogin" */ "@/views/auth/login/PcLogin.vue"
+          ),
+        meta: { title: "Routes.Login" },
+      },
+      {
+        path: "Account",
         name: "LoginAccount",
         component: () =>
           import(

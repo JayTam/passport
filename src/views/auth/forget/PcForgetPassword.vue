@@ -1,10 +1,6 @@
 <template>
   <Desc type="resetPassword"></Desc>
 
-  <!-- <h1 class="reset-password__title">{{ $t("Auth.ResetPassword") }}</h1>
-  <p class="reset-password__description">
-    {{ $t("Auth.Description") }}
-  </p> -->
   <div class="content">
     <te-button
       class="reset-password__button--first"
@@ -19,6 +15,10 @@
       {{ $t("Auth.EmailVerification") }}
     </te-button>
   </div>
+
+  <te-button type="text" size="mini" :to="{ name: 'home' }" replace class="btn"
+    >Back to Log in</te-button
+  >
 </template>
 
 <script>
@@ -52,6 +52,11 @@ export default {
   &__button--first {
     margin: 100px 0 12px 0;
   }
+}
+.btn {
+  display: block;
+  margin: 0 auto;
+  margin-top: 100px;
 }
 .content {
   width: 80%;

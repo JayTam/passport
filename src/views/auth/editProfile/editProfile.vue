@@ -1,5 +1,5 @@
 <template>
-  <Desc type="Login"></Desc>
+  <p class="title">Edit your profile</p>
   <photo-view></photo-view>
 
   <te-form :model="form" ref="formRef">
@@ -75,7 +75,6 @@ import TeForm from "../../../components/Form/Form";
 import TeInput from "../../../components/Form/Input";
 import TeButton from "../../../components/Button";
 import PhotoView from "../../../components/PhotoView";
-import Desc from "../../../components/desc";
 import MySelect from "../../../components/MySelect";
 import { Toast } from "vant";
 
@@ -87,7 +86,6 @@ export default {
     TeFormItem,
     TeInput,
     PhotoView,
-    Desc,
     MySelect,
   },
   setup() {
@@ -148,7 +146,6 @@ export default {
       handleYear,
       handleGender,
       PhotoView,
-      Desc,
       MySelect,
     };
   },
@@ -156,6 +153,19 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.title {
+  font-size: 28px;
+  font-family: Roboto-Medium, Roboto;
+  font-weight: 500;
+  color: #333333;
+  line-height: 33px;
+  width: 100%;
+  text-align: center;
+}
+.PhotoView {
+  margin-top: 40px;
+  margin-bottom: 22px;
+}
 form {
   width: 80%;
   margin: 0 auto;

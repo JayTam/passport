@@ -1,4 +1,5 @@
 <template>
+  <p class="title">reset password</p>
   <te-form :model="form" ref="formRef">
     <te-form-item
       :label="$t('Auth.PhoneNumber')"
@@ -95,9 +96,19 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.title {
+  font-size: 28px;
+  font-family: Roboto-Medium, Roboto;
+  font-weight: 500;
+  color: #333333;
+  line-height: 33px;
+  width: 100%;
+  text-align: center;
+}
 form {
   width: 80%;
   margin: 0 auto;
+  margin-top: 60px;
 }
 .tips {
   display: flex;

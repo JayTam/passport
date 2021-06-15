@@ -21,7 +21,7 @@
         Log in for Ziel Home
       </p>
       <p>
-        Welcome to Ziel Home！Join our Community.
+        Welcome to Ziel Home！Join our Community
       </p>
     </div>
     <div class="resetPassword" v-if="type === 'resetPassword'">

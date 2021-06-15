@@ -1,6 +1,5 @@
 <template>
-  <Desc type="Login"></Desc>
-  <other-channer type="login"></other-channer>
+  <p class="title">log in</p>
   <te-form :model="form" ref="formRef">
     <te-form-item
       :label="$t('Auth.UserIdEmail')"
@@ -73,7 +72,6 @@ import TeForm from "../../../components/Form/Form";
 import TeInput from "../../../components/Form/Input";
 import TeButton from "../../../components/Button";
 import Desc from "../../../components/desc";
-import OtherChanner from "../../../components/OtherChanner";
 
 export default {
   name: "PcLoginAccount",
@@ -83,7 +81,6 @@ export default {
     TeFormItem,
     TeInput,
     Desc,
-    OtherChanner,
   },
   setup() {
     const formRef = ref(null);
@@ -115,23 +112,32 @@ export default {
       loading,
       handleSubmit,
       Desc,
-      OtherChanner,
     };
   },
 };
 </script>
 
 <style lang="less" scoped>
+.title {
+  font-size: 28px;
+  font-family: Roboto-Medium, Roboto;
+  font-weight: 500;
+  color: #333333;
+  line-height: 33px;
+  width: 100%;
+  text-align: center;
+}
 form {
   width: 80%;
   margin: 0 auto;
+  margin-top: 60px;
 }
 .tips {
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-
+  margin-top: 100px;
   &__text {
     font-size: 12px;
     line-height: 24px;

@@ -46,7 +46,6 @@ export default {
   }
   .content {
     width: 455px;
-    height: 615px;
     background: #ffffff;
     box-shadow: 0px 3px 12px 0px rgba(153, 153, 153, 0.1);
     border-radius: 8px;
@@ -54,6 +53,8 @@ export default {
     margin-top: 114px;
     margin-bottom: 249px;
     overflow: hidden;
+    padding: 60px 0 20px 0;
+    box-sizing: border-box;
   }
 }
 </style>

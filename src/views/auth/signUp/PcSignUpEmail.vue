@@ -1,6 +1,6 @@
 <template>
-  <Desc type="signUp"></Desc>
-  <other-channer type="signUp"></other-channer>
+  <p class="title">log in</p>
+
   <te-form :model="form" ref="formRef">
     <te-form-item
       :label="$t('Auth.Email')"
@@ -73,7 +73,6 @@ import { useValidate } from "@/composables/useValidate";
 import CaptchaFormItem from "@/views/auth/components/CaptchaFormItem";
 import { CAPTCHA_PURPOSE, CAPTCHA_TYPE } from "@/constants";
 import Desc from "../../../components/desc";
-import OtherChanner from "../../../components/OtherChanner";
 
 export default {
   name: "PcSignUpEmail",
@@ -84,7 +83,6 @@ export default {
     TeFormItem,
     TeInput,
     Desc,
-    OtherChanner,
   },
   setup() {
     const router = useRouter();
@@ -124,16 +122,25 @@ export default {
       CAPTCHA_PURPOSE,
       CAPTCHA_TYPE,
       Desc,
-      OtherChanner,
     };
   },
 };
 </script>
 
 <style lang="less" scoped>
+.title {
+  font-size: 28px;
+  font-family: Roboto-Medium, Roboto;
+  font-weight: 500;
+  color: #333333;
+  line-height: 33px;
+  width: 100%;
+  text-align: center;
+}
 form {
   width: 80%;
   margin: 0 auto;
+  margin-top: 60px;
 }
 .tips {
   display: flex;
