@@ -1,5 +1,4 @@
 <template>
-  <photo-view></photo-view>
   <Desc type="signUp"></Desc>
   <other-channer type="signUp"></other-channer>
   <te-form :model="form" ref="formRef">
@@ -73,7 +72,6 @@ import TeButton from "../../../components/Button";
 import { useValidate } from "@/composables/useValidate";
 import CaptchaFormItem from "@/views/auth/components/CaptchaFormItem";
 import { CAPTCHA_PURPOSE, CAPTCHA_TYPE } from "@/constants";
-import PhotoView from "../../../components/PhotoView";
 import Desc from "../../../components/desc";
 import OtherChanner from "../../../components/OtherChanner";
 
@@ -85,7 +83,6 @@ export default {
     TeForm,
     TeFormItem,
     TeInput,
-    PhotoView,
     Desc,
     OtherChanner,
   },
@@ -126,7 +123,6 @@ export default {
       handleSubmit,
       CAPTCHA_PURPOSE,
       CAPTCHA_TYPE,
-      PhotoView,
       Desc,
       OtherChanner,
     };
@@ -144,10 +140,11 @@ form {
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 
   &__text {
     font-size: 12px;
-    line-height: 24px;
+    // line-height: 24px;
     color: @color-info;
   }
 }

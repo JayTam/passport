@@ -1,5 +1,6 @@
 <template>
   <div class="login-layout">
+    <div class="logo"></div>
     <div class="content">
       <router-view />
     </div>
@@ -29,12 +30,30 @@ export default {
 .login-layout {
   background-color: white;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   box-sizing: border-box;
-  padding: 70px 0 140px 0;
+  background: #fff url("../assets/imgs/ZIEL HOMEmax.png") no-repeat center
+    center;
+  background-size: 100%;
+  > .logo {
+    width: 141px;
+    height: 20px;
+    background: #fff url("../assets/imgs/ZIEL HOMElogo.png") no-repeat center
+      center;
+    background-size: 100%;
+    margin-top: 20px;
+    margin-left: 141px;
+  }
   .content {
-    width: 350px;
+    width: 455px;
+    height: 615px;
+    background: #ffffff;
+    box-shadow: 0px 3px 12px 0px rgba(153, 153, 153, 0.1);
+    border-radius: 8px;
     margin: 0 auto;
+    margin-top: 114px;
+    margin-bottom: 249px;
+    overflow: hidden;
   }
 }
 </style>

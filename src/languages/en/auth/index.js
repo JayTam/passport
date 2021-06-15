@@ -32,7 +32,7 @@ module.exports = {
   NotaMember: "Not a member?",
 
   /** signUp */
-  LoginPhone: "Login with your phone number",
+  LoginPhone: "Login with your phone",
   LoginWithUserIDorEmail: "Login with User ID or Email",
   ForgotPassword: "Forgot passsword？",
   GetCode: "Get Code",
@@ -50,5 +50,5 @@ module.exports = {
 
   /** third */
   LoginSuccess: "Login success",
-  redirecting: "redirecting... "
+  redirecting: "redirecting... ",
 };

@@ -1,29 +1,39 @@
 <template>
   <div class="other_channer">
-    <div class="Facebook">
+    <div class="Facebook" @click="toThirdUrl(LOGIN_THIRD_TYPE.FACEBOOK)">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-facebook"></use>
       </svg>
       {{ current.text1 }}
     </div>
-    <div class="Google">
+    <div class="Google" @click="toThirdUrl(LOGIN_THIRD_TYPE.GOOGLE)">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-google"></use>
       </svg>
       {{ current.text2 }}
     </div>
     <div class="separation">
-      <span>OR</span>
+      <span>使用第三方登录</span>
     </div>
   </div>
 </template>
 <script>
+import { redirectToThird } from "@/utils";
+import { LOGIN_BEHAVIOR, LOGIN_THIRD_TYPE } from "@/constants";
 export default {
   name: "OtherChanner",
-  props: { type: String },
+  props: {
+    type: {
+      type: String,
+      default: "login",
+      validator(val) {
+        return ["login", "signup"].includes(val);
+      },
+    },
+  },
   data() {
     return {
-      Login: {
+      login: {
         text1: "Log in with Facebook",
         text2: "Log in with Google",
       },
@@ -32,13 +42,19 @@ export default {
         text2: "Continue with Google",
       },
       current: {},
+      LOGIN_THIRD_TYPE: LOGIN_THIRD_TYPE,
+      LOGIN_BEHAVIOR: LOGIN_BEHAVIOR,
     };
   },
 
   mounted() {
     this.current = this[this.type];
   },
-  methods: {},
+  methods: {
+    toThirdUrl(type) {
+      redirectToThird(type, this.LOGIN_BEHAVIOR.LOGIN);
+    },
+  },
 };
 </script>
 <style lang="less" scoped>

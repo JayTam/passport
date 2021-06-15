@@ -1,7 +1,6 @@
 <template>
-  <photo-view></photo-view>
   <Desc type="Login"></Desc>
-  <other-channer type="Login"></other-channer>
+  <other-channer type="login"></other-channer>
   <te-form :model="form" ref="formRef">
     <te-form-item
       :label="$t('Auth.UserIdEmail')"
@@ -73,7 +72,6 @@ import TeFormItem from "../../../components/Form/FormItem";
 import TeForm from "../../../components/Form/Form";
 import TeInput from "../../../components/Form/Input";
 import TeButton from "../../../components/Button";
-import PhotoView from "../../../components/PhotoView";
 import Desc from "../../../components/desc";
 import OtherChanner from "../../../components/OtherChanner";
 
@@ -84,7 +82,6 @@ export default {
     TeForm,
     TeFormItem,
     TeInput,
-    PhotoView,
     Desc,
     OtherChanner,
   },
@@ -117,7 +114,6 @@ export default {
       formRef,
       loading,
       handleSubmit,
-      PhotoView,
       Desc,
       OtherChanner,
     };

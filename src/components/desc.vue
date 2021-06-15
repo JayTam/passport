@@ -51,21 +51,24 @@ export default {
   width: 100%;
   text-align: center;
   overflow: hidden;
-  margin: 10px 0 20px 0;
   p:first-child {
-    font-weight: bold;
-    margin: 10px 0;
-    font-size: 20px;
+    font-size: 28px;
+    font-family: Roboto-Medium, Roboto;
+    font-weight: 500;
+    color: #333333;
+    line-height: 33px;
     text-align: center;
-    color: #000000;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    margin-bottom: 23px;
   }
   p:last-child {
-    margin: 8px 0;
-    font-size: 16px;
-    color: #000000;
+    font-size: 18px;
+    font-family: Roboto-Regular, Roboto;
+    font-weight: 400;
+    color: #666666;
+    line-height: 21px;
   }
 }
 </style>

@@ -1,5 +1,4 @@
 <template>
-  <photo-view></photo-view>
   <te-form :model="form" ref="formRef">
     <te-form-item
       :label="$t('Auth.Password')"
@@ -43,7 +42,6 @@ import TeForm from "../../../components/Form/Form";
 import TeInput from "../../../components/Form/Input";
 import TeButton from "../../../components/Button";
 import { useStore } from "vuex";
-import PhotoView from "../../../components/PhotoView";
 
 export default {
   name: "PcSignUpSetPassword",
@@ -52,7 +50,6 @@ export default {
     TeForm,
     TeFormItem,
     TeInput,
-    PhotoView,
   },
   setup() {
     const formRef = ref(null);
@@ -107,7 +104,6 @@ export default {
       formRef,
       loading,
       handleSubmit,
-      PhotoView,
     };
   },
 };

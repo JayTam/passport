@@ -1,5 +1,4 @@
 <template>
-  <photo-view></photo-view>
   <Desc type="resetPassword"></Desc>
 
   <!-- <h1 class="reset-password__title">{{ $t("Auth.ResetPassword") }}</h1>
@@ -24,12 +23,11 @@
 
 <script>
 import TeButton from "../../../components/Button";
-import PhotoView from "../../../components/PhotoView";
 import Desc from "../../../components/desc";
 
 export default {
   name: "ForgetPassword",
-  components: { TeButton, PhotoView, Desc },
+  components: { TeButton, Desc },
 };
 </script>
 
