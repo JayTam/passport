@@ -134,7 +134,7 @@ export default {
       //给父页面发送消息
       window.parent.postMessage(
         {
-          msg: {
+          loginSuccess: {
             token,
             deviceId,
             brandCenterToken,
@@ -142,7 +142,7 @@ export default {
         },
         "*"
       );
-      await router.go(0);
+      await router.push({ name: "LoginSuccess" });
     },
 
     async loginAccount({ dispatch }, { account, password }) {

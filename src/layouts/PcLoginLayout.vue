@@ -35,6 +35,7 @@ export default {
   background: #fff url("../assets/imgs/ZIEL HOMEmax.png") no-repeat center
     center;
   background-size: 100%;
+  border-top: 1px solid transparent;
   > .logo {
     width: 141px;
     height: 20px;

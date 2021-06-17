@@ -33,6 +33,15 @@ export default [
           ),
         meta: { title: "Routes.Login" },
       },
+      {
+        path: "success",
+        name: "LoginSuccess",
+        component: () =>
+          import(
+            /* webpackChunkName: "LoginPhone" */ "@/views/auth/login/PcLoginSuccess.vue"
+          ),
+        meta: { title: "Routes.Login" },
+      },
     ],
   },
   // 忘记密码,手机邮箱验证,重置密码

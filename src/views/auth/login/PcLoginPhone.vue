@@ -18,7 +18,7 @@
         </te-button>
       </template>
       <div>
-        <te-phone-input
+        <te-phone-input-pc
           v-model:phone="form.phone"
           v-model:code="form.phoneAreaCode"
         />
@@ -73,20 +73,18 @@ import { toastPassportAxiosError } from "@/utils";
 import TeFormItem from "../../../components/Form/FormItem";
 import TeForm from "../../../components/Form/Form";
 import TeButton from "../../../components/Button";
-import TePhoneInput from "../../../components/Form/PhoneInput";
+import TePhoneInputPc from "../../../components/Form/PhoneInputPc";
 import CaptchaFormItem from "@/views/auth/components/CaptchaFormItem";
 import { CAPTCHA_PURPOSE, CAPTCHA_TYPE } from "@/constants";
-import Desc from "../../../components/desc";
 
 export default {
   name: "PcLoginPhone",
   components: {
     CaptchaFormItem,
-    TePhoneInput,
+    TePhoneInputPc,
     TeButton,
     TeForm,
     TeFormItem,
-    Desc,
   },
   setup() {
     const formRef = ref(null);
@@ -94,7 +92,7 @@ export default {
     const state = reactive({
       form: {
         phone: "",
-        phoneAreaCode: "+62",
+        phoneAreaCode: "+86",
         fullPhone: computed(() => state.form.phoneAreaCode + state.form.phone),
         code: "",
       },
@@ -123,7 +121,7 @@ export default {
       handleSubmit,
       CAPTCHA_PURPOSE,
       CAPTCHA_TYPE,
-      Desc,
+      TePhoneInputPc,
     };
   },
 };

@@ -71,7 +71,6 @@ import TeFormItem from "../../../components/Form/FormItem";
 import TeForm from "../../../components/Form/Form";
 import TeInput from "../../../components/Form/Input";
 import TeButton from "../../../components/Button";
-import Desc from "../../../components/desc";
 
 export default {
   name: "PcLoginAccount",
@@ -80,7 +79,6 @@ export default {
     TeForm,
     TeFormItem,
     TeInput,
-    Desc,
   },
   setup() {
     const formRef = ref(null);
@@ -111,7 +109,6 @@ export default {
       formRef,
       loading,
       handleSubmit,
-      Desc,
     };
   },
 };

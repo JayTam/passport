@@ -16,7 +16,7 @@
 <script>
 export default {
   name: "MySelect",
-  props: ["width", "type", "exdata"],
+  props: ["width", "type", "exdata", "exvalue"],
   data() {
     return {
       value: "",
@@ -40,11 +40,15 @@ export default {
       MySelectStyle: {
         width: this.width,
       },
-      sdata: this[this.type],
+      sdata: [],
     };
   },
   computed: {},
   mounted() {
+    // 如果select有传入默认选项 , 则显示默认选项
+    if (this.exvalue) {
+      this.value = this.exvalue;
+    }
     for (let i = 1; i <= 12; i++) {
       this.Month.push({ value: i, label: i });
     }
@@ -59,16 +63,21 @@ export default {
     }
     this.Year.unshift({ value: "", label: "Year" });
 
+    if (this.type && this.exdata) {
+      throw "type和exdata参数只能传一个";
+    }
     // 如果是年月日,则通过type参数得到相应的下拉列表
-    this.sdata = this[this.type];
+    if (this.type) {
+      this.sdata = this[this.type];
+    }
     // 如果是其他类型的话,则通过传入的data数据生成相应的下拉列表
     if (this.exdata) {
       this.sdata = this.exdata;
     }
 
-    setTimeout(() => {
+    this.$nextTick(function() {
       this.$refs.MySelect.firstElementChild.disabled = true;
-    }, 100);
+    });
   },
   methods() {},
 };
