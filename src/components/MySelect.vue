@@ -1,5 +1,5 @@
 <template>
-  <div class="MySelect" :style="MySelectStyle">
+  <div :style="MySelectStyle" :class="{ MySelect: true, isPhone: isPhone }">
     <select
       name=""
       id=""
@@ -16,7 +16,7 @@
 <script>
 export default {
   name: "MySelect",
-  props: ["width", "type", "exdata", "exvalue"],
+  props: ["width", "type", "exdata", "exvalue", "isPhone"],
   data() {
     return {
       value: "",
@@ -103,5 +103,8 @@ export default {
       width: 100%;
     }
   }
+}
+.isPhone {
+  padding: 11px 7px;
 }
 </style>

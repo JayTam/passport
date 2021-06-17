@@ -43,29 +43,29 @@ export default {
     placeholder: String,
     disabled: { type: Boolean, default: false },
     code: { type: String, default: "+86" },
-    phone: String
+    phone: String,
   },
   emits: ["update:code", "update:phone", "input"],
   setup(props, { emit }) {
     const state = reactive({
       columns: ["+62", "+86"],
-      popupShow: false
+      popupShow: false,
     });
     const { t } = useI18n();
     const inputClass = computed(() => {
       return {
-        "is-disabled": props.disabled
+        "is-disabled": props.disabled,
       };
     });
 
-    const handleInput = event => {
+    const handleInput = (event) => {
       const phone = event.target.value;
       const code = props.code;
       emit("update:phone", phone);
       emit("input", { phone, code, fullPhone: code + phone });
     };
 
-    const handleConfirm = value => {
+    const handleConfirm = (value) => {
       state.popupShow = false;
       const phone = props.phone;
       const code = value;
@@ -78,8 +78,8 @@ export default {
       inputClass,
       handleConfirm,
       handleInput,
-      t
+      t,
     };
-  }
+  },
 };
 </script>

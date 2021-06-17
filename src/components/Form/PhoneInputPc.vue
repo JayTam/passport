@@ -8,6 +8,7 @@
   >
     <template #button-left>
       <my-select
+        :isPhone="true"
         :exdata="columns"
         :exvalue="code"
         @seleChange="AreaCodeHandle"
@@ -43,10 +44,11 @@ export default {
     const { t } = useI18n();
 
     const handleInput = (event) => {
+      if (event.target.nodeName === "SELECT") {
+        return;
+      }
       const phone = event.target.value;
       const code = props.code;
-      console.log("phone", phone);
-      console.log("code", code);
       emit("update:phone", phone);
       emit("input", { phone, code, fullPhone: code + phone });
     };
@@ -54,8 +56,6 @@ export default {
     const AreaCodeHandle = (value) => {
       const phone = props.phone;
       const code = value;
-      console.log("phone", phone);
-      console.log("code", code);
       emit("update:code", value);
       emit("input", { phone, code, fullPhone: code + phone });
     };

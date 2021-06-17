@@ -11,7 +11,7 @@ export default [
         name: "home",
         component: () =>
           import(
-            /* webpackChunkName: "PcLogin" */ "@/views/auth/login/PcLogin.vue"
+            /* webpackChunkName: "home" */ "@/views/auth/login/PcLogin.vue"
           ),
         meta: { title: "Routes.Login" },
       },
@@ -38,7 +38,7 @@ export default [
         name: "LoginSuccess",
         component: () =>
           import(
-            /* webpackChunkName: "LoginPhone" */ "@/views/auth/login/PcLoginSuccess.vue"
+            /* webpackChunkName: "LoginSuccess" */ "@/views/auth/login/PcLoginSuccess.vue"
           ),
         meta: { title: "Routes.Login" },
       },

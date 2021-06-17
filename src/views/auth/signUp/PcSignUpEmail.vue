@@ -1,5 +1,5 @@
 <template>
-  <p class="title">log in</p>
+  <p class="title">sign up</p>
 
   <te-form :model="form" ref="formRef">
     <te-form-item

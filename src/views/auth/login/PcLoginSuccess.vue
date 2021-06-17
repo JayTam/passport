@@ -8,58 +8,16 @@
 </template>
 
 <script>
-import { reactive, ref, toRefs } from "vue";
-import { useValidate } from "@/composables/useValidate";
-import { toastPassportAxiosError } from "@/utils";
-import { useStore } from "vuex";
-import TeFormItem from "../../../components/Form/FormItem";
-import TeForm from "../../../components/Form/Form";
-import TeInput from "../../../components/Form/Input";
-import TeButton from "../../../components/Button";
 import Desc from "../../../components/desc";
-import OtherChanner from "../../../components/OtherChanner";
 
 export default {
   name: "PcLoginAccount",
   components: {
-    TeButton,
-    TeForm,
-    TeFormItem,
-    TeInput,
     Desc,
-    OtherChanner,
   },
   setup() {
-    const formRef = ref(null);
-    const loading = ref(false);
-    const store = useStore();
-    const state = reactive({
-      form: {
-        account: "",
-        password: "",
-      },
-    });
-
-    const handleSubmit = async () => {
-      try {
-        loading.value = true;
-        await formRef.value.validate();
-        await store.dispatch("auth/loginAccount", state.form);
-      } catch (error) {
-        toastPassportAxiosError(error);
-      } finally {
-        loading.value = false;
-      }
-    };
-
     return {
-      ...toRefs(state),
-      ...useValidate(),
-      formRef,
-      loading,
-      handleSubmit,
       Desc,
-      OtherChanner,
     };
   },
 };
