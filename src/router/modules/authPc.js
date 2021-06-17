@@ -1,8 +1,8 @@
 import PcLoginLayout from "@/layouts/PcLoginLayout";
 
 export default [
-  // 手机,邮箱登录
   { path: "/", redirect: "/login" },
+  // 手机,邮箱登录
   {
     path: "/login",
     component: PcLoginLayout,
