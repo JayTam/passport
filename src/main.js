@@ -134,3 +134,11 @@ app
   .use(Loading);
 
 app.mount("#app");
+
+//回调函数
+// function receiveMessageFromIndex(event) {
+//   console.log("receiveMessageFromIndex", event);
+// }
+
+// //监听message事件
+// window.addEventListener("message", receiveMessageFromIndex, false);

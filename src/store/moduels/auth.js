@@ -5,7 +5,7 @@ import {
   loginPhone,
   loginThirdSecondStep,
   logout,
-  unbindThirdLogin
+  unbindThirdLogin,
 } from "@/apis/auth";
 import {
   deviceIdPersistence,
@@ -14,7 +14,7 @@ import {
   thirdTypePersistence,
   thirdBehaviorPersistence,
   tenantNamePersistence,
-  parseThirdParameters
+  parseThirdParameters,
 } from "@/utils";
 import router from "@/router";
 import { LOGIN_THIRD_TYPE } from "@/constants";
@@ -31,26 +31,26 @@ export default {
       avatar: null,
       name: null,
       type: LOGIN_THIRD_TYPE.FACEBOOK,
-      openId: null
+      openId: null,
     },
     google: {
       avatar: null,
       name: null,
       type: LOGIN_THIRD_TYPE.GOOGLE,
-      openId: null
+      openId: null,
     },
     twitter: {
       avatar: null,
       name: null,
       type: LOGIN_THIRD_TYPE.TWITTER,
-      openId: null
+      openId: null,
     },
     instagram: {
       avatar: null,
       name: null,
       type: LOGIN_THIRD_TYPE.INSTAGRAM,
-      openId: null
-    }
+      openId: null,
+    },
   },
   mutations: {
     SET_PASSPORT_TOKEN(state, val) {
@@ -120,7 +120,7 @@ export default {
       state.passportToken = null;
       state.brandCenterToken = null;
       state.devideId = null;
-    }
+    },
   },
   actions: {
     async loginSuccess({ commit }, { token, claim: { device_id: deviceId } }) {
@@ -131,6 +131,17 @@ export default {
       );
       const brandCenterToken = data.token;
       commit("SET_BRAND_CENTER_TOKEN", brandCenterToken);
+      //给父页面发送消息
+      window.parent.postMessage(
+        {
+          msg: {
+            token,
+            deviceId,
+            brandCenterToken,
+          },
+        },
+        "*"
+      );
       await router.go(0);
     },
 
@@ -200,6 +211,6 @@ export default {
           commit("SET_THIRD_LOGIN", third);
         }
       }
-    }
-  }
+    },
+  },
 };
