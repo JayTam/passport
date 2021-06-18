@@ -2,9 +2,7 @@
   <div class="other_channer">
     <div class="Facebook" @click="toThirdUrl(LOGIN_THIRD_TYPE.FACEBOOK)"></div>
     <div class="Google" @click="toThirdUrl(LOGIN_THIRD_TYPE.GOOGLE)"></div>
-    <div class="separation">
-      使用第三方登录
-    </div>
+    <div class="separation">使用第三方登录</div>
   </div>
 </template>
 <script>

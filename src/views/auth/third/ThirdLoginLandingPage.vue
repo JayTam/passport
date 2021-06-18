@@ -21,6 +21,8 @@ export default {
       try {
         if (behavior === LOGIN_BEHAVIOR.LOGIN) {
           await store.dispatch("auth/loginThird");
+          window.opener.location.reload();
+          window.close();
         } else if (behavior === LOGIN_BEHAVIOR.BIND) {
           await store.dispatch("auth/bindThird");
         }
@@ -30,7 +32,7 @@ export default {
     };
 
     init();
-  }
+  },
 };
 </script>
 

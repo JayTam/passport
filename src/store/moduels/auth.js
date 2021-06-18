@@ -123,7 +123,10 @@ export default {
     },
   },
   actions: {
-    async loginSuccess({ commit }, { token, claim: { device_id: deviceId } }) {
+    async loginSuccess(
+      { commit },
+      { token, claim: { device_id: deviceId }, type }
+    ) {
       commit("SET_PASSPORT_TOKEN", token);
       commit("SET_DEVICE_ID", deviceId);
       const { data } = await authorizedLogin(
@@ -131,6 +134,7 @@ export default {
       );
       const brandCenterToken = data.token;
       commit("SET_BRAND_CENTER_TOKEN", brandCenterToken);
+      if (type === "LoginThied") return;
       //给父页面发送消息
       window.parent.postMessage(
         {
@@ -158,7 +162,7 @@ export default {
     async loginThird({ dispatch }) {
       const { code, type, verifier } = parseThirdParameters();
       const { data } = await loginThirdSecondStep(code, type, verifier);
-      await dispatch("loginSuccess", data);
+      await dispatch("loginSuccess", data, "LoginThied");
       // 第三方登陆成功，清除第三方登陆所需参数
       thirdTypePersistence.remove();
       thirdBehaviorPersistence.remove();

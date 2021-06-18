@@ -95,11 +95,11 @@ export function registerBeforeRoute(router) {
     /**
      * 登录了，访问登陆注册页面，跳转首页
      */
-    // if (isLogged && isLoginSignUpRoute) {
-    //   return next({
-    //     name: "Home",
-    //   });
-    // }
+    if (isLogged && isLoginSignUpRoute) {
+      return next({
+        name: "LoginSuccess",
+      });
+    }
 
     /**
      * 未登录，跳转需要登录页面
