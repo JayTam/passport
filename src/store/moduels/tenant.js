@@ -40,10 +40,10 @@ export default {
         const { data } = await getTenementInfo();
         commit("SET_TENANT", data);
       } catch (e) {
-        await Dialog.alert({
-          message: `租户不存在，跳转到${process.env.VUE_APP_DEFAULT_TENANT_NAME}租户`,
-        });
-        window.location.href = `https://${process.env.VUE_APP_DEFAULT_TENANT_NAME}.mms.tevo.online`;
+        // await Dialog.alert({
+        //   message: `租户不存在，跳转到${process.env.VUE_APP_DEFAULT_TENANT_NAME}租户`,
+        // });
+        // window.location.href = `https://${process.env.VUE_APP_DEFAULT_TENANT_NAME}.mms.tevo.online`;
       }
     },
   },
