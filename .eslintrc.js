@@ -1,11 +1,11 @@
 module.exports = {
   root: true,
   env: {
-    node: true
+    node: true,
   },
   extends: ["plugin:vue/vue3-essential", "eslint:recommended", "@vue/prettier"],
   parserOptions: {
-    parser: "babel-eslint"
+    parser: "babel-eslint",
   },
   rules: {
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
@@ -13,6 +13,6 @@ module.exports = {
     eqeqeq: ["error", "smart"],
     "no-unused-vars": "error",
     "vue/no-unused-components": "warn",
-    "vue/no-multiple-template-root": "off"
-  }
+    "vue/no-multiple-template-root": "off",
+  },
 };
