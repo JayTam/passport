@@ -36,3 +36,20 @@ export async function generateTeamUpUrl(activityId, teamId) {
   );
   return response.data.data.shorturl;
 }
+
+/**
+ * 给parent frame发送消息
+ * @param {string} action 消息类型
+ * @param {Object} payload 消息负载
+ * @param {string} targetOrigin
+ */
+export function postMessage(action, payload, targetOrigin = "*") {
+  window.parent.postMessage(
+    {
+      name: "passport",
+      action: action,
+      payload: payload,
+    },
+    targetOrigin
+  );
+}

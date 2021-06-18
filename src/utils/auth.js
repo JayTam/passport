@@ -54,5 +54,3 @@ export const subAppIdPersistence = new Persistence("sub_app_id", PAN_DOMAIN);
 export const deviceIdPersistence = new Persistence("device_id", PAN_DOMAIN);
 // passport 登陆凭证
 export const passportTokenPersistence = new Persistence("pp_token");
-// 品牌中心登陆凭证
-export const brandCenterTokenPersistence = new Persistence("bc_token");

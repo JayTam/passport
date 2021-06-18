@@ -57,12 +57,8 @@ export function registerBeforeRoute(router) {
       let token;
       const deviceId = store.state.auth.deviceId;
       const appId = subAppId;
-      if (subAppId === process.env.VUE_APP_BRAND_CENTER_APP_ID) {
-        token = store.state.auth.brandCenterToken;
-      } else {
-        const { data } = await authorizedLogin();
-        token = data.token;
-      }
+      const { data } = await authorizedLogin();
+      token = data.token;
       const queryStringObj = QueryString.parseUrl(redirectUri);
       queryStringObj.query.token = token;
       queryStringObj.query.device_id = deviceId;
