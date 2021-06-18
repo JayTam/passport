@@ -1,26 +1,13 @@
 <template>
   <te-form :model="form" ref="formRef">
-    <te-form-item
-      :label="$t('Auth.PhoneNumber')"
-      prop="fullPhone"
-      :rules="phoneFindRules"
-    >
+    <te-form-item :label="$t('Auth.PhoneNumber')" prop="fullPhone" :rules="phoneFindRules">
       <template #label-right>
-        <te-button
-          type="text"
-          size="mini"
-          :tab-index="-1"
-          :to="{ name: 'LoginAccount' }"
-          replace
-        >
+        <te-button type="text" size="mini" :tab-index="-1" :to="{ name: 'LoginAccount' }" replace>
           {{ $t("Auth.LoginWithUserIDorEmail") }}
         </te-button>
       </template>
       <div>
-        <te-phone-input
-          v-model:phone="form.phone"
-          v-model:code="form.phoneAreaCode"
-        />
+        <te-phone-input v-model:phone="form.phone" v-model:code="form.phoneAreaCode" />
       </div>
     </te-form-item>
 
@@ -33,26 +20,16 @@
       :purpose="CAPTCHA_PURPOSE.LOGIN"
     >
       <template #label-right>
-        <te-button
-          type="text"
-          size="mini"
-          :tab-index="-1"
-          :to="{ name: 'ForgetPassword' }"
-        >
+        <te-button type="text" size="mini" :tab-index="-1" :to="{ name: 'ForgetPassword' }">
           {{ $t("Auth.ForgotPassword") }}
         </te-button>
       </template>
     </captcha-form-item>
 
     <te-form-item>
-      <te-button
-        type="warning"
-        block
-        dark
-        :loading="loading"
-        @click="handleSubmit"
-        >{{ $t("Auth.Login") }}</te-button
-      >
+      <te-button type="warning" block dark :loading="loading" @click="handleSubmit">{{
+        $t("Auth.Login")
+      }}</te-button>
     </te-form-item>
 
     <div class="tips">
@@ -87,9 +64,9 @@ export default {
         phone: "",
         phoneAreaCode: "+62",
         fullPhone: computed(() => state.form.phoneAreaCode + state.form.phone),
-        code: ""
+        code: "",
       },
-      loading: false
+      loading: false,
     });
 
     const handleSubmit = async () => {
@@ -98,7 +75,7 @@ export default {
         await formRef.value.validate();
         await store.dispatch("auth/loginPhone", {
           phone: state.form.fullPhone,
-          code: state.form.code
+          code: state.form.code,
         });
       } catch (e) {
         toastPassportAxiosError(e);
@@ -113,9 +90,9 @@ export default {
       formRef,
       handleSubmit,
       CAPTCHA_PURPOSE,
-      CAPTCHA_TYPE
+      CAPTCHA_TYPE,
     };
-  }
+  },
 };
 </script>
 

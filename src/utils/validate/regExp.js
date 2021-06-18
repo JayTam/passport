@@ -10,7 +10,7 @@ export const PHONE_REG_LIKE = {
       return phoneNumber.isValid();
     }
     return false;
-  }
+  },
 };
 // 密码
 export const PASSWORD_REG = /^(?![0-9]+$)(?![_]+$)(?![a-zA-Z]+$)[A-Za-z_0-9]{8,16}$/;

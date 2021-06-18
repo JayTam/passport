@@ -17,14 +17,9 @@
     <div class="void"></div>
 
     <te-form-item>
-      <te-button
-        type="warning"
-        block
-        dark
-        :loading="submitLoading"
-        @click="handleSubmit"
-        >{{ $t("Auth.Next") }}</te-button
-      >
+      <te-button type="warning" block dark :loading="submitLoading" @click="handleSubmit">{{
+        $t("Auth.Next")
+      }}</te-button>
     </te-form-item>
   </te-form>
 </template>
@@ -49,10 +44,10 @@ export default {
     const state = reactive({
       form: {
         // email: store.state.user.email,
-        code: ""
+        code: "",
       },
       submitLoading: false,
-      codeLoading: false
+      codeLoading: false,
     });
 
     /**
@@ -64,7 +59,7 @@ export default {
         await formRef.value.validate();
         await router.push({
           name: "ChangeEmailDone",
-          query: { code: state.form.code }
+          query: { code: state.form.code },
         });
       } catch (e) {
         toastPassportAxiosError(e);
@@ -79,9 +74,9 @@ export default {
       formRef,
       handleSubmit,
       CAPTCHA_PURPOSE,
-      CAPTCHA_TYPE
+      CAPTCHA_TYPE,
     };
-  }
+  },
 };
 </script>
 

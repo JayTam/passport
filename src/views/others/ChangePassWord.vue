@@ -4,11 +4,7 @@
       <te-input v-model="form.old_password" type="password" />
     </te-form-item>
 
-    <te-form-item
-      label="New Password"
-      prop="new_password"
-      :rules="passwordRules"
-    >
+    <te-form-item label="New Password" prop="new_password" :rules="passwordRules">
       <te-input v-model="form.new_password" type="password" />
       <div class="tips">
         <p class="tips__text">
@@ -27,14 +23,7 @@
     </te-form-item>
 
     <te-form-item>
-      <te-button
-        type="warning"
-        block
-        dark
-        :loading="loading"
-        @click="handleSubmit"
-        >Done</te-button
-      >
+      <te-button type="warning" block dark :loading="loading" @click="handleSubmit">Done</te-button>
     </te-form-item>
   </te-form>
 </template>
@@ -65,8 +54,8 @@ export default {
       form: {
         old_password: "",
         new_password: "",
-        repeat_password: ""
-      }
+        repeat_password: "",
+      },
     });
 
     const handleSubmit = async () => {
@@ -90,9 +79,9 @@ export default {
       ...useValidate(),
       formRef,
       loading,
-      handleSubmit
+      handleSubmit,
     };
-  }
+  },
 };
 </script>
 

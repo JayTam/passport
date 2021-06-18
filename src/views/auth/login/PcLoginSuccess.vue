@@ -9,10 +9,12 @@
 
 <script>
 import Desc from "../../../components/desc";
+import TeButton from "@/components/Button";
 
 export default {
   name: "PcLoginAccount",
   components: {
+    TeButton,
     Desc,
   },
   setup() {
@@ -35,8 +37,7 @@ form {
 .logobg {
   width: 100%;
   height: 71px;
-  background: url("../../../assets/imgs/ZIEL HOMEmin.png") center center
-    no-repeat;
+  background: url("../../../assets/imgs/ZIEL HOMEmin.png") center center no-repeat;
   background-size: 100%;
   margin-bottom: 16px;
 }

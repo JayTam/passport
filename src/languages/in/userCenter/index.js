@@ -63,5 +63,5 @@ module.exports = {
 
   Other: "Lainnya",
   Male: "Laki-laki",
-  Female: "Perempuan"
+  Female: "Perempuan",
 };

@@ -43,16 +43,8 @@ export default {
       type: String,
       default: "default",
       validator: val => {
-        return [
-          "primary",
-          "warning",
-          "danger",
-          "success",
-          "default",
-          "info",
-          "text"
-        ].includes(val);
-      }
+        return ["primary", "warning", "danger", "success", "default", "info", "text"].includes(val);
+      },
     },
     size: { type: String, default: "normal" },
     width: [String, Number],
@@ -62,12 +54,12 @@ export default {
       default: "button",
       validator: val => {
         return ["button", "submit", "reset"].includes(val);
-      }
+      },
     },
     tabIndex: Number,
     to: Object,
     url: String,
-    replace: { type: Boolean, default: false }
+    replace: { type: Boolean, default: false },
   },
   emits: ["click"],
   setup(props, { emit }) {
@@ -80,10 +72,10 @@ export default {
         "te-button--square": props.square,
         "te-button--dark": props.dark,
         "te-button--disabled": props.disabled,
-        "te-button--loading": props.loading
+        "te-button--loading": props.loading,
       },
       "te-button--" + props.type,
-      "te-button--" + props.size
+      "te-button--" + props.size,
     ]);
 
     const buttonStyles = computed(() => {
@@ -93,13 +85,9 @@ export default {
       const styles = {
         width: addUnit(props.width),
         height: addUnit(props.height),
-        color: isLinearGradient
-          ? undefined
-          : props.plain
-          ? props.color
-          : undefined,
+        color: isLinearGradient ? undefined : props.plain ? props.color : undefined,
         background: props.plain ? undefined : props.color,
-        borderColor: props.color
+        borderColor: props.color,
       };
       if (isLinearGradient) {
         styles.border = "none";
@@ -121,9 +109,9 @@ export default {
     return {
       buttonClass,
       buttonStyles,
-      handleClick
+      handleClick,
     };
-  }
+  },
 };
 </script>
 

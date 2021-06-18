@@ -43,7 +43,7 @@ export default {
     });
     const { t } = useI18n();
 
-    const handleInput = (event) => {
+    const handleInput = event => {
       if (event.target.nodeName === "SELECT") {
         return;
       }
@@ -53,7 +53,7 @@ export default {
       emit("input", { phone, code, fullPhone: code + phone });
     };
 
-    const AreaCodeHandle = (value) => {
+    const AreaCodeHandle = value => {
       const phone = props.phone;
       const code = value;
       emit("update:code", value);

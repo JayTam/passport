@@ -10,11 +10,12 @@ import {
 import {
   deviceIdPersistence,
   passportTokenPersistence,
-  brandCenterTokenPersistence,
   thirdTypePersistence,
   thirdBehaviorPersistence,
   tenantNamePersistence,
   parseThirdParameters,
+  postMessage,
+  subAppIdPersistence,
 } from "@/utils";
 import router from "@/router";
 import { LOGIN_THIRD_TYPE } from "@/constants";
@@ -24,7 +25,6 @@ export default {
   namespaced: true,
   state: {
     passportToken: passportTokenPersistence.get(),
-    brandCenterToken: brandCenterTokenPersistence.get(),
     deviceId: deviceIdPersistence.get(),
     // 第三方登陆
     facebook: {
@@ -56,10 +56,6 @@ export default {
     SET_PASSPORT_TOKEN(state, val) {
       passportTokenPersistence.set(val);
       state.passportToken = val;
-    },
-    SET_BRAND_CENTER_TOKEN(state, val) {
-      brandCenterTokenPersistence.set(val);
-      state.brandCenterToken = val;
     },
     SET_DEVICE_ID(state, val) {
       deviceIdPersistence.set(val);
@@ -115,37 +111,21 @@ export default {
     },
     REMOVE_AUTH(state) {
       passportTokenPersistence.remove();
-      brandCenterTokenPersistence.remove();
       deviceIdPersistence.remove();
       state.passportToken = null;
-      state.brandCenterToken = null;
       state.devideId = null;
     },
   },
   actions: {
-    async loginSuccess(
-      { commit },
-      { token, claim: { device_id: deviceId }, type }
-    ) {
+    async loginSuccess({ commit }, { token, claim: { device_id: deviceId }, type }) {
       commit("SET_PASSPORT_TOKEN", token);
       commit("SET_DEVICE_ID", deviceId);
-      const { data } = await authorizedLogin(
-        process.env.VUE_APP_BRAND_CENTER_APP_ID
-      );
-      const brandCenterToken = data.token;
-      commit("SET_BRAND_CENTER_TOKEN", brandCenterToken);
+      const subAppId = subAppIdPersistence.get();
+      if (subAppId) {
+        const { data } = await authorizedLogin(subAppId);
+        postMessage("loginSuccess", data);
+      }
       if (type === "LoginThied") return;
-      //给父页面发送消息
-      window.parent.postMessage(
-        {
-          loginSuccess: {
-            token,
-            deviceId,
-            brandCenterToken,
-          },
-        },
-        "*"
-      );
       await router.push({ name: "LoginSuccess" });
     },
 

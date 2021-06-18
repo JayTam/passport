@@ -32,15 +32,13 @@ export default {
   height: 100vh;
   width: 100vw;
   box-sizing: border-box;
-  background: #fff url("../assets/imgs/ZIEL HOMEmax.png") no-repeat center
-    center;
+  background: #fff url("../assets/imgs/ZIEL HOMEmax.png") no-repeat center center;
   background-size: 100%;
   border-top: 1px solid transparent;
   > .logo {
     width: 141px;
     height: 20px;
-    background: #fff url("../assets/imgs/ZIEL HOMElogo.png") no-repeat center
-      center;
+    background: #fff url("../assets/imgs/ZIEL HOMElogo.png") no-repeat center center;
     background-size: 100%;
     margin-top: 20px;
     margin-left: 141px;

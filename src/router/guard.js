@@ -1,8 +1,4 @@
-import {
-  subAppIdPersistence,
-  passportTokenPersistence,
-  redirectUriPersistence,
-} from "@/utils";
+import { subAppIdPersistence, passportTokenPersistence, redirectUriPersistence } from "@/utils";
 import store from "../store/index";
 import { authorizedLogin } from "@/apis/auth";
 import QueryString from "query-string";
@@ -13,18 +9,13 @@ import QueryString from "query-string";
 export function registerBeforeRoute(router) {
   router.beforeEach(async (to, from, next) => {
     const isLogged = !!passportTokenPersistence.get();
-    const isLoginSignUpRoute = [
-      "/login",
-      "/signup",
-      "/forget",
-      "/auth",
-    ].includes(to.matched?.[0]?.path);
+    const isLoginSignUpRoute = ["/login", "/signup", "/forget", "/auth"].includes(
+      to.matched?.[0]?.path
+    );
     const isLoginRoute = ["/login", "/auth"].includes(to.matched?.[0]?.path);
     const isWhiteRoute =
       isLoginSignUpRoute ||
-      ["Home", "Privacy", "UserAgreement", "TeamUp", "JoinTeamUp"].includes(
-        to.name
-      );
+      ["Home", "Privacy", "UserAgreement", "TeamUp", "JoinTeamUp"].includes(to.name);
     const subAppId = subAppIdPersistence.get();
     // 本站的redirect_uri
     const redirectUri = redirectUriPersistence.get();
@@ -66,12 +57,8 @@ export function registerBeforeRoute(router) {
       let token;
       const deviceId = store.state.auth.deviceId;
       const appId = subAppId;
-      if (subAppId === process.env.VUE_APP_BRAND_CENTER_APP_ID) {
-        token = store.state.auth.brandCenterToken;
-      } else {
-        const { data } = await authorizedLogin();
-        token = data.token;
-      }
+      const { data } = await authorizedLogin();
+      token = data.token;
       const queryStringObj = QueryString.parseUrl(redirectUri);
       queryStringObj.query.token = token;
       queryStringObj.query.device_id = deviceId;

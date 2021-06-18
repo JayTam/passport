@@ -1,14 +1,6 @@
-import {
-  fetchUserInfo,
-  updateUserInfo,
-  getIntegral,
-  getUserLevel,
-  fetchEmailInfo,
-  fetchPhoneInfo
-} from "@/apis/user";
+import { fetchUserInfo, updateUserInfo, fetchEmailInfo, fetchPhoneInfo } from "@/apis/user";
 import { Toast } from "vant";
 import defaultAvatar from "@/assets/imgs/portrait.png";
-import { calcUserLevel } from "@/utils";
 
 export default {
   namespaced: true,
@@ -34,16 +26,12 @@ export default {
     vip_info: {
       account_vip: null,
       max: 0,
-      type: 0
+      type: 0,
     },
-    //积分
-    integral: null,
-    //信誉值
-    reputation: null,
     // 手机号码
     phone: null,
     // 邮箱
-    email: null
+    email: null,
   },
   getters: {
     hasGetUserInfo(state) {
@@ -66,12 +54,6 @@ export default {
     name(state) {
       return state.name ?? "Wook";
     },
-    integral(state) {
-      return state.integral;
-    },
-    reputation(state) {
-      return state.reputation;
-    }
   },
   mutations: {
     SET_USER_INFO: (state, data) => {
@@ -94,17 +76,6 @@ export default {
     SET_USER_EMAIL: (state, data) => {
       state.email = data;
     },
-    SET_INTEGRAL: (state, data) => {
-      state.integral = data;
-    },
-    SET_REPUTATION: (state, data) => {
-      state.reputation = data;
-    },
-    SET_LEVEL_INFO: (state, data) => {
-      state.vip_info.account_vip = data.level;
-      state.vip_info.max = data.max;
-      state.vip_info.type = data.type;
-    },
     REMOVE_USER_INFO: state => {
       for (const key in state) {
         if (key === "vip_info") {
@@ -117,30 +88,16 @@ export default {
           state[key] = null;
         }
       }
-    }
+    },
   },
   actions: {
     async getUserInfo({ commit, dispatch }) {
       const userInfoResponse = await fetchUserInfo();
       const userInfo = userInfoResponse.data;
       if (userInfo) commit("SET_USER_INFO", userInfo);
-      await dispatch("getIntegralInfo");
       await dispatch("getEmailInfo");
       await dispatch("getPhoneInfo");
       await dispatch("auth/getThirdLoginInfo", null, { root: true });
-    },
-    async getIntegralInfo({ commit }) {
-      const integralRequest = getIntegral();
-      const userLevelRequest = getUserLevel();
-      const integralResponse = await integralRequest;
-      const userLevelResponse = await userLevelRequest;
-      const levelList = userLevelResponse.data.data;
-      const integral = integralResponse.data.data.currency;
-      const reputation = integralResponse.data.data.total_income;
-      const userLevel = calcUserLevel(reputation, levelList);
-      commit("SET_INTEGRAL", integral);
-      commit("SET_REPUTATION", reputation);
-      commit("SET_LEVEL_INFO", userLevel);
     },
     async getEmailInfo({ commit }) {
       const response = await fetchEmailInfo();
@@ -158,6 +115,6 @@ export default {
       if (userInfo) commit("SET_USER_INFO", userInfo);
       await dispatch("getIntegralInfo");
       Toast.success("修改成功");
-    }
-  }
+    },
+  },
 };

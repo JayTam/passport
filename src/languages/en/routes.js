@@ -7,5 +7,5 @@ module.exports = {
   PasswordUserID: "Password & User ID",
   ChangeEmail: "Change Email",
   ChangePhoneNumber: "Change Phone Number",
-  ChangePassword: "Change Password"
+  ChangePassword: "Change Password",
 };

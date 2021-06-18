@@ -2,26 +2,14 @@
   <p class="title">sign up</p>
 
   <te-form :model="form" ref="formRef">
-    <te-form-item
-      :label="$t('Auth.PhoneNumber')"
-      prop="fullPhone"
-      :rules="phoneSignUpRules"
-    >
+    <te-form-item :label="$t('Auth.PhoneNumber')" prop="fullPhone" :rules="phoneSignUpRules">
       <template #label-right>
-        <te-button
-          type="text"
-          size="mini"
-          :to="{ name: 'SignUpEmail' }"
-          replace
-        >
+        <te-button type="text" size="mini" :to="{ name: 'SignUpEmail' }" replace>
           {{ $t("Auth.SignUpWithEmail") }}
         </te-button>
       </template>
       <div>
-        <te-phone-input-pc
-          v-model:phone="form.phone"
-          v-model:code="form.phoneAreaCode"
-        />
+        <te-phone-input-pc v-model:phone="form.phone" v-model:code="form.phoneAreaCode" />
       </div>
     </te-form-item>
 
@@ -45,14 +33,9 @@
     </div>
 
     <te-form-item>
-      <te-button
-        type="warning"
-        block
-        dark
-        :loading="submitLoading"
-        @click="handleSubmit"
-        >{{ $t("Auth.CreateAccount") }}</te-button
-      >
+      <te-button type="warning" block dark :loading="submitLoading" @click="handleSubmit">{{
+        $t("Auth.CreateAccount")
+      }}</te-button>
     </te-form-item>
 
     <div class="tips">

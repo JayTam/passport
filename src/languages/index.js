@@ -9,7 +9,7 @@ const i18n = createI18n({
     "zh-CN": require("./zh/index.js"),
     "en-US": require("./en/index.js"),
     en: require("./en/index.js"),
-    id: require("./in/index.js")
-  }
+    id: require("./in/index.js"),
+  },
 });
 export default i18n; //将i18n暴露出去，在main.js中引入挂载

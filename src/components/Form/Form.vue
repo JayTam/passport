@@ -13,7 +13,7 @@ export default {
   name: "TeForm",
   props: {
     model: { type: Object, default: () => ({}) },
-    rules: { type: Object, default: () => ({}) }
+    rules: { type: Object, default: () => ({}) },
   },
   setup(props) {
     const formMitt = mitt();
@@ -66,9 +66,7 @@ export default {
       let isError = false;
       let invalidFields = {};
       return new Promise((resolve, reject) => {
-        const filteredFields = fields.filter(field =>
-          props.includes(field.prop)
-        );
+        const filteredFields = fields.filter(field => props.includes(field.prop));
         if (filteredFields.length === 0) {
           resolve();
           return;
@@ -93,14 +91,14 @@ export default {
     provide(FORM_KEY, {
       ...toRefs(props),
       formMitt,
-      validateField
+      validateField,
     });
 
     return {
       validate,
-      validateField
+      validateField,
     };
-  }
+  },
 };
 </script>
 

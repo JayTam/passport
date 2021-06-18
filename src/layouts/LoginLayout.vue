@@ -21,9 +21,9 @@ export default {
     useViewport({ minHeight: true });
     return {
       route: router.currentRoute,
-      t
+      t,
     };
-  }
+  },
 };
 </script>
 

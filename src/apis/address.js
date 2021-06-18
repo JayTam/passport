@@ -13,8 +13,8 @@ export function getAddressList(code) {
     params: {
       parent_code: code,
       size: 10000,
-      sort_field: "area_code"
-    }
+      sort_field: "area_code",
+    },
   });
 }
 
@@ -24,7 +24,7 @@ export function getAddressList(code) {
 export function getUserAddressInfo() {
   return request({
     method: "GET",
-    url: `/account/${store.state.user.uid}/shippingAddresses`
+    url: `/account/${store.state.user.uid}/shippingAddresses`,
   });
 }
 
@@ -36,8 +36,8 @@ export function getSingleUserAddressInfo(addressId) {
     method: "GET",
     url: `/account/${store.state.user.uid}/shippingAddress`,
     params: {
-      id: addressId
-    }
+      id: addressId,
+    },
   });
 }
 
@@ -49,7 +49,7 @@ export function updateSingleUserAddressInfo(data) {
   return request({
     method: "PUT",
     url: `/account/${store.state.user.uid}/shippingAddress?id=${data.id}`,
-    data
+    data,
   });
 }
 
@@ -62,7 +62,7 @@ export function createUserAddressInfo(data) {
     method: "POST",
     url: `/account/${store.state.user.uid}/shippingAddress`,
     data: {
-      ...data
-    }
+      ...data,
+    },
   });
 }

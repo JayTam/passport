@@ -25,5 +25,5 @@ module.exports = {
   Redeem: "Menebus",
   DailyCheckIn: "Check in harian",
   EventOffers: "Undangan kegiatan",
-  OffersForNewMembers: "Hadiah anggota baru"
+  OffersForNewMembers: "Hadiah anggota baru",
 };

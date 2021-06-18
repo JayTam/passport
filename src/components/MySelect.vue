@@ -1,15 +1,7 @@
 <template>
   <div :style="MySelectStyle" :class="{ MySelect: true, isPhone: isPhone }">
-    <select
-      name=""
-      id=""
-      ref="MySelect"
-      @change="$emit('seleChange', value)"
-      v-model="value"
-    >
-      <option v-for="item in sdata" :key="item.label" :value="item.value">{{
-        item.label
-      }}</option>
+    <select name="" id="" ref="MySelect" @change="$emit('seleChange', value)" v-model="value">
+      <option v-for="item in sdata" :key="item.label" :value="item.value">{{ item.label }}</option>
     </select>
   </div>
 </template>

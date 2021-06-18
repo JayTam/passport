@@ -9,5 +9,5 @@ module.exports = {
   phoneUnregistered: "手机未注册",
   invalidEmail: "无效的邮箱地址",
   emailAreadyRegistered: "该邮箱已被注册",
-  emailUnregistered: "邮箱未注册"
+  emailUnregistered: "邮箱未注册",
 };

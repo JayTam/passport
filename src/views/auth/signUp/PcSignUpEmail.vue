@@ -2,18 +2,9 @@
   <p class="title">sign up</p>
 
   <te-form :model="form" ref="formRef">
-    <te-form-item
-      :label="$t('Auth.Email')"
-      prop="email"
-      :rules="emailSignUpRule"
-    >
+    <te-form-item :label="$t('Auth.Email')" prop="email" :rules="emailSignUpRule">
       <template #label-right>
-        <te-button
-          type="text"
-          size="mini"
-          :to="{ name: 'SignUpPhone' }"
-          replace
-        >
+        <te-button type="text" size="mini" :to="{ name: 'SignUpPhone' }" replace>
           {{ $t("Auth.SignUpWithPhone") }}
         </te-button>
       </template>
@@ -42,14 +33,9 @@
     </div>
 
     <te-form-item>
-      <te-button
-        type="warning"
-        block
-        dark
-        :loading="submitLoading"
-        @click="handleSubmit"
-        >{{ $t("Auth.CreateAccount") }}</te-button
-      >
+      <te-button type="warning" block dark :loading="submitLoading" @click="handleSubmit">{{
+        $t("Auth.CreateAccount")
+      }}</te-button>
     </te-form-item>
 
     <div class="tips">

@@ -30,8 +30,8 @@
           :rules="[
             {
               required: true,
-              message: 'Please enter a valid mobile phone number'
-            }
+              message: 'Please enter a valid mobile phone number',
+            },
           ]"
         />
       </van-cell-group>
@@ -72,10 +72,7 @@
   </div>
 </template>
 <script>
-import {
-  getSingleUserAddressInfo,
-  updateSingleUserAddressInfo
-} from "@/apis/address";
+import { getSingleUserAddressInfo, updateSingleUserAddressInfo } from "@/apis/address";
 import { toastPassportAxiosError } from "@/utils";
 import AreaField from "@/views/userCenter/components/AreaField";
 
@@ -91,9 +88,9 @@ export default {
         telephone: "",
         area: "",
         zipCode: "",
-        address: ""
+        address: "",
       },
-      submitFlag: false
+      submitFlag: false,
     };
   },
   created: async function() {
@@ -119,7 +116,7 @@ export default {
         area: "",
         address: this.addressInfo.address,
         zip_code: this.addressInfo.zip_code,
-        is_default_addr: true
+        is_default_addr: true,
       };
 
       if (!this.submitFlag) {
@@ -141,8 +138,8 @@ export default {
         const zipCode = value[value.length - 1].zipCode;
         this.addressInfo.zipCode = zipCode ? zipCode : "";
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="less" scoped>

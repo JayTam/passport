@@ -21,18 +21,18 @@ export default {
   props: {
     title: String,
     description: String,
-    round: Boolean
+    round: Boolean,
   },
   setup(props) {
     const cardClass = computed(() => ({
       "te-card": true,
-      "te-card__round": props.round
+      "te-card__round": props.round,
     }));
 
     return {
-      cardClass
+      cardClass,
     };
-  }
+  },
 };
 </script>
 

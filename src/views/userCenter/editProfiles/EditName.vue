@@ -48,7 +48,7 @@ export default {
       name: name,
       active: false,
       isloading: false,
-      submitFlag: true
+      submitFlag: true,
     });
     const clikClear = function() {
       state.name = "";
@@ -61,7 +61,7 @@ export default {
     const saveName = async function() {
       const data = {
         id: store.state.user.uid,
-        name: state.name
+        name: state.name,
       };
       if (state.submitFlag) {
         state.submitFlag = false;
@@ -81,9 +81,9 @@ export default {
       ...toRefs(state),
       clikClear,
       changeName,
-      saveName
+      saveName,
     };
-  }
+  },
 };
 </script>
 

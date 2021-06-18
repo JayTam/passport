@@ -4,11 +4,7 @@
 
   <te-form :model="form" ref="formRef">
     <!-- 用户名 -->
-    <te-form-item
-      label="Create username"
-      prop="username"
-      :rules="userNameRules"
-    >
+    <te-form-item label="Create username" prop="username" :rules="userNameRules">
       <te-input v-model="form.username"></te-input>
       <p class="account_tip">You can always change this later.</p>
     </te-form-item>
@@ -17,25 +13,13 @@
     <te-form-item label="When’s your birthday?" class="birthday">
       <div class="birthday_box">
         <te-form-item prop="Month" :rules="accountRules">
-          <my-select
-            type="Month"
-            width="60px"
-            @seleChange="handleMonth"
-          ></my-select>
+          <my-select type="Month" width="60px" @seleChange="handleMonth"></my-select>
         </te-form-item>
         <te-form-item prop="Day" :rules="accountRules">
-          <my-select
-            type="Day"
-            width="60px"
-            @seleChange="handleDay"
-          ></my-select>
+          <my-select type="Day" width="60px" @seleChange="handleDay"></my-select>
         </te-form-item>
         <te-form-item prop="Year" :rules="accountRules">
-          <my-select
-            type="Year"
-            width="60px"
-            @seleChange="handleYear"
-          ></my-select>
+          <my-select type="Year" width="60px" @seleChange="handleYear"></my-select>
         </te-form-item>
       </div>
     </te-form-item>
@@ -46,20 +30,11 @@
     </te-form-item>
 
     <te-form-item>
-      <te-button
-        type="warning"
-        block
-        dark
-        :loading="loading"
-        @click="handleSubmit"
-        >Next</te-button
-      >
+      <te-button type="warning" block dark :loading="loading" @click="handleSubmit">Next</te-button>
     </te-form-item>
 
     <div class="tips">
-      <te-button type="text" size="mini" :to="{ name: 'SignUpPhone' }" replace
-        >Skip</te-button
-      >
+      <te-button type="text" size="mini" :to="{ name: 'SignUpPhone' }" replace>Skip</te-button>
     </div>
   </te-form>
 </template>
@@ -69,7 +44,6 @@ import { reactive, ref, toRefs } from "vue";
 import { useValidate } from "@/composables/useValidate";
 import { toastPassportAxiosError } from "@/utils";
 import { updateUserInfo } from "@/apis/user";
-import { useStore } from "vuex";
 import TeFormItem from "../../../components/Form/FormItem";
 import TeForm from "../../../components/Form/Form";
 import TeInput from "../../../components/Form/Input";
@@ -91,7 +65,6 @@ export default {
   setup() {
     const formRef = ref(null);
     const loading = ref(false);
-    const store = useStore();
     const state = reactive({
       form: {
         username: "",
@@ -103,16 +76,16 @@ export default {
       },
     });
 
-    const handleMonth = async (arg) => {
+    const handleMonth = async arg => {
       state.form.Month = arg;
     };
-    const handleDay = async (arg) => {
+    const handleDay = async arg => {
       state.form.Day = arg;
     };
-    const handleYear = async (arg) => {
+    const handleYear = async arg => {
       state.form.Year = arg;
     };
-    const handleGender = async (arg) => {
+    const handleGender = async arg => {
       state.form.gender = arg;
     };
 
@@ -120,8 +93,7 @@ export default {
       let obj = {};
       obj.username = state.form.username;
       obj.gender = state.form.gender;
-      obj.birthday =
-        state.form.Year + "-" + state.form.Month + "-" + state.form.Day;
+      obj.birthday = state.form.Year + "-" + state.form.Month + "-" + state.form.Day;
       try {
         loading.value = true;
         await formRef.value.validate();

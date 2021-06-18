@@ -29,8 +29,7 @@
         Reset password
       </p>
       <p>
-        For security reasons, choose one of the following methods to verify your
-        current accounts.
+        For security reasons, choose one of the following methods to verify your current accounts.
       </p>
     </div>
   </div>
@@ -41,7 +40,7 @@ export default {
   props: {
     type: String,
   },
-  setup(props) {
+  setup() {
     // console.log(props.type);
   },
 };

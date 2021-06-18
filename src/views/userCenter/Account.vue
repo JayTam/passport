@@ -23,11 +23,7 @@
     </van-cell-group>
 
     <van-cell-group title=" " :border="false">
-      <van-cell
-        :title="$t('UserCenter.HelpFeedback')"
-        is-link
-        :border="false"
-      />
+      <van-cell :title="$t('UserCenter.HelpFeedback')" is-link :border="false" />
       <van-cell :title="$t('UserCenter.About')" is-link :border="false" />
     </van-cell-group>
 
@@ -61,10 +57,10 @@ export default {
           {
             name: this.$t("UserCenter.LogOut"),
             color: DANGER_COLOR,
-            callback: this.onLogout
-          }
-        ]
-      }
+            callback: this.onLogout,
+          },
+        ],
+      },
     };
   },
   methods: {
@@ -77,8 +73,8 @@ export default {
       } catch (error) {
         toastPassportAxiosError(error);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped lang="less">

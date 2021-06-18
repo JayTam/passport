@@ -1,10 +1,6 @@
 <template>
   <te-form :model="form" ref="formRef">
-    <te-form-item
-      :label="$t('Auth.Email')"
-      prop="email"
-      :rules="emailSignUpRule"
-    >
+    <te-form-item :label="$t('Auth.Email')" prop="email" :rules="emailSignUpRule">
       <div>
         <te-input v-model="form.email" />
       </div>
@@ -20,14 +16,9 @@
     ></captcha-form-item>
 
     <te-form-item>
-      <te-button
-        type="warning"
-        block
-        dark
-        :loading="submitLoading"
-        @click="handleSubmit"
-        >{{ $t("Auth.Done") }}</te-button
-      >
+      <te-button type="warning" block dark :loading="submitLoading" @click="handleSubmit">{{
+        $t("Auth.Done")
+      }}</te-button>
     </te-form-item>
   </te-form>
 </template>
@@ -57,9 +48,9 @@ export default {
       form: {
         email: "",
         code: "",
-        old_code: route.query.code
+        old_code: route.query.code,
       },
-      submitLoading: false
+      submitLoading: false,
     });
 
     /**
@@ -86,9 +77,9 @@ export default {
       formRef,
       handleSubmit,
       CAPTCHA_PURPOSE,
-      CAPTCHA_TYPE
+      CAPTCHA_TYPE,
     };
-  }
+  },
 };
 </script>
 

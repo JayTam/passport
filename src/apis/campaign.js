@@ -10,8 +10,8 @@ export function campaign_detail(id) {
     method: "GET",
     url: "https://wook.mms-api.qhbit.cn/api/v1/campaign/campaign_detail",
     params: {
-      id
-    }
+      id,
+    },
   });
 }
 
@@ -29,7 +29,7 @@ export function get_reward(campaign_id, pay_email, order_id) {
     params: {
       campaign_id,
       pay_email,
-      order_id
-    }
+      order_id,
+    },
   });
 }

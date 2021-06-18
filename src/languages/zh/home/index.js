@@ -21,6 +21,6 @@ module.exports = {
   SignUp: "注册",
 
   LogIn: "登录",
-  Login: "登录"
+  Login: "登录",
   /* home */
 };

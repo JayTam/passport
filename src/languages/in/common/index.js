@@ -1,3 +1,3 @@
 module.exports = {
-  GetCode: "Mendapatkan kode"
+  GetCode: "Mendapatkan kode",
 };

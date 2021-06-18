@@ -5,8 +5,8 @@ import { generateTenantUrl } from "@/utils";
 const instance = axios.create({
   baseURL: generateTenantUrl(process.env.VUE_APP_BRAND_CENTER_URL),
   headers: {
-    "Paasport-App-Id": process.env.VUE_APP_BRAND_CENTER_APP_ID
-  }
+    "Paasport-App-Id": process.env.VUE_APP_BRAND_CENTER_APP_ID,
+  },
 });
 
 instance.interceptors.request.use(
@@ -15,8 +15,7 @@ instance.interceptors.request.use(
     if (tenement) config.headers["paasport-tenant-name"] = tenement;
     if (store.state.auth.brandCenterToken)
       config.headers["X-Auth-Token"] = store.state.auth.brandCenterToken;
-    if (store.state.auth.deviceId)
-      config.headers["Paasport-device-id"] = store.state.auth.deviceId;
+    if (store.state.auth.deviceId) config.headers["Paasport-device-id"] = store.state.auth.deviceId;
     return config;
   },
   error => {

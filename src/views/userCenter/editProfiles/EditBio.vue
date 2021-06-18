@@ -48,7 +48,7 @@ export default {
       signature: signature,
       active: false,
       loading: false,
-      submitFlag: true
+      submitFlag: true,
     });
     const changeBio = function() {
       if (!state.active) {
@@ -58,7 +58,7 @@ export default {
     const saveBio = async function() {
       const data = {
         id: store.state.user.uid,
-        signature: state.signature
+        signature: state.signature,
       };
       if (state.submitFlag) {
         state.submitFlag = false;
@@ -77,9 +77,9 @@ export default {
     return {
       ...toRefs(state),
       changeBio,
-      saveBio
+      saveBio,
     };
-  }
+  },
 };
 </script>
 
