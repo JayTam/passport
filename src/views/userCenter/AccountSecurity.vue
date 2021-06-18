@@ -1,10 +1,6 @@
 <template>
   <div class="account-security">
-    <te-header
-      :title="$t('UserCenter.AccountSecurity')"
-      background="#fff"
-      border
-    />
+    <te-header :title="$t('UserCenter.AccountSecurity')" background="#fff" border />
 
     <van-cell-group :border="false">
       <van-cell :title="$t('UserCenter.UserID')" :value="uid" :border="false" />
@@ -183,36 +179,30 @@ export default {
       phone: {
         value: store.state.user.phone,
         show: false,
-        actions: [
-          { name: t("UserCenter.BindPhoneNumber"), color: DANGER_COLOR }
-        ],
+        actions: [{ name: t("UserCenter.BindPhoneNumber"), color: DANGER_COLOR }],
         changeShow: false,
-        changeActions: [
-          { name: t("UserCenter.ChangePhoneNumber"), color: DANGER_COLOR }
-        ],
+        changeActions: [{ name: t("UserCenter.ChangePhoneNumber"), color: DANGER_COLOR }],
         onClick() {
           if (state.phone.value) {
             state.phone.changeShow = true;
           } else {
             state.phone.show = true;
           }
-        }
+        },
       },
       email: {
         value: store.state.user.email,
         show: false,
         actions: [{ name: t("UserCenter.BindEmail"), color: DANGER_COLOR }],
         changeShow: false,
-        changeActions: [
-          { name: t("UserCenter.ChangeEmail"), color: DANGER_COLOR }
-        ],
+        changeActions: [{ name: t("UserCenter.ChangeEmail"), color: DANGER_COLOR }],
         onClick() {
           if (state.email.value) {
             state.email.changeShow = true;
           } else {
             state.email.show = true;
           }
-        }
+        },
       },
       changepassword: {
         value: t("UserCenter.wantChangePassword"),
@@ -220,29 +210,25 @@ export default {
         actions: [{ name: t("UserCenter.go"), color: DANGER_COLOR }],
         onClick() {
           state.changepassword.show = true;
-        }
+        },
       },
       facebook: {
-        value: store.state.auth.facebook.openId
-          ? "Bound"
-          : t("UserCenter.Unbound"),
+        value: store.state.auth.facebook.openId ? "Bound" : t("UserCenter.Unbound"),
         show: false,
         actions: [
           {
             name: t("UserCenter.BindFacebook"),
             color: DANGER_COLOR,
-            callback: () =>
-              redirectToThird(LOGIN_THIRD_TYPE.FACEBOOK, LOGIN_BEHAVIOR.BIND)
-          }
+            callback: () => redirectToThird(LOGIN_THIRD_TYPE.FACEBOOK, LOGIN_BEHAVIOR.BIND),
+          },
         ],
         changeShow: false,
         changeActions: [
           {
             name: t("UserCenter.ChangeFacebook"),
             color: DANGER_COLOR,
-            callback: () =>
-              redirectToThird(LOGIN_THIRD_TYPE.FACEBOOK, LOGIN_BEHAVIOR.BIND)
-          }
+            callback: () => redirectToThird(LOGIN_THIRD_TYPE.FACEBOOK, LOGIN_BEHAVIOR.BIND),
+          },
         ],
         onClick() {
           if (store.state.auth.facebook.openId) {
@@ -250,29 +236,25 @@ export default {
           } else {
             state.facebook.show = true;
           }
-        }
+        },
       },
       google: {
-        value: store.state.auth.google.openId
-          ? "Bound"
-          : t("UserCenter.Unbound"),
+        value: store.state.auth.google.openId ? "Bound" : t("UserCenter.Unbound"),
         show: false,
         actions: [
           {
             name: t("UserCenter.BindGoogle"),
             color: DANGER_COLOR,
-            callback: () =>
-              redirectToThird(LOGIN_THIRD_TYPE.GOOGLE, LOGIN_BEHAVIOR.BIND)
-          }
+            callback: () => redirectToThird(LOGIN_THIRD_TYPE.GOOGLE, LOGIN_BEHAVIOR.BIND),
+          },
         ],
         changeShow: false,
         changeActions: [
           {
             name: t("UserCenter.ChangeGoogle"),
             color: DANGER_COLOR,
-            callback: () =>
-              redirectToThird(LOGIN_THIRD_TYPE.GOOGLE, LOGIN_BEHAVIOR.BIND)
-          }
+            callback: () => redirectToThird(LOGIN_THIRD_TYPE.GOOGLE, LOGIN_BEHAVIOR.BIND),
+          },
         ],
         onClick() {
           if (store.state.auth.google.openId) {
@@ -280,29 +262,25 @@ export default {
           } else {
             state.google.show = true;
           }
-        }
+        },
       },
       twitter: {
-        value: store.state.auth.twitter.openId
-          ? "Bound"
-          : t("UserCenter.Unbound"),
+        value: store.state.auth.twitter.openId ? "Bound" : t("UserCenter.Unbound"),
         show: false,
         actions: [
           {
             name: t("UserCenter.BindTwitter"),
             color: DANGER_COLOR,
-            callback: () =>
-              redirectToThird(LOGIN_THIRD_TYPE.TWITTER, LOGIN_BEHAVIOR.BIND)
-          }
+            callback: () => redirectToThird(LOGIN_THIRD_TYPE.TWITTER, LOGIN_BEHAVIOR.BIND),
+          },
         ],
         changeShow: false,
         changeActions: [
           {
             name: t("UserCenter.ChangeTwitter"),
             color: DANGER_COLOR,
-            callback: () =>
-              redirectToThird(LOGIN_THIRD_TYPE.TWITTER, LOGIN_BEHAVIOR.BIND)
-          }
+            callback: () => redirectToThird(LOGIN_THIRD_TYPE.TWITTER, LOGIN_BEHAVIOR.BIND),
+          },
         ],
         onClick() {
           if (store.state.auth.twitter.openId) {
@@ -310,20 +288,20 @@ export default {
           } else {
             state.twitter.show = true;
           }
-        }
+        },
       },
       deleteAccount: {
         show: false,
-        actions: [{ name: "Remove", color: DANGER_COLOR }]
-      }
+        actions: [{ name: "Remove", color: DANGER_COLOR }],
+      },
     });
 
     return {
       ...toRefs(state),
       hanldChangeEmail,
       hanldChangePhone,
-      hanldChangePassWord
+      hanldChangePassWord,
     };
-  }
+  },
 };
 </script>

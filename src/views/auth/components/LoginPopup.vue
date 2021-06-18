@@ -54,9 +54,7 @@
       </te-button>
     </div>
     <div class="login-popup__tips">
-      <span>{{
-        isLogin ? $t("Auth.NotaMember") : $t("Auth.AlreadyAMember")
-      }}</span>
+      <span>{{ isLogin ? $t("Auth.NotaMember") : $t("Auth.AlreadyAMember") }}</span>
       <te-button
         type="text"
         size="mini"
@@ -100,7 +98,7 @@ export default {
     });
 
     const isLogin = computed(() => props.type === "login");
-    const toThirdUrl = (type) => redirectToThird(type, LOGIN_BEHAVIOR.LOGIN);
+    const toThirdUrl = type => redirectToThird(type, LOGIN_BEHAVIOR.LOGIN);
     const toLogin = async () => {
       const routeName = isLogin.value ? "LoginAccount" : "SignUpPhone";
       const isHomeRoute = route.name === "Home";

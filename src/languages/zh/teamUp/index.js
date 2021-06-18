@@ -1,7 +1,6 @@
 module.exports = {
   /**components */
-  TeamUpCompleted:
-    "已完成 <span class='invite-award__complete-teams'>{msg}</span> 次组队",
+  TeamUpCompleted: "已完成 <span class='invite-award__complete-teams'>{msg}</span> 次组队",
   TeamUpTimes: "组队{num}次",
   copiesLeft: "还剩{num}份",
   SuccessfullyReceivedAward: "成功领取奖励",
@@ -23,5 +22,5 @@ module.exports = {
   TeamUpSuccess: "组队成功",
   CopyLink: "复制链接",
   /**TeamUp */
-  Rules: "活动规则"
+  Rules: "活动规则",
 };

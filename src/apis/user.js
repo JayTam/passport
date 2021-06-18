@@ -6,7 +6,7 @@ import store from "@/store";
 export function fetchUserInfo() {
   return request({
     method: "GET",
-    url: "/account"
+    url: "/account",
   });
 }
 
@@ -17,7 +17,7 @@ export function fetchUserInfo() {
 export function fetchPhoneInfo() {
   return request({
     method: "GET",
-    url: `/account/${store.state.user.uid}/sphone`
+    url: `/account/${store.state.user.uid}/sphone`,
   });
 }
 
@@ -28,14 +28,14 @@ export function fetchPhoneInfo() {
 export function fetchEmailInfo() {
   return request({
     method: "GET",
-    url: `/account/${store.state.user.uid}/semail`
+    url: `/account/${store.state.user.uid}/semail`,
   });
 }
 
 export function fetchThirdLoginInfo() {
   return request({
     method: "GET",
-    url: `/account/${store.state.user.uid}/third`
+    url: `/account/${store.state.user.uid}/third`,
   });
 }
 
@@ -45,7 +45,7 @@ export function fetchThirdLoginInfo() {
 export function getTenementInfo() {
   return request({
     method: "GET",
-    url: `/tenant_name/${store.state.tenant.name}`
+    url: `/tenant_name/${store.state.tenant.name}`,
   });
 }
 
@@ -57,7 +57,7 @@ export function uploadUserAvatar(file) {
   return request({
     method: "POST",
     url: `multiupload?type=AVATAR`,
-    data: file
+    data: file,
   });
 }
 
@@ -70,8 +70,8 @@ export function updateUserAvatar(user) {
     method: "PUT",
     url: `/account/${store.state.user.uid}/avatar`,
     data: {
-      ...user
-    }
+      ...user,
+    },
   });
 }
 
@@ -84,8 +84,8 @@ export function updateUserInfo(data) {
     method: "PUT",
     url: `/account/${store.state.user.uid}/update`,
     data: {
-      ...data
-    }
+      ...data,
+    },
   });
 }
 
@@ -95,7 +95,7 @@ export function updateUserInfo(data) {
 export function getIntegral() {
   return requestSns({
     method: "GET",
-    url: "/shutong/user/currency"
+    url: "/shutong/user/currency",
   });
 }
 
@@ -106,7 +106,7 @@ export function getIntegralHistory(params) {
   return requestSns({
     method: "GET",
     url: "/shutong/user/currency/orders",
-    params
+    params,
   });
 }
 
@@ -116,7 +116,7 @@ export function getIntegralHistory(params) {
 export function getCoupons() {
   return requestSns({
     method: "GET",
-    url: "/shutong/user-coupons"
+    url: "/shutong/user-coupons",
   });
 }
 
@@ -128,8 +128,8 @@ export function getExchangeable(params) {
     method: "GET",
     url: "/shutong/exchangeable",
     params: {
-      ...params
-    }
+      ...params,
+    },
   });
 }
 
@@ -141,8 +141,8 @@ export function getCouponsPools(params) {
     method: "GET",
     url: "/shutong/coupon-pools",
     params: {
-      ...params
-    }
+      ...params,
+    },
   });
 }
 
@@ -154,8 +154,8 @@ export function getEntities(params) {
     method: "GET",
     url: "/shutong/entities",
     params: {
-      ...params
-    }
+      ...params,
+    },
   });
 }
 
@@ -165,7 +165,7 @@ export function getEntities(params) {
 export function getCouponsPoolDetail(id) {
   return requestSns({
     method: "GET",
-    url: `/shutong/coupon-pools/${id}`
+    url: `/shutong/coupon-pools/${id}`,
   });
 }
 
@@ -175,7 +175,7 @@ export function getCouponsPoolDetail(id) {
 export function getEntitiesDetail(id) {
   return requestSns({
     method: "GET",
-    url: `/shutong/entities/${id}`
+    url: `/shutong/entities/${id}`,
   });
 }
 
@@ -185,7 +185,7 @@ export function getEntitiesDetail(id) {
 export function getCommodities() {
   return requestSns({
     method: "GET",
-    url: "/shutong/user-commodities"
+    url: "/shutong/user-commodities",
   });
 }
 
@@ -195,7 +195,7 @@ export function getCommodities() {
 export function getCommodityDetail(id) {
   return requestSns({
     method: "GET",
-    url: `/shutong/award-records/${id}`
+    url: `/shutong/award-records/${id}`,
   });
 }
 
@@ -211,8 +211,8 @@ export async function bindAddress(id, address_id) {
     method: "PATCH",
     url: `/shutong/award-records/${id}/address`,
     data: {
-      address: data.data
-    }
+      address: data.data,
+    },
   });
 }
 
@@ -222,7 +222,7 @@ export async function bindAddress(id, address_id) {
 export function exchangeCoupon(ruleId) {
   return requestSns({
     method: "PUT",
-    url: `/shutong/exchangeable/${ruleId}`
+    url: `/shutong/exchangeable/${ruleId}`,
   });
 }
 
@@ -232,6 +232,6 @@ export function exchangeCoupon(ruleId) {
 export function getUserLevel() {
   return requestSns({
     method: "GET",
-    url: "/shutong/user-level-config"
+    url: "/shutong/user-level-config",
   });
 }

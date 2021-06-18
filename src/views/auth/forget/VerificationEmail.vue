@@ -1,10 +1,6 @@
 <template>
   <te-form :model="form" ref="formRef">
-    <te-form-item
-      :label="$t('Auth.Email')"
-      prop="email"
-      :rules="emailFindRules"
-    >
+    <te-form-item :label="$t('Auth.Email')" prop="email" :rules="emailFindRules">
       <div>
         <te-input v-model="form.email" />
       </div>
@@ -20,14 +16,9 @@
     ></captcha-form-item>
 
     <te-form-item>
-      <te-button
-        type="warning"
-        block
-        dark
-        :loading="submitLoading"
-        @click="handleSubmit"
-        >{{ $t("Auth.Next") }}</te-button
-      >
+      <te-button type="warning" block dark :loading="submitLoading" @click="handleSubmit">{{
+        $t("Auth.Next")
+      }}</te-button>
     </te-form-item>
   </te-form>
 </template>

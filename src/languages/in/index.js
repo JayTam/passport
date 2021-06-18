@@ -5,5 +5,5 @@ module.exports = {
   UserCenter: require("./userCenter/index"),
   Common: require("./common/index"),
   Routes: require("./routes"),
-  TeamUp: require("./teamUp/index")
+  TeamUp: require("./teamUp/index"),
 };

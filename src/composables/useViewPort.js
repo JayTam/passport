@@ -16,12 +16,7 @@ import { addUnit } from "@/utils";
  * @param {Viewport} viewport 视口方向
  */
 function setElementViewport(el, viewport) {
-  const {
-    width = false,
-    height = false,
-    minHeight = false,
-    minWidth = false
-  } = viewport;
+  const { width = false, height = false, minHeight = false, minWidth = false } = viewport;
   const viewportHeight = addUnit(document.body.clientHeight);
   const viewportWidth = addUnit(document.body.clientWidth);
   if (width) el.style.width = viewportWidth;

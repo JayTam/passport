@@ -32,25 +32,25 @@ export default {
   props: {
     name: {
       type: String,
-      default: "area"
+      default: "area",
     },
     modelValue: {
       type: String,
-      default: ""
+      default: "",
     },
     label: {
       type: String,
-      default: "UserCenter.Area"
+      default: "UserCenter.Area",
     },
     inputAlign: {
       type: String,
-      default: "right"
+      default: "right",
     },
     // 地址选择器深度，最大可选择层级
     deep: {
       type: Number,
-      default: 3
-    }
+      default: 3,
+    },
   },
   emits: ["update:modelValue", "change"],
   setup(props, { emit }) {
@@ -58,7 +58,7 @@ export default {
       show: false,
       fieldValue: "",
       options: [],
-      cascader: ""
+      cascader: "",
     });
 
     const parseAreasToText = areas => {
@@ -100,9 +100,9 @@ export default {
     return {
       ...toRefs(state),
       onChange,
-      onFinish
+      onFinish,
     };
-  }
+  },
 };
 </script>
 

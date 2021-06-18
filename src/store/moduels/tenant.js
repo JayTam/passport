@@ -15,13 +15,13 @@ export default {
     // 租户头像
     logo: null,
     // 租户品牌背景
-    brand: null
+    brand: null,
   },
   getters: {
     // 租户是否存在
     isTenantExit(state) {
       return Boolean(state.id);
-    }
+    },
   },
   mutations: {
     SET_TENANT: (state, data) => {
@@ -30,7 +30,7 @@ export default {
       state.description = data.description;
       state.logo = data.logo;
       state.brand = data.brand || defaultBrand;
-    }
+    },
   },
   actions: {
     async getTenantInfo({ commit, state }) {
@@ -41,10 +41,10 @@ export default {
         commit("SET_TENANT", data);
       } catch (e) {
         await Dialog.alert({
-          message: `租户不存在，跳转到${process.env.VUE_APP_DEFAULT_TENANT_NAME}租户`
+          message: `租户不存在，跳转到${process.env.VUE_APP_DEFAULT_TENANT_NAME}租户`,
         });
         window.location.href = `https://${process.env.VUE_APP_DEFAULT_TENANT_NAME}.mms.tevo.online`;
       }
-    }
-  }
+    },
+  },
 };

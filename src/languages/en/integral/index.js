@@ -26,12 +26,11 @@ module.exports = {
   EventOffers: "Event Offers",
   OffersForNewMembers: "Offers For New Members",
   exchangeIsSuccessful: "{name} exchange is successful, go to view ？",
-  exchangeIsSuccessfulAssets:
-    "{name} exchange is successful, go to your assets to view ？",
+  exchangeIsSuccessfulAssets: "{name} exchange is successful, go to your assets to view ？",
   Image: "Image",
   Phone: "Phone",
   Email: "Email",
   Gender: "Gender",
   Birth: "Birth",
-  Adderss: "Adderss"
+  Adderss: "Adderss",
 };

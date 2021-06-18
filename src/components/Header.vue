@@ -3,10 +3,7 @@
     <div class="header--left">
       <slot name="left">
         <div class="header__back" @click="onRouteBack">
-          <svg-icon
-            :name="mode === 'white' ? 'back-white' : 'back'"
-            size="18"
-          />
+          <svg-icon :name="mode === 'white' ? 'back-white' : 'back'" size="18" />
         </div>
       </slot>
     </div>
@@ -33,20 +30,20 @@ export default {
     title: String,
     background: {
       type: String,
-      default: "transparent"
+      default: "transparent",
     },
     fixed: Boolean,
     mode: {
       type: String,
-      default: "black"
+      default: "black",
     },
     border: Boolean,
     borderColor: {
       type: String,
-      default: "#f8f8f8"
+      default: "#f8f8f8",
     },
     to: Object,
-    url: String
+    url: String,
   },
   setup(props) {
     const router = useRouter();
@@ -54,7 +51,7 @@ export default {
     const headerStyles = computed(() => ({
       background: props.background,
       position: props.fixed ? "fixed" : "relative",
-      borderBottom: props.border ? `1px solid ${props.borderColor}` : null
+      borderBottom: props.border ? `1px solid ${props.borderColor}` : null,
     }));
 
     const onRouteBack = () => {
@@ -70,7 +67,7 @@ export default {
     };
 
     return { onRouteBack, headerStyles };
-  }
+  },
 };
 </script>
 

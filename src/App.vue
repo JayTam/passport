@@ -1,9 +1,7 @@
 <template>
   <router-view #="{ Component }">
     <!--   缓存页面   -->
-    <keep-alive
-      ><component v-if="route.meta.keepAlive" :is="Component"
-    /></keep-alive>
+    <keep-alive><component v-if="route.meta.keepAlive" :is="Component"/></keep-alive>
     <!--  不缓存页面  -->
     <component v-if="!route.meta.keepAlive" :is="Component" />
   </router-view>
@@ -18,9 +16,9 @@ export default {
     const route = useRoute();
     useDisableDoubleTapToZoom();
     return {
-      route
+      route,
     };
-  }
+  },
 };
 </script>
 

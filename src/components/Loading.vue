@@ -3,11 +3,9 @@ import { h } from "vue";
 
 const SpinIcon = Array(12).fill(h("i"));
 
-const CircularIcon = h(
-  "svg",
-  { className: "te-loading__circular", viewBox: "25 25 50 50" },
-  [h("circle", { cx: "50", cy: "50", r: "20", fill: "none" })]
-);
+const CircularIcon = h("svg", { className: "te-loading__circular", viewBox: "25 25 50 50" }, [
+  h("circle", { cx: "50", cy: "50", r: "20", fill: "none" }),
+]);
 
 export default {
   name: "TeLoading",
@@ -17,23 +15,21 @@ export default {
       default: "circular",
       validator(val) {
         return ["circular", "spinner"].indexOf(val) > -1;
-      }
+      },
     },
     size: {
       type: [String, Number],
-      default: "28"
+      default: "28",
     },
     color: String,
-    dark: { type: Boolean, default: false }
+    dark: { type: Boolean, default: false },
   },
   render: function() {
     return h(
       "div",
       {
-        className: `te-loading te-loading__${this.type} ${
-          this.dark ? "te-loading__dark" : ""
-        }`,
-        style: { color: this.color }
+        className: `te-loading te-loading__${this.type} ${this.dark ? "te-loading__dark" : ""}`,
+        style: { color: this.color },
       },
       [
         h(
@@ -43,14 +39,14 @@ export default {
             style: {
               fontSize: "12px",
               width: this.size + "px",
-              height: this.size + "px"
-            }
+              height: this.size + "px",
+            },
           },
           [this.type === "spinner" ? SpinIcon : CircularIcon]
-        )
+        ),
       ]
     );
-  }
+  },
 };
 </script>
 

@@ -13,15 +13,15 @@ export default {
   props: {
     name: {
       type: String,
-      required: true
+      required: true,
     },
     size: {
       type: [Number, String],
-      default: 25
+      default: 25,
     },
     to: Object,
     replace: Boolean,
-    url: String
+    url: String,
   },
   emits: ["click"],
   computed: {
@@ -30,9 +30,9 @@ export default {
     },
     iconStyle() {
       return {
-        fontSize: addUnit(this.size)
+        fontSize: addUnit(this.size),
       };
-    }
+    },
   },
   setup(props, { emit }) {
     const route = useRoute();
@@ -42,9 +42,9 @@ export default {
     };
 
     return {
-      onClick
+      onClick,
     };
-  }
+  },
 };
 </script>
 

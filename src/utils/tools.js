@@ -12,16 +12,14 @@ import { shortUrl } from "@/apis";
  */
 export function calcUserLevel(reputation, list) {
   if (!Array.isArray(list) || list.length === 0) return {};
-  let level = list.find(
-    item => item.min <= reputation && reputation <= item.max
-  );
+  let level = list.find(item => item.min <= reputation && reputation <= item.max);
   // 超出等级范围
   if (!level) level = list[list.length - 1];
 
   return {
     max: level.max,
     min: level.min,
-    level: level.identify
+    level: level.identify,
   };
 }
 

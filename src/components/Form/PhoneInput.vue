@@ -58,14 +58,14 @@ export default {
       };
     });
 
-    const handleInput = (event) => {
+    const handleInput = event => {
       const phone = event.target.value;
       const code = props.code;
       emit("update:phone", phone);
       emit("input", { phone, code, fullPhone: code + phone });
     };
 
-    const handleConfirm = (value) => {
+    const handleConfirm = value => {
       state.popupShow = false;
       const phone = props.phone;
       const code = value;

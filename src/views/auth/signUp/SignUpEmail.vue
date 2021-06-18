@@ -1,17 +1,8 @@
 <template>
   <te-form :model="form" ref="formRef">
-    <te-form-item
-      :label="$t('Auth.Email')"
-      prop="email"
-      :rules="emailSignUpRule"
-    >
+    <te-form-item :label="$t('Auth.Email')" prop="email" :rules="emailSignUpRule">
       <template #label-right>
-        <te-button
-          type="text"
-          size="mini"
-          :to="{ name: 'SignUpPhone' }"
-          replace
-        >
+        <te-button type="text" size="mini" :to="{ name: 'SignUpPhone' }" replace>
           {{ $t("Auth.SignUpWithPhone") }}
         </te-button>
       </template>
@@ -40,14 +31,9 @@
     </div>
 
     <te-form-item>
-      <te-button
-        type="warning"
-        block
-        dark
-        :loading="submitLoading"
-        @click="handleSubmit"
-        >{{ $t("Auth.CreateAccount") }}</te-button
-      >
+      <te-button type="warning" block dark :loading="submitLoading" @click="handleSubmit">{{
+        $t("Auth.CreateAccount")
+      }}</te-button>
     </te-form-item>
 
     <div class="tips">
@@ -80,10 +66,10 @@ export default {
     const state = reactive({
       form: {
         email: "",
-        code: ""
+        code: "",
       },
       submitLoading: false,
-      codeLoading: false
+      codeLoading: false,
     });
 
     /**
@@ -95,7 +81,7 @@ export default {
         await formRef.value.validate();
         await router.push({
           name: "SignUpSetPassword",
-          query: { email: state.form.email, code: state.form.code }
+          query: { email: state.form.email, code: state.form.code },
         });
       } catch (e) {
         toastPassportAxiosError(e);
@@ -110,9 +96,9 @@ export default {
       formRef,
       handleSubmit,
       CAPTCHA_PURPOSE,
-      CAPTCHA_TYPE
+      CAPTCHA_TYPE,
     };
-  }
+  },
 };
 </script>
 

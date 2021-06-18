@@ -9,7 +9,7 @@ import {
   tenantNamePersistence,
   thirdBehaviorPersistence,
   thirdTypePersistence,
-  redirectUriPersistence
+  redirectUriPersistence,
 } from "@/utils/auth";
 import { resolveTenantName } from "@/utils/tenant";
 
@@ -68,7 +68,7 @@ export function parseThirdParameters() {
   return {
     type,
     code,
-    verifier
+    verifier,
   };
 }
 

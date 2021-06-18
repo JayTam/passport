@@ -117,16 +117,14 @@ export default {
     .passwordBox {
       width: 22px;
       height: 22px;
-      background: url("../../assets/imgs/btn_conceal_normal@2x.png") center
-        center no-repeat;
+      background: url("../../assets/imgs/btn_conceal_normal@2x.png") center center no-repeat;
       background-size: 100%;
       display: inline-block;
       vertical-align: top;
       cursor: pointer;
     }
     .passwordBoxShow {
-      background: url("../../assets/imgs/btn_show_normal@2x.png") center center
-        no-repeat;
+      background: url("../../assets/imgs/btn_show_normal@2x.png") center center no-repeat;
       background-size: 100%;
     }
   }

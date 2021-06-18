@@ -126,9 +126,7 @@ export default {
     async loginSuccess({ commit }, { token, claim: { device_id: deviceId } }) {
       commit("SET_PASSPORT_TOKEN", token);
       commit("SET_DEVICE_ID", deviceId);
-      const { data } = await authorizedLogin(
-        process.env.VUE_APP_BRAND_CENTER_APP_ID
-      );
+      const { data } = await authorizedLogin(process.env.VUE_APP_BRAND_CENTER_APP_ID);
       const brandCenterToken = data.token;
       commit("SET_BRAND_CENTER_TOKEN", brandCenterToken);
       //给父页面发送消息

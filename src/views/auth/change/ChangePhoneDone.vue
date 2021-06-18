@@ -1,15 +1,8 @@
 <template>
   <te-form :model="form" ref="formRef">
-    <te-form-item
-      :label="$t('Auth.PhoneNumber')"
-      prop="fullPhone"
-      :rules="phoneFindRules"
-    >
+    <te-form-item :label="$t('Auth.PhoneNumber')" prop="fullPhone" :rules="phoneFindRules">
       <div>
-        <te-phone-input
-          v-model:phone="form.phone"
-          v-model:code="form.phoneAreaCode"
-        />
+        <te-phone-input v-model:phone="form.phone" v-model:code="form.phoneAreaCode" />
       </div>
     </te-form-item>
 
@@ -24,14 +17,9 @@
     </captcha-form-item>
 
     <te-form-item>
-      <te-button
-        type="warning"
-        block
-        dark
-        :loading="submitLoading"
-        @click="handleSubmit"
-        >{{ $t("Auth.Done") }}</te-button
-      >
+      <te-button type="warning" block dark :loading="submitLoading" @click="handleSubmit">{{
+        $t("Auth.Done")
+      }}</te-button>
     </te-form-item>
   </te-form>
 </template>
@@ -63,9 +51,9 @@ export default {
         phoneAreaCode: "+62",
         fullPhone: computed(() => state.form.phoneAreaCode + state.form.phone),
         code: "",
-        old_code: route.query.code
+        old_code: route.query.code,
       },
-      submitLoading: false
+      submitLoading: false,
     });
 
     const handleSubmit = async () => {
@@ -90,9 +78,9 @@ export default {
       formRef,
       handleSubmit,
       CAPTCHA_PURPOSE,
-      CAPTCHA_TYPE
+      CAPTCHA_TYPE,
     };
-  }
+  },
 };
 </script>
 

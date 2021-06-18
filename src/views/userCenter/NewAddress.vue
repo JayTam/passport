@@ -30,8 +30,8 @@
           :rules="[
             {
               required: true,
-              message: 'Please enter a valid mobile phone number'
-            }
+              message: 'Please enter a valid mobile phone number',
+            },
           ]"
         />
       </van-cell-group>
@@ -93,8 +93,8 @@ export default {
         telephone: "",
         area: "",
         zipCode: "",
-        address: ""
-      }
+        address: "",
+      },
     };
   },
   methods: {
@@ -110,7 +110,7 @@ export default {
         area: "",
         address: this.addressInfo.address,
         zip_code: this.addressInfo.zipCode,
-        is_default_addr: true
+        is_default_addr: true,
       };
       if (this.submitFlag) {
         this.submitFlag = false;
@@ -129,8 +129,8 @@ export default {
       if (Array.isArray(value) && value.length > 0) {
         this.addressInfo.zipCode = value[value.length - 1].zipCode;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="less" scoped>

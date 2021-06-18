@@ -15,15 +15,11 @@
       >
         <template #extra>
           <p class="history__num">
-            <span v-if="item.type === 1">+</span><span v-else>-</span
-            >{{ item.amount }}
+            <span v-if="item.type === 1">+</span><span v-else>-</span>{{ item.amount }}
           </p>
         </template>
       </van-cell>
-      <div
-        v-show="loading"
-        style="position: relative; height: 50px;width: 100%;"
-      >
+      <div v-show="loading" style="position: relative; height: 50px;width: 100%;">
         <te-loading color="#000"></te-loading>
       </div>
     </div>
@@ -51,13 +47,13 @@ export default {
         page: 1,
         page_size: 15,
         total: 0,
-        type: route.name === "IntegralHistory" ? undefined : 1
+        type: route.name === "IntegralHistory" ? undefined : 1,
       },
       pageTitle: computed(() =>
         route.name === "IntegralHistory"
           ? t("UserCenter.IntegralHistory")
           : t("UserCenter.REP_History")
-      )
+      ),
     });
     const isLoadCompleted = computed(() => {
       if (state.list.length === 0) return false;
@@ -81,9 +77,9 @@ export default {
     };
     useInfiniteScroll(getHistory);
     return {
-      ...toRefs(state)
+      ...toRefs(state),
     };
-  }
+  },
 };
 </script>
 

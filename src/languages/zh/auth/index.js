@@ -49,5 +49,5 @@ module.exports = {
 
   /** third */
   LoginSuccess: "登录成功",
-  redirecting: "重定向…"
+  redirecting: "重定向…",
 };

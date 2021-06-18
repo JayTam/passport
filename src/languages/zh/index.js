@@ -6,5 +6,5 @@ module.exports = {
   Common: require("./common/index"),
   Routes: require("./routes"),
   TeamUp: require("./teamUp/index"),
-  UseValidate: require("./useValidate/index")
+  UseValidate: require("./useValidate/index"),
 };

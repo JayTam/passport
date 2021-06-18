@@ -7,6 +7,6 @@ export default createStore({
   modules: {
     user,
     auth,
-    tenant
-  }
+    tenant,
+  },
 });

@@ -4,7 +4,7 @@ import {
   getIntegral,
   getUserLevel,
   fetchEmailInfo,
-  fetchPhoneInfo
+  fetchPhoneInfo,
 } from "@/apis/user";
 import { Toast } from "vant";
 import defaultAvatar from "@/assets/imgs/portrait.png";
@@ -34,7 +34,7 @@ export default {
     vip_info: {
       account_vip: null,
       max: 0,
-      type: 0
+      type: 0,
     },
     //积分
     integral: null,
@@ -43,7 +43,7 @@ export default {
     // 手机号码
     phone: null,
     // 邮箱
-    email: null
+    email: null,
   },
   getters: {
     hasGetUserInfo(state) {
@@ -71,7 +71,7 @@ export default {
     },
     reputation(state) {
       return state.reputation;
-    }
+    },
   },
   mutations: {
     SET_USER_INFO: (state, data) => {
@@ -117,7 +117,7 @@ export default {
           state[key] = null;
         }
       }
-    }
+    },
   },
   actions: {
     async getUserInfo({ commit, dispatch }) {
@@ -158,6 +158,6 @@ export default {
       if (userInfo) commit("SET_USER_INFO", userInfo);
       await dispatch("getIntegralInfo");
       Toast.success("修改成功");
-    }
-  }
+    },
+  },
 };

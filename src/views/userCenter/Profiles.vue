@@ -12,12 +12,7 @@
       >
         <template #default>
           <div class="profiles__avatar-container">
-            <van-image
-              class="profiles__avatar"
-              :src="avatar"
-              alt="profiles"
-              round
-            />
+            <van-image class="profiles__avatar" :src="avatar" alt="profiles" round />
           </div>
         </template>
       </van-cell>
@@ -28,11 +23,7 @@
         :border="false"
         :value="user.name"
       />
-      <van-cell
-        :title="$t('UserCenter.UserID')"
-        :border="false"
-        :value="user.uid"
-      />
+      <van-cell :title="$t('UserCenter.UserID')" :border="false" :value="user.uid" />
       <van-cell
         :title="$t('UserCenter.Gender')"
         is-link
@@ -65,12 +56,7 @@
       />
     </van-cell-group>
 
-    <van-popup
-      v-model:show="showGender"
-      round
-      position="bottom"
-      :style="{ height: '300px' }"
-    >
+    <van-popup v-model:show="showGender" round position="bottom" :style="{ height: '300px' }">
       <van-picker
         :title="$t('UserCenter.Gender')"
         show-toolbar
@@ -81,12 +67,7 @@
       />
     </van-popup>
 
-    <van-popup
-      v-model:show="showBirth"
-      round
-      position="bottom"
-      :style="{ height: '40%' }"
-    >
+    <van-popup v-model:show="showBirth" round position="bottom" :style="{ height: '40%' }">
       <van-datetime-picker
         v-model="currentDate"
         @cancel="showBirth = false"
@@ -107,7 +88,7 @@ import { formatTime, toastPassportAxiosError } from "@/utils";
 export default {
   name: "Profile",
   components: {
-    [ImagePreview.Component.name]: ImagePreview.Component
+    [ImagePreview.Component.name]: ImagePreview.Component,
   },
   data() {
     return {
@@ -118,11 +99,11 @@ export default {
       gender: [
         { text: this.$t("UserCenter.Male"), value: 2 },
         { text: this.$t("UserCenter.Female"), value: 3 },
-        { text: this.$t("UserCenter.Other"), value: 1 }
+        { text: this.$t("UserCenter.Other"), value: 1 },
       ],
       minDate: new Date(1900, 0, 1),
       maxDate: new Date(),
-      currentDate: new Date(1996, 0, 1)
+      currentDate: new Date(1996, 0, 1),
     };
   },
   computed: {
@@ -141,12 +122,12 @@ export default {
           return this.$t("UserCenter.Other");
       }
     },
-    ...mapGetters("user", ["avatar"])
+    ...mapGetters("user", ["avatar"]),
   },
   methods: {
     async onConfirm(value) {
       const data = {
-        gender: value.value
+        gender: value.value,
       };
       if (this.submitFlag) {
         this.submitFlag = false;
@@ -162,7 +143,7 @@ export default {
     },
     async onBirthConfirm(value) {
       const data = {
-        birthday: formatTime(value, "yyyy-MM-dd")
+        birthday: formatTime(value, "yyyy-MM-dd"),
       };
       if (this.submitFlag) {
         this.submitFlag = false;
@@ -175,8 +156,8 @@ export default {
           this.submitFlag = true;
         }
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped lang="less">

@@ -1,10 +1,6 @@
 <template>
   <te-form :model="form" ref="formRef">
-    <te-form-item
-      :label="$t('Auth.Password')"
-      prop="password"
-      :rules="passwordRules"
-    >
+    <te-form-item :label="$t('Auth.Password')" prop="password" :rules="passwordRules">
       <te-input v-model="form.password" type="password" />
     </te-form-item>
 
@@ -18,14 +14,9 @@
     </te-form-item>
 
     <te-form-item>
-      <te-button
-        type="warning"
-        block
-        dark
-        :loading="loading"
-        @click="handleSubmit"
-        >{{ $t("Auth.Done") }}</te-button
-      >
+      <te-button type="warning" block dark :loading="loading" @click="handleSubmit">{{
+        $t("Auth.Done")
+      }}</te-button>
     </te-form-item>
   </te-form>
 </template>
@@ -68,8 +59,8 @@ export default {
         email,
         code,
         password: "",
-        rePassword: ""
-      }
+        rePassword: "",
+      },
     });
 
     const handleSubmit = async () => {
@@ -96,9 +87,9 @@ export default {
       ...useValidate(),
       formRef,
       loading,
-      handleSubmit
+      handleSubmit,
     };
-  }
+  },
 };
 </script>
 

@@ -40,8 +40,7 @@ module.exports = {
   SignUpNow: "Daftar sekarang",
 
   SignUpWithPhone: "Daftar dengan Nomor HP",
-  ByClick:
-    'ngan mengklik "Membuat Akun", maka anda telah menyetujui syarat dan',
+  ByClick: 'ngan mengklik "Membuat Akun", maka anda telah menyetujui syarat dan',
   TermsOfService: "ketentuan dari pelayanan kami",
   PrivacyPolicy: "Kebijakan privasi",
   CreateAccount: "Membuat akun",
@@ -50,5 +49,5 @@ module.exports = {
 
   /** third */
   LoginSuccess: "Masuk berhasil",
-  redirecting: "Dialihkan... "
+  redirecting: "Dialihkan... ",
 };

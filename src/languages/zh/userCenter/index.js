@@ -97,5 +97,5 @@ module.exports = {
   BindTwitter: "绑定twitter",
   ChangeTwitter: "更换twitter",
 
-  Street: "街道、地址、公司名称、C/O"
+  Street: "街道、地址、公司名称、C/O",
 };

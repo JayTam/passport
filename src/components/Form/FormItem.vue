@@ -31,7 +31,7 @@ export default {
     placeholder: String,
     prop: String,
     // modelValue: [String, Number],
-    rules: { type: Array, default: () => [] }
+    rules: { type: Array, default: () => [] },
   },
   // emits: ["update:modelValue"],
   setup(props) {
@@ -70,7 +70,7 @@ export default {
             validateMessage.value = errors[0].message;
             reject({
               errors,
-              fields
+              fields,
             });
           });
       });
@@ -78,7 +78,7 @@ export default {
 
     const formItem = reactive({
       ...toRefs(props),
-      validate
+      validate,
     });
 
     provide(FORM_ITEM_KEY, formItem);
@@ -91,16 +91,16 @@ export default {
 
     const formItemClass = computed(() => {
       return {
-        "is-error": validateState.value === "error"
+        "is-error": validateState.value === "error",
       };
     });
 
     return {
       validateState,
       validateMessage,
-      formItemClass
+      formItemClass,
     };
-  }
+  },
 };
 </script>
 

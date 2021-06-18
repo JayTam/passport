@@ -14,8 +14,8 @@ export function getCaptcha(account, type, purpose) {
     data: {
       account,
       type,
-      purpose
-    }
+      purpose,
+    },
   });
 }
 
@@ -35,7 +35,7 @@ export function checkCaptcha(account, code, type, purpose) {
       account,
       code,
       type,
-      purpose
-    }
+      purpose,
+    },
   });
 }
