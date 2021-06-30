@@ -4,4 +4,5 @@ module.exports = {
   AreaCode: "Area Code",
   Cancel: "Cancel",
   Confirm: "Confirm",
+  thirdLogin: "Use a third-party login",
 };

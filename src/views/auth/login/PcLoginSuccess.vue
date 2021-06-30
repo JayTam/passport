@@ -2,7 +2,7 @@
   <Desc type="Login"></Desc>
   <div class="logobg"></div>
   <te-button type="warning" block dark class="btn">
-    登录成功
+    {{ $t("Auth.LoginSuccess") }}
   </te-button>
   <div class="over"></div>
 </template>

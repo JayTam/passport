@@ -2,7 +2,7 @@
   <div class="other_channer">
     <div class="Facebook" @click="toThirdUrl(LOGIN_THIRD_TYPE.FACEBOOK)"></div>
     <div class="Google" @click="toThirdUrl(LOGIN_THIRD_TYPE.GOOGLE)"></div>
-    <div class="separation">使用第三方登录</div>
+    <div class="separation">{{ $t("Common.thirdLogin") }}</div>
   </div>
 </template>
 <script>
@@ -48,7 +48,7 @@ export default {
 <style lang="less" scoped>
 .other_channer {
   margin: 0 auto;
-  width: 120px;
+  width: 130px;
   overflow: hidden;
   .Facebook,
   .Google {
@@ -65,7 +65,7 @@ export default {
   .Google {
     background: url("../assets/imgs/google@2x.png") center center no-repeat;
     background-size: 100%;
-    margin-left: 40px;
+    margin-left: 50px;
   }
   .separation {
     text-align: center;

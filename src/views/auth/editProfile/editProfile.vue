@@ -34,7 +34,9 @@
     </te-form-item>
 
     <div class="tips">
-      <te-button type="text" size="mini" :to="{ name: 'SignUpPhone' }" replace>Skip</te-button>
+      <te-button type="text" size="mini" :to="{ name: 'SignUpPhone' }" @click="handleskip" replace
+        >Skip</te-button
+      >
     </div>
   </te-form>
 </template>
@@ -43,7 +45,7 @@
 import { reactive, ref, toRefs } from "vue";
 import { useValidate } from "@/composables/useValidate";
 import { toastPassportAxiosError } from "@/utils";
-import { updateUserInfo } from "@/apis/user";
+import { updateUserInfo, fetchUserInfo } from "@/apis/user";
 import TeFormItem from "../../../components/Form/FormItem";
 import TeForm from "../../../components/Form/Form";
 import TeInput from "../../../components/Form/Input";
@@ -51,6 +53,7 @@ import TeButton from "../../../components/Button";
 import PhotoView from "../../../components/PhotoView";
 import MySelect from "../../../components/MySelect";
 import { Toast } from "vant";
+import { useStore } from "vuex";
 
 export default {
   name: "editProfile",
@@ -65,6 +68,7 @@ export default {
   setup() {
     const formRef = ref(null);
     const loading = ref(false);
+    const store = useStore();
     const state = reactive({
       form: {
         username: "",
@@ -77,9 +81,15 @@ export default {
     });
 
     const handleMonth = async arg => {
+      if (arg < 100) {
+        arg = "0" + arg;
+      }
       state.form.Month = arg;
     };
     const handleDay = async arg => {
+      if (arg < 100) {
+        arg = "0" + arg;
+      }
       state.form.Day = arg;
     };
     const handleYear = async arg => {
@@ -92,19 +102,27 @@ export default {
     const handleSubmit = async () => {
       let obj = {};
       obj.username = state.form.username;
-      obj.gender = state.form.gender;
+      obj.gender = Number(state.form.gender);
       obj.birthday = state.form.Year + "-" + state.form.Month + "-" + state.form.Day;
+      const token = JSON.parse(sessionStorage.getItem("myToken"));
+      await store.dispatch("auth/signSuccess", token);
+      const { data } = await fetchUserInfo();
       try {
         loading.value = true;
         await formRef.value.validate();
-        await updateUserInfo(obj);
+        await updateUserInfo(obj, data.uid);
         await Toast.success("success");
-        // await store.dispatch("auth/loginAccount", state.form);
+        await store.dispatch("auth/editSuccess");
       } catch (error) {
         toastPassportAxiosError(error);
       } finally {
         loading.value = false;
       }
+    };
+
+    const handleskip = () => {
+      const token = JSON.parse(sessionStorage.getItem("myToken"));
+      store.dispatch("auth/loginSuccess", token);
     };
 
     return {
@@ -119,6 +137,7 @@ export default {
       handleGender,
       PhotoView,
       MySelect,
+      handleskip,
     };
   },
 };

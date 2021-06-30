@@ -2,7 +2,7 @@
   <Desc type="Login"></Desc>
   <div class="logobg"></div>
   <te-button type="warning" block dark :to="{ name: 'LoginPhone' }" class="btn">
-    使用电子邮箱/电话登录
+    {{ $t("Auth.tips") }}
   </te-button>
   <div class="tips">
     <p class="tips__text">{{ $t("Auth.NotaMember") }}</p>

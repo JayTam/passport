@@ -30,6 +30,7 @@ module.exports = {
   /** login */
   UserIdEmail: "User ID & Email",
   NotaMember: "Not a member?",
+  tips: "Login with email/phone",
 
   /** signUp */
   LoginPhone: "Login with your phone",
