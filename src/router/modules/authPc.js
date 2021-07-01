@@ -9,12 +9,13 @@ export default [
     children: [
       {
         path: "",
-        name: "home",
-        component: () => import(/* webpackChunkName: "home" */ "@/views/auth/login/PcLogin.vue"),
+        name: "LoginHome",
+        component: () =>
+          import(/* webpackChunkName: "LoginHome" */ "@/views/auth/login/PcLogin.vue"),
         meta: { title: "Routes.Login" },
       },
       {
-        path: "Account",
+        path: "account",
         name: "LoginAccount",
         component: () =>
           import(/* webpackChunkName: "LoginAccount" */ "@/views/auth/login/PcLoginAccount.vue"),
@@ -25,13 +26,6 @@ export default [
         name: "LoginPhone",
         component: () =>
           import(/* webpackChunkName: "LoginPhone" */ "@/views/auth/login/PcLoginPhone.vue"),
-        meta: { title: "Routes.Login" },
-      },
-      {
-        path: "success",
-        name: "LoginSuccess",
-        component: () =>
-          import(/* webpackChunkName: "LoginSuccess" */ "@/views/auth/login/PcLoginSuccess.vue"),
         meta: { title: "Routes.Login" },
       },
     ],
@@ -107,6 +101,20 @@ export default [
         path: "editProfile",
         name: "editProfile",
         component: () => import("@/views/auth/editProfile/editProfile.vue"),
+      },
+    ],
+  },
+  // 登陆成功页面
+  {
+    path: "/result",
+    component: PcLoginLayout,
+    children: [
+      {
+        path: "success",
+        name: "LoginSuccess",
+        component: () =>
+          import(/* webpackChunkName: "LoginSuccess" */ "@/views/auth/login/PcLoginSuccess.vue"),
+        meta: { title: "Routes.Login" },
       },
     ],
   },

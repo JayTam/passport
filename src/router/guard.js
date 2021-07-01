@@ -9,13 +9,14 @@ import QueryString from "query-string";
 export function registerBeforeRoute(router) {
   router.beforeEach(async (to, from, next) => {
     const isLogged = !!passportTokenPersistence.get();
+    // 登陆或注册路由
     const isLoginSignUpRoute = ["/login", "/signup", "/forget", "/auth"].includes(
       to.matched?.[0]?.path
     );
+    // 登陆路由
     const isLoginRoute = ["/login", "/auth"].includes(to.matched?.[0]?.path);
-    const isWhiteRoute =
-      isLoginSignUpRoute ||
-      ["Home", "Privacy", "UserAgreement", "TeamUp", "JoinTeamUp"].includes(to.name);
+    // 白名单
+    const isWhiteRoute = isLoginSignUpRoute || ["Privacy", "UserAgreement"].includes(to.name);
     const subAppId = subAppIdPersistence.get();
     // 本站的redirect_uri
     const redirectUri = redirectUriPersistence.get();
@@ -73,11 +74,11 @@ export function registerBeforeRoute(router) {
     /**
      * 登录了，跳转redirect_uri地址
      */
-    // if (isLogged && redirectUri) {
-    //   redirectUriPersistence.remove();
-    //   window.location.href = decodeURIComponent(redirectUri);
-    //   return;
-    // }
+    if (isLogged && redirectUri) {
+      redirectUriPersistence.remove();
+      window.location.href = decodeURIComponent(redirectUri);
+      return;
+    }
 
     /**
      * 登录了，访问登陆注册页面，跳转首页

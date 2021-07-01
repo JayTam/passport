@@ -6,14 +6,16 @@
  */
 import userCenter from "./modules/userCenter";
 import authPc from "./modules/authPc";
-import auth from "./modules/auth";
+import authMobile from "./modules/auth";
 import { isPC } from "@/utils";
 
-const result_auth = isPC() ? authPc : auth;
-export default [
-  ...result_auth,
-  ...userCenter,
+const authRoutes = isPC() ? authPc : authMobile;
 
+export default [
+  // 登陆注册相关
+  ...authRoutes,
+  // 用户中心
+  ...userCenter,
   // 隐私政策
   {
     path: "/privacy",
