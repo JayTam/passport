@@ -79,10 +79,10 @@ export function updateUserAvatar(user) {
  * 更新用户信息
  * @param data 用户信息
  */
-export function updateUserInfo(data, uid) {
+export function updateUserInfo(data) {
   return request({
     method: "PUT",
-    url: `/account/${uid ? uid : store.state.user.uid}/update`,
+    url: `/account/${store.state.user.uid}/update`,
     data: {
       ...data,
     },

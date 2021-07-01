@@ -45,7 +45,7 @@
 import { reactive, ref, toRefs } from "vue";
 import { useValidate } from "@/composables/useValidate";
 import { toastPassportAxiosError } from "@/utils";
-import { updateUserInfo, fetchUserInfo } from "@/apis/user";
+import { updateUserInfo } from "@/apis/user";
 import TeFormItem from "../../../components/Form/FormItem";
 import TeForm from "../../../components/Form/Form";
 import TeInput from "../../../components/Form/Input";
@@ -99,18 +99,19 @@ export default {
       state.form.gender = arg;
     };
 
+    // 进入这个页面则代表用户注册成功,然后用户根据选择填写用户信息
+
     const handleSubmit = async () => {
       let obj = {};
       obj.username = state.form.username;
       obj.gender = Number(state.form.gender);
       obj.birthday = state.form.Year + "-" + state.form.Month + "-" + state.form.Day;
-      const token = JSON.parse(sessionStorage.getItem("myToken"));
+      const token = JSON.parse(localStorage.getItem("myToken"));
       await store.dispatch("auth/signSuccess", token);
-      const { data } = await fetchUserInfo();
       try {
         loading.value = true;
         await formRef.value.validate();
-        await updateUserInfo(obj, data.uid);
+        await updateUserInfo(obj);
         await Toast.success("success");
         await store.dispatch("auth/editSuccess");
       } catch (error) {
@@ -120,9 +121,10 @@ export default {
       }
     };
 
-    const handleskip = () => {
-      const token = JSON.parse(sessionStorage.getItem("myToken"));
-      store.dispatch("auth/loginSuccess", token);
+    const handleskip = async () => {
+      const token = JSON.parse(localStorage.getItem("myToken"));
+      await store.dispatch("auth/signSuccess", token);
+      await store.dispatch("auth/editSuccess");
     };
 
     return {

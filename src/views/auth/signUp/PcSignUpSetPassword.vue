@@ -34,7 +34,7 @@ import TeFormItem from "../../../components/Form/FormItem";
 import TeForm from "../../../components/Form/Form";
 import TeInput from "../../../components/Form/Input";
 import TeButton from "../../../components/Button";
-// import { useStore } from "vuex";
+import { useStore } from "vuex";
 
 export default {
   name: "PcSignUpSetPassword",
@@ -48,7 +48,7 @@ export default {
     const formRef = ref(null);
     const loading = ref(false);
     const router = useRouter();
-    // const store = useStore();
+    const store = useStore();
 
     /**
      *  如果地址栏没携带 [phone code] 或者 [email code] 参数，不符合注册流程，重定向到注册页面
@@ -83,7 +83,9 @@ export default {
         } else {
           response = await signUpEmail(email, password, code);
         }
-        window.sessionStorage.setItem("myToken", JSON.stringify(response.data));
+        await store.commit("user/SET_USER_ID", response.data.claim.uid);
+        window.localStorage.setItem("myToken", JSON.stringify(response.data));
+        // await store.dispatch("auth/signSuccess", response.data);
         router.push({
           name: "editProfile",
         });

@@ -67,6 +67,9 @@ export default {
         }
       }
     },
+    SET_USER_ID: (state, data) => {
+      state.uid = data;
+    },
     SET_USER_AVATAR: (state, data) => {
       state.avatar = data;
     },

@@ -1,7 +1,6 @@
 import { getTenementInfo } from "@/apis";
 import { resolveTenantName } from "@/utils";
 import defaultBrand from "@/assets/imgs/brand.png";
-import { Dialog } from "vant";
 
 export default {
   namespaced: true,
