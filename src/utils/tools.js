@@ -59,7 +59,6 @@ export function isPC() {
  * @param {string} targetOrigin
  */
 export function postMessage(action, payload, targetOrigin = "*") {
-  console.log(`[passport]: send post message, ${action} ${JSON.stringify(payload)}, ${targetOrigin}`);
   window.parent.postMessage(
     {
       name: "passport",

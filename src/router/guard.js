@@ -46,7 +46,7 @@ export function registerBeforeRoute(router) {
         await store.dispatch("user/getUserInfo");
       } catch (e) {
         await store.commit("auth/REMOVE_AUTH");
-        next({ name: "LoginAccount", query: from.query });
+        next({ name: "LoginAccount", query: { ...from.query, ...to.query } });
         return;
       }
     }
