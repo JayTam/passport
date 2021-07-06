@@ -102,5 +102,6 @@ form {
 }
 .other_channer {
   margin-top: 157px;
+  margin-bottom: 28px;
 }
 </style>

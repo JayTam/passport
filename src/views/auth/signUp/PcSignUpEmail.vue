@@ -22,7 +22,8 @@
       :purpose="CAPTCHA_PURPOSE.CHECK"
     ></captcha-form-item>
 
-    <div class="tips" style="margin-bottom: 14px;">
+    <!-- 原有的 -->
+    <!-- <div class="tips" style="margin-bottom: 14px;">
       <p class="tips__text">{{ $t("Auth.ByClick") }}</p>
       <te-button type="text" size="mini" :to="{ name: 'UserAgreement' }">
         {{ $t("Auth.TermsOfService") }}
@@ -30,13 +31,34 @@
       <te-button type="text" size="mini" :to="{ name: 'Privacy' }">
         {{ $t("Auth.PrivacyPolicy") }}
       </te-button>
-    </div>
+    </div> -->
 
     <te-form-item>
       <te-button type="warning" block dark :loading="submitLoading" @click="handleSubmit">{{
         $t("Auth.CreateAccount")
       }}</te-button>
     </te-form-item>
+
+    <div class="tips" style="margin-bottom: 14px; font-size: 12px;color: #999999;">
+      By continuing,you agree to Ziel’s
+      <te-button
+        type="text"
+        size="mini"
+        :to="{ name: 'UserAgreement' }"
+        style="color: black;height: 20px;"
+      >
+        {{ $t("Auth.TermsOfService") }}
+      </te-button>
+      and congirm that you have read Ziel’s
+      <te-button
+        type="text"
+        size="mini"
+        :to="{ name: 'Privacy' }"
+        style="color: black;height: 20px;"
+      >
+        {{ $t("Auth.PrivacyPolicy") }} </te-button
+      >.
+    </div>
 
     <div class="tips">
       <p class="tips__text">{{ $t("Auth.AlreadyAMember") }}</p>
