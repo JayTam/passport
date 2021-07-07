@@ -3,9 +3,7 @@ import Cookies from "js-cookie";
 import { isDef, isNumeric } from "@/utils";
 
 const PAN_DOMAIN =
-  process.env.NODE_ENV === "production"
-    ? process.env.VUE_APP_PAN_DOMAIN
-    : undefined;
+  process.env.NODE_ENV === "production" ? process.env.VUE_APP_PAN_DOMAIN : undefined;
 
 class Persistence {
   constructor(key, domain) {
@@ -16,8 +14,7 @@ class Persistence {
   get() {
     try {
       const { query } = QueryString.parseUrl(window.location.href);
-      const value =
-        query[this.key] ?? Cookies.get(this.key, { domain: this.domain });
+      const value = query[this.key] ?? Cookies.get(this.key, { domain: this.domain });
       // 如果可以转换成数字，且小于最大安全值，则转换成Number类型，否则使用String类型
       if (isNumeric(value) && Number.MAX_SAFE_INTEGER > Number(value)) {
         return Number(value);
@@ -48,20 +45,12 @@ export const tenantNamePersistence = new Persistence("tenant_name", PAN_DOMAIN);
 // 第三方登陆类型
 export const thirdTypePersistence = new Persistence("third_type", PAN_DOMAIN);
 // 第三方登陆行为
-export const thirdBehaviorPersistence = new Persistence(
-  "third_behavior",
-  PAN_DOMAIN
-);
+export const thirdBehaviorPersistence = new Persistence("third_behavior", PAN_DOMAIN);
 // 登陆回跳地址
-export const redirectUriPersistence = new Persistence(
-  "redirect_uri",
-  PAN_DOMAIN
-);
+export const redirectUriPersistence = new Persistence("redirect_uri", PAN_DOMAIN);
 // 子应用ID
 export const subAppIdPersistence = new Persistence("sub_app_id", PAN_DOMAIN);
 // 设备ID
 export const deviceIdPersistence = new Persistence("device_id", PAN_DOMAIN);
 // passport 登陆凭证
 export const passportTokenPersistence = new Persistence("pp_token");
-// 品牌中心登陆凭证
-export const brandCenterTokenPersistence = new Persistence("bc_token");

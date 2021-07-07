@@ -20,12 +20,12 @@ import TeButton from "@/components/Button";
 export default {
   name: "EditAvatar",
   components: {
-    TeButton
+    TeButton,
   },
   setup() {
     const store = useStore();
     const state = reactive({
-      loading: false
+      loading: false,
     });
     const avatar = computed(() => store.getters["user/avatar"]);
     const name = computed(() => store.getters["user/name"]);
@@ -50,9 +50,9 @@ export default {
       ...toRefs(state),
       avatar,
       name,
-      afterRead
+      afterRead,
     };
-  }
+  },
 };
 </script>
 

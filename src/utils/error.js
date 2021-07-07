@@ -36,7 +36,7 @@ export function alertBrandCenterAxiosError(axiosError) {
   const message = resolveBrandCenterAxiosError(axiosError);
   if (message) {
     Dialog.alert({
-      message
+      message,
     });
   }
 }

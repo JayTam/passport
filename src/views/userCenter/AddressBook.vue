@@ -51,14 +51,9 @@
         {{ $t("UserCenter.PickAddress") }}
       </te-button>
     </template>
-    <te-button
-      class="Address_btn"
-      size="small"
-      type="warning"
-      dark
-      :to="{ name: 'NewAddress' }"
-      >{{ $t("UserCenter.AddNew") }}</te-button
-    >
+    <te-button class="Address_btn" size="small" type="warning" dark :to="{ name: 'NewAddress' }">{{
+      $t("UserCenter.AddNew")
+    }}</te-button>
   </div>
 </template>
 <script>
@@ -79,7 +74,7 @@ export default {
     return {
       list: [],
       loading: true,
-      activeId: ""
+      activeId: "",
     };
   },
   created() {
@@ -99,7 +94,7 @@ export default {
     },
     pickButtonDisabled() {
       return this.activeId === "";
-    }
+    },
   },
   methods: {
     async onLoad() {
@@ -122,9 +117,7 @@ export default {
         const redirectRoutePath = this.$route.query.redirect_route_path;
         const redirectURI = this.$route.query.redirect_uri;
         if (!redirectRoutePath && !redirectURI) {
-          console.warn(
-            "query 参数 redirect_route_path 或者 redirect_uri 至少存在一个"
-          );
+          console.warn("query 参数 redirect_route_path 或者 redirect_uri 至少存在一个");
         }
       }
     },
@@ -142,13 +135,10 @@ export default {
         return;
       }
       if (redirectURI) {
-        window.location.href = urlAddQuery(
-          decodeURIComponent(redirectURI),
-          query
-        );
+        window.location.href = urlAddQuery(decodeURIComponent(redirectURI), query);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

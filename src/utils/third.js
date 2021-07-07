@@ -9,7 +9,7 @@ import {
   tenantNamePersistence,
   thirdBehaviorPersistence,
   thirdTypePersistence,
-  redirectUriPersistence
+  redirectUriPersistence,
 } from "@/utils/auth";
 import { resolveTenantName } from "@/utils/tenant";
 
@@ -43,7 +43,7 @@ export async function redirectToThird(type, behavior) {
   // 授权登陆所需参数，将从url query取到的参数存储到cookie
   redirectUriPersistence.set(encodeURIComponent(window.location.href));
   subAppIdPersistence.set(subAppIdPersistence.get());
-  window.location.href = await getThirdUrlByType(type);
+  window.open(await getThirdUrlByType(type));
 }
 
 /**
@@ -68,7 +68,7 @@ export function parseThirdParameters() {
   return {
     type,
     code,
-    verifier
+    verifier,
   };
 }
 

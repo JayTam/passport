@@ -9,5 +9,5 @@ module.exports = {
   phoneUnregistered: "phone unregistered",
   invalidEmail: "invalid email",
   emailAreadyRegistered: "email already registered",
-  emailUnregistered: "email unregistered"
+  emailUnregistered: "email unregistered",
 };

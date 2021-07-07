@@ -39,18 +39,18 @@ export default {
     waitTime: { type: Number, default: 60 },
     modelValue: String,
     maxLength: [Number, String],
-    codeRequest: { type: Function }
+    codeRequest: { type: Function },
   },
   emits: ["update:modelValue", "send-code"],
   setup(props, { emit }) {
     const { t } = useI18n();
 
     const state = reactive({
-      waitResendTime: props.waitTime
+      waitResendTime: props.waitTime,
     });
     const inputClass = computed(() => {
       return {
-        "is-disabled": props.disabled
+        "is-disabled": props.disabled,
       };
     });
 
@@ -93,8 +93,8 @@ export default {
       buttonText,
       waiting,
       handleInput,
-      handleClick
+      handleClick,
     };
-  }
+  },
 };
 </script>

@@ -33,5 +33,5 @@ module.exports = {
   Email: "填写邮箱",
   Gender: "填写性别",
   Birth: "填写生日",
-  Adderss: "填写地址簿"
+  Adderss: "填写地址簿",
 };

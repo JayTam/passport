@@ -1,6 +1,7 @@
 import PcLoginLayout from "@/layouts/PcLoginLayout";
 
 export default [
+  { path: "/", redirect: "/login" },
   // 手机,邮箱登录
   {
     path: "/login",
@@ -8,29 +9,23 @@ export default [
     children: [
       {
         path: "",
-        name: "home",
+        name: "LoginHome",
         component: () =>
-          import(
-            /* webpackChunkName: "PcLogin" */ "@/views/auth/login/PcLogin.vue"
-          ),
+          import(/* webpackChunkName: "LoginHome" */ "@/views/auth/login/PcLogin.vue"),
         meta: { title: "Routes.Login" },
       },
       {
-        path: "Account",
+        path: "account",
         name: "LoginAccount",
         component: () =>
-          import(
-            /* webpackChunkName: "LoginAccount" */ "@/views/auth/login/PcLoginAccount.vue"
-          ),
+          import(/* webpackChunkName: "LoginAccount" */ "@/views/auth/login/PcLoginAccount.vue"),
         meta: { title: "Routes.Login" },
       },
       {
         path: "phone",
         name: "LoginPhone",
         component: () =>
-          import(
-            /* webpackChunkName: "LoginPhone" */ "@/views/auth/login/PcLoginPhone.vue"
-          ),
+          import(/* webpackChunkName: "LoginPhone" */ "@/views/auth/login/PcLoginPhone.vue"),
         meta: { title: "Routes.Login" },
       },
     ],
@@ -44,9 +39,7 @@ export default [
         path: "",
         name: "ForgetPassword",
         component: () =>
-          import(
-            /* webpackChunkName: "ForgetPassword" */ "@/views/auth/forget/PcForgetPassword"
-          ),
+          import(/* webpackChunkName: "ForgetPassword" */ "@/views/auth/forget/PcForgetPassword"),
         meta: { title: "Routes.ResetPassword" },
       },
       {
@@ -71,9 +64,7 @@ export default [
         path: "reset",
         name: "ResetPassword",
         component: () =>
-          import(
-            /* webpackChunkName: "ResetPassword" */ "@/views/auth/forget/PcResetPassword"
-          ),
+          import(/* webpackChunkName: "ResetPassword" */ "@/views/auth/forget/PcResetPassword"),
         meta: { title: "Routes.ResetPassword" },
       },
     ],
@@ -87,18 +78,14 @@ export default [
         path: "phone",
         name: "SignUpPhone",
         component: () =>
-          import(
-            /* webpackChunkName: "SignUpPhone" */ "@/views/auth/signUp/PcSignUpPhone.vue"
-          ),
+          import(/* webpackChunkName: "SignUpPhone" */ "@/views/auth/signUp/PcSignUpPhone.vue"),
         meta: { title: "Routes.SignUp" },
       },
       {
         path: "email",
         name: "SignUpEmail",
         component: () =>
-          import(
-            /* webpackChunkName: "SignUpEmail" */ "@/views/auth/signUp/PcSignUpEmail.vue"
-          ),
+          import(/* webpackChunkName: "SignUpEmail" */ "@/views/auth/signUp/PcSignUpEmail.vue"),
         meta: { title: "Routes.SignUp" },
       },
       {
@@ -114,6 +101,20 @@ export default [
         path: "editProfile",
         name: "editProfile",
         component: () => import("@/views/auth/editProfile/editProfile.vue"),
+      },
+    ],
+  },
+  // 登陆成功页面
+  {
+    path: "/result",
+    component: PcLoginLayout,
+    children: [
+      {
+        path: "success",
+        name: "LoginSuccess",
+        component: () =>
+          import(/* webpackChunkName: "LoginSuccess" */ "@/views/auth/login/PcLoginSuccess.vue"),
+        meta: { title: "Routes.Login" },
       },
     ],
   },
@@ -142,45 +143,35 @@ export default [
         path: "email",
         name: "ChangeEmailNext",
         component: () =>
-          import(
-            /* webpackChunkName: "ChangeEmailNext" */ "@/views/auth/change/ChangeEmailNext"
-          ),
+          import(/* webpackChunkName: "ChangeEmailNext" */ "@/views/auth/change/ChangeEmailNext"),
         meta: { title: "Routes.ChangeEmail" },
       },
       {
         path: "email_done",
         name: "ChangeEmailDone",
         component: () =>
-          import(
-            /* webpackChunkName: "ChangeEmailDone" */ "@/views/auth/change/ChangeEmailDone"
-          ),
+          import(/* webpackChunkName: "ChangeEmailDone" */ "@/views/auth/change/ChangeEmailDone"),
         meta: { title: "Routes.ChangeEmail" },
       },
       {
         path: "phone",
         name: "ChangePhoneNext",
         component: () =>
-          import(
-            /* webpackChunkName: "ChangePhoneNext" */ "@/views/auth/change/ChangePhoneNext"
-          ),
+          import(/* webpackChunkName: "ChangePhoneNext" */ "@/views/auth/change/ChangePhoneNext"),
         meta: { title: "Routes.ChangePhoneNumber" },
       },
       {
         path: "phone_done",
         name: "ChangePhoneDone",
         component: () =>
-          import(
-            /* webpackChunkName: "ChangePhoneDone" */ "@/views/auth/change/ChangePhoneDone"
-          ),
+          import(/* webpackChunkName: "ChangePhoneDone" */ "@/views/auth/change/ChangePhoneDone"),
         meta: { title: "Routes.ChangePhoneNumber" },
       },
       {
         path: "password",
         name: "ChangePassWord",
         component: () =>
-          import(
-            /* webpackChunkName: "ChangePassWord" */ "@/views/others/ChangePassWord.vue"
-          ),
+          import(/* webpackChunkName: "ChangePassWord" */ "@/views/others/ChangePassWord.vue"),
         meta: { title: "Routes.ChangePassWord" },
       },
     ],

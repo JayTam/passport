@@ -3,13 +3,7 @@ import {
   registerValidatorGenerator,
   validatorGenerator,
 } from "@/utils";
-import {
-  CAPTCHA_REG,
-  EMAIL_REG,
-  PASSWORD_REG,
-  PHONE_REG_LIKE,
-  NAME_REG,
-} from "@/utils";
+import { CAPTCHA_REG, EMAIL_REG, PASSWORD_REG, PHONE_REG_LIKE, NAME_REG } from "@/utils";
 import { useI18n } from "vue-i18n";
 export function useValidate() {
   const { t } = useI18n();
@@ -17,20 +11,14 @@ export function useValidate() {
   const requiredRule = { required: true, message: t("UseValidate.required") };
   return {
     // 规则生成器
-    captchaRulesGenerator: captchaValidateRulesCurrying(
-      t("UseValidate.wrongVerificationCode"),
-      [
-        requiredRule,
-        { pattern: CAPTCHA_REG, message: t("UseValidate.mustBe6Numbers") },
-      ]
-    ),
+    captchaRulesGenerator: captchaValidateRulesCurrying(t("UseValidate.wrongVerificationCode"), [
+      requiredRule,
+      { pattern: CAPTCHA_REG, message: t("UseValidate.mustBe6Numbers") },
+    ]),
     // 以下是直接可用的规则
     accountRules: [requiredRule],
 
-    userNameRules: [
-      requiredRule,
-      { pattern: NAME_REG, message: "用户名格式为4-20位字母或数字" },
-    ],
+    userNameRules: [requiredRule, { pattern: NAME_REG, message: "用户名格式为4-20位字母或数字" }],
     passwordRules: [
       requiredRule,
       { min: 8, max: 16, message: t("UseValidate.mustBeBetween8And16") },
@@ -39,66 +27,42 @@ export function useValidate() {
     phoneRules: [
       requiredRule,
       {
-        validator: validatorGenerator(
-          PHONE_REG_LIKE,
-          t("UseValidate.invalidPhone")
-        ),
+        validator: validatorGenerator(PHONE_REG_LIKE, t("UseValidate.invalidPhone")),
       },
     ],
     // 手机号注册
     phoneSignUpRules: [
       requiredRule,
       {
-        validator: validatorGenerator(
-          PHONE_REG_LIKE,
-          t("UseValidate.invalidPhone")
-        ),
+        validator: validatorGenerator(PHONE_REG_LIKE, t("UseValidate.invalidPhone")),
       },
       {
-        validator: registerValidatorGenerator(
-          t("UseValidate.phoneAlreadyRegistered"),
-          true
-        ),
+        validator: registerValidatorGenerator(t("UseValidate.phoneAlreadyRegistered"), true),
       },
     ],
     // 用手机号找回密码
     phoneFindRules: [
       requiredRule,
       {
-        validator: validatorGenerator(
-          PHONE_REG_LIKE,
-          t("UseValidate.invalidPhone")
-        ),
+        validator: validatorGenerator(PHONE_REG_LIKE, t("UseValidate.invalidPhone")),
       },
       {
-        validator: registerValidatorGenerator(
-          t("UseValidate.phoneUnregistered"),
-          false
-        ),
+        validator: registerValidatorGenerator(t("UseValidate.phoneUnregistered"), false),
       },
     ],
-    emailRules: [
-      requiredRule,
-      { pattern: EMAIL_REG, message: t("UseValidate.invalidEmail") },
-    ],
+    emailRules: [requiredRule, { pattern: EMAIL_REG, message: t("UseValidate.invalidEmail") }],
     emailSignUpRule: [
       requiredRule,
       { pattern: EMAIL_REG, message: t("UseValidate.invalidEmail") },
       {
-        validator: registerValidatorGenerator(
-          t("UseValidate.emailAreadyRegistered"),
-          true
-        ),
+        validator: registerValidatorGenerator(t("UseValidate.emailAreadyRegistered"), true),
       },
     ],
     emailFindRules: [
       requiredRule,
       { pattern: EMAIL_REG, message: t("UseValidate.invalidEmail") },
       {
-        validator: registerValidatorGenerator(
-          t("UseValidate.emailUnregistered"),
-          false
-        ),
+        validator: registerValidatorGenerator(t("UseValidate.emailUnregistered"), false),
       },
     ],
   };

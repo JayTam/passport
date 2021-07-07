@@ -2,7 +2,7 @@
   <Desc type="Login"></Desc>
   <div class="logobg"></div>
   <te-button type="warning" block dark :to="{ name: 'LoginPhone' }" class="btn">
-    使用电子邮箱/电话登录
+    {{ $t("Auth.tips") }}
   </te-button>
   <div class="tips">
     <p class="tips__text">{{ $t("Auth.NotaMember") }}</p>
@@ -84,8 +84,7 @@ form {
 .logobg {
   width: 100%;
   height: 71px;
-  background: url("../../../assets/imgs/ZIEL HOMEmin.png") center center
-    no-repeat;
+  background: url("../../../assets/imgs/ZIEL HOMEmin.png") center center no-repeat;
   background-size: 100%;
   margin-bottom: 16px;
 }
@@ -103,5 +102,6 @@ form {
 }
 .other_channer {
   margin-top: 157px;
+  margin-bottom: 28px;
 }
 </style>

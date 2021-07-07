@@ -12,14 +12,14 @@ export const LOGIN_THIRD_TYPE = {
   GOOGLE: 6,
   TWITTER: 7,
   WECHAT_MINIPROGRAM: 8,
-  INSTAGRAM: 9
+  INSTAGRAM: 9,
 };
 
 export const LOGIN_BEHAVIOR = {
   OTHER: 0,
   LOGIN: 1,
   BIND: 2,
-  UN_BIND: 3
+  UN_BIND: 3,
 };
 
 export const LOGIN_THIRD_APP_ID_LIST = [
@@ -32,7 +32,7 @@ export const LOGIN_THIRD_APP_ID_LIST = [
   process.env.VUE_APP_APP_ID_GOOGLE,
   process.env.VUE_APP_APP_ID_TWITTER,
   null,
-  process.env.VUE_APP_APP_ID_INSTAGRAM
+  process.env.VUE_APP_APP_ID_INSTAGRAM,
 ];
 
 export const LOGIN_THIRD_URL_LIST = [
@@ -45,7 +45,7 @@ export const LOGIN_THIRD_URL_LIST = [
   process.env.VUE_APP_THRID_LOGIN_URL_GOOGLE,
   process.env.VUE_APP_THRID_LOGIN_URL_TWITTER,
   null,
-  process.env.VUE_APP_THRID_LOGIN_URL_INSTAGRAM
+  process.env.VUE_APP_THRID_LOGIN_URL_INSTAGRAM,
 ].map(url => {
   if (!url) return null;
   const urlObj = QueryString.parseUrl(url);

@@ -7,9 +7,6 @@ import VueI18n from "./languages";
 // 样式
 import "normalize.css";
 import "./styles/index.less";
-// 字体图标
-import "./fonts/iconfont";
-import "./styles/iconfont.css";
 
 // 拦截 auth.mms.tevo.online
 redirectToTenantUrl();
@@ -18,8 +15,7 @@ redirectToTenantUrl();
 store.dispatch("tenant/getTenantInfo");
 
 // 导入全部svg
-const requireAll = (requireContext) =>
-  requireContext.keys().map(requireContext);
+const requireAll = requireContext => requireContext.keys().map(requireContext);
 requireAll(require.context("./assets/icons", true, /\.svg$/));
 
 const app = createApp(App)

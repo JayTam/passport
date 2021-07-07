@@ -53,7 +53,7 @@ export const parseAreas = async (areas, areaOptions = []) => {
   }
   return {
     selectedOptions,
-    options: areaOptions
+    options: areaOptions,
   };
 };
 

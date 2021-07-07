@@ -7,5 +7,5 @@ module.exports = {
   PasswordUserID: "密码和用户名",
   ChangeEmail: "修改邮箱",
   ChangePhoneNumber: "修改手机号",
-  ChangePassword: "修改密码"
+  ChangePassword: "修改密码",
 };

@@ -1,9 +1,5 @@
 <template>
-  <te-form-item
-    :label="label"
-    :prop="prop"
-    :rules="captchaRulesGenerator(account, type, purpose)"
-  >
+  <te-form-item :label="label" :prop="prop" :rules="captchaRulesGenerator(account, type, purpose)">
     <template #label-right>
       <slot name="label-right" />
     </template>
@@ -39,25 +35,25 @@ export default {
       required: true,
       validator(val) {
         return Object.values(CAPTCHA_TYPE).includes(val);
-      }
+      },
     },
     purpose: {
       type: Number,
       required: true,
       validator(val) {
         return Object.values(CAPTCHA_PURPOSE).includes(val);
-      }
+      },
     },
     modelValue: {
-      type: String
-    }
+      type: String,
+    },
   },
   emits: ["update:modelValue"],
   setup(props, { emit }) {
     const state = reactive({
       loading: false,
       disabled: false,
-      account: undefined
+      account: undefined,
     });
     const formVm = findVm(getCurrentInstance(), "TeForm");
 
@@ -68,7 +64,7 @@ export default {
       set(val) {
         if (formVm) state.account = formVm.proxy.model[props.accountProp];
         emit("update:modelValue", val);
-      }
+      },
     });
 
     const handleCodeRequest = async () => {
@@ -81,9 +77,7 @@ export default {
           await getCaptcha(state.account, props.type, props.purpose);
           state.disabled = false;
         } else {
-          console.warn(
-            "Component [CaptchaFormItem]: should  wrapper by TeForm"
-          );
+          console.warn("Component [CaptchaFormItem]: should  wrapper by TeForm");
         }
       } catch (error) {
         toastPassportAxiosError(error);
@@ -97,9 +91,9 @@ export default {
       ...toRefs(state),
       ...useValidate(),
       captchaCode,
-      handleCodeRequest
+      handleCodeRequest,
     };
-  }
+  },
 };
 </script>
 

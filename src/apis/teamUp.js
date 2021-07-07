@@ -11,8 +11,8 @@ export function shortUrl(url, title) {
     url: `/shutong/short-url`,
     data: {
       url,
-      title
-    }
+      title,
+    },
   });
 }
 
@@ -27,8 +27,8 @@ export function getSingleTeamUp(id) {
     method: "GET",
     url: `/shutong/team-ups/${id}`,
     params: {
-      with: "rewards,creator,rewards.entity,rewards.couponPool"
-    }
+      with: "rewards,creator,rewards.entity,rewards.couponPool",
+    },
   });
 }
 
@@ -40,7 +40,7 @@ export function getSingleTeamUp(id) {
 export function receiveBaseTeamUpAward(id) {
   return request({
     method: "PATCH",
-    url: `/shutong/receive-awards/${id}`
+    url: `/shutong/receive-awards/${id}`,
   });
 }
 
@@ -52,7 +52,7 @@ export function receiveBaseTeamUpAward(id) {
 export function receiveAward(id) {
   return request({
     method: "PATCH",
-    url: `/shutong/award-logs/${id}/receive`
+    url: `/shutong/award-logs/${id}/receive`,
   });
 }
 
@@ -63,7 +63,7 @@ export function receiveAward(id) {
 export function createActiveTeamUp(teamUpId) {
   return request({
     method: "POST",
-    url: `/shutong/active-team-ups/${teamUpId}`
+    url: `/shutong/active-team-ups/${teamUpId}`,
   });
 }
 
@@ -76,6 +76,6 @@ export function createActiveTeamUp(teamUpId) {
 export function joinTeamUp(id, teamId) {
   return request({
     method: "POST",
-    url: `/shutong/active-team-ups/${id}/${teamId}`
+    url: `/shutong/active-team-ups/${id}/${teamId}`,
   });
 }

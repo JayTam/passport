@@ -6,7 +6,7 @@ import requestSns from "@/apis/requests/brandCenterRequest";
 export function checkin() {
   return requestSns({
     method: "POST",
-    url: "/shutong/sign/add"
+    url: "/shutong/sign/add",
   });
 }
 
@@ -17,7 +17,7 @@ export function checkin() {
 export function getCheckinHistory() {
   return requestSns({
     method: "GET",
-    url: "/shutong/sign/signView"
+    url: "/shutong/sign/signView",
   });
 }
 
@@ -27,7 +27,7 @@ export function getCheckinHistory() {
 export function getCheckinTask() {
   return requestSns({
     method: "GET",
-    url: "/shutong/sign/progressive"
+    url: "/shutong/sign/progressive",
   });
 }
 
@@ -39,7 +39,7 @@ export function getCheckinTask() {
 export function getCheckinAward(id) {
   return requestSns({
     method: "PUT",
-    url: `/shutong/sign/progressive/${id}`
+    url: `/shutong/sign/progressive/${id}`,
   });
 }
 
@@ -49,6 +49,6 @@ export function getCheckinAward(id) {
 export function getNewMemberTasks() {
   return requestSns({
     method: "GET",
-    url: "/shutong/profile-tasks"
+    url: "/shutong/profile-tasks",
   });
 }

@@ -4,11 +4,7 @@
 
   <te-form :model="form" ref="formRef">
     <!-- 用户名 -->
-    <te-form-item
-      label="Create username"
-      prop="username"
-      :rules="userNameRules"
-    >
+    <te-form-item label="Create username" prop="username" :rules="userNameRules">
       <te-input v-model="form.username"></te-input>
       <p class="account_tip">You can always change this later.</p>
     </te-form-item>
@@ -17,25 +13,13 @@
     <te-form-item label="When’s your birthday?" class="birthday">
       <div class="birthday_box">
         <te-form-item prop="Month" :rules="accountRules">
-          <my-select
-            type="Month"
-            width="60px"
-            @seleChange="handleMonth"
-          ></my-select>
+          <my-select type="Month" width="60px" @seleChange="handleMonth"></my-select>
         </te-form-item>
         <te-form-item prop="Day" :rules="accountRules">
-          <my-select
-            type="Day"
-            width="60px"
-            @seleChange="handleDay"
-          ></my-select>
+          <my-select type="Day" width="60px" @seleChange="handleDay"></my-select>
         </te-form-item>
         <te-form-item prop="Year" :rules="accountRules">
-          <my-select
-            type="Year"
-            width="60px"
-            @seleChange="handleYear"
-          ></my-select>
+          <my-select type="Year" width="60px" @seleChange="handleYear"></my-select>
         </te-form-item>
       </div>
     </te-form-item>
@@ -46,18 +30,11 @@
     </te-form-item>
 
     <te-form-item>
-      <te-button
-        type="warning"
-        block
-        dark
-        :loading="loading"
-        @click="handleSubmit"
-        >Next</te-button
-      >
+      <te-button type="warning" block dark :loading="loading" @click="handleSubmit">Next</te-button>
     </te-form-item>
 
     <div class="tips">
-      <te-button type="text" size="mini" :to="{ name: 'SignUpPhone' }" replace
+      <te-button type="text" size="mini" :to="{ name: 'SignUpPhone' }" @click="handleskip" replace
         >Skip</te-button
       >
     </div>
@@ -69,7 +46,6 @@ import { reactive, ref, toRefs } from "vue";
 import { useValidate } from "@/composables/useValidate";
 import { toastPassportAxiosError } from "@/utils";
 import { updateUserInfo } from "@/apis/user";
-import { useStore } from "vuex";
 import TeFormItem from "../../../components/Form/FormItem";
 import TeForm from "../../../components/Form/Form";
 import TeInput from "../../../components/Form/Input";
@@ -77,6 +53,7 @@ import TeButton from "../../../components/Button";
 import PhotoView from "../../../components/PhotoView";
 import MySelect from "../../../components/MySelect";
 import { Toast } from "vant";
+import { useStore } from "vuex";
 
 export default {
   name: "editProfile",
@@ -103,36 +80,51 @@ export default {
       },
     });
 
-    const handleMonth = async (arg) => {
+    const handleMonth = async arg => {
+      if (arg < 100) {
+        arg = "0" + arg;
+      }
       state.form.Month = arg;
     };
-    const handleDay = async (arg) => {
+    const handleDay = async arg => {
+      if (arg < 100) {
+        arg = "0" + arg;
+      }
       state.form.Day = arg;
     };
-    const handleYear = async (arg) => {
+    const handleYear = async arg => {
       state.form.Year = arg;
     };
-    const handleGender = async (arg) => {
+    const handleGender = async arg => {
       state.form.gender = arg;
     };
+
+    // 进入这个页面则代表用户注册成功,然后用户根据选择填写用户信息
 
     const handleSubmit = async () => {
       let obj = {};
       obj.username = state.form.username;
-      obj.gender = state.form.gender;
-      obj.birthday =
-        state.form.Year + "-" + state.form.Month + "-" + state.form.Day;
+      obj.gender = Number(state.form.gender);
+      obj.birthday = state.form.Year + "-" + state.form.Month + "-" + state.form.Day;
+      const token = JSON.parse(localStorage.getItem("myToken"));
+      await store.dispatch("auth/signSuccess", token);
       try {
         loading.value = true;
         await formRef.value.validate();
         await updateUserInfo(obj);
         await Toast.success("success");
-        // await store.dispatch("auth/loginAccount", state.form);
+        await store.dispatch("auth/editSuccess");
       } catch (error) {
         toastPassportAxiosError(error);
       } finally {
         loading.value = false;
       }
+    };
+
+    const handleskip = async () => {
+      const token = JSON.parse(localStorage.getItem("myToken"));
+      await store.dispatch("auth/signSuccess", token);
+      await store.dispatch("auth/editSuccess");
     };
 
     return {
@@ -147,6 +139,7 @@ export default {
       handleGender,
       PhotoView,
       MySelect,
+      handleskip,
     };
   },
 };

@@ -4,14 +4,18 @@
  * 2. route name 使用驼峰式且首字母大写，比如 LoginAccount
  * 3. router.push不要用path，用name，比如 router.push({ name: "Home" })
  */
-// import auth from "./modules/auth";
-import auth from "./modules/authPc";
 import userCenter from "./modules/userCenter";
+import authPc from "./modules/authPc";
+import authMobile from "./modules/auth";
+import { isPC } from "@/utils";
+
+const authRoutes = isPC() ? authPc : authMobile;
 
 export default [
-  ...auth,
+  // 登陆注册相关
+  ...authRoutes,
+  // 用户中心
   ...userCenter,
-
   // 隐私政策
   {
     path: "/privacy",

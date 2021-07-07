@@ -20,6 +20,6 @@ module.exports = {
   AlreadyAMember: "Sudah menjadi anggota?",
   SignUp: "Registrasi",
 
-  LogIn: "Login"
+  LogIn: "Login",
   /* home */
 };

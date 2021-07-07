@@ -5,10 +5,15 @@
         <slot name="button-left"></slot>
       </div>
     </template>
-    <div class="te-input__control">
+    <div
+      :class="{
+        'te-input__control': true,
+        password_type: type === 'password',
+      }"
+    >
       <input
         class="te-input__inner"
-        :type="type"
+        :type="changeType"
         :placeholder="placeholder"
         :disabled="disabled"
         :value="modelValue"
@@ -17,6 +22,11 @@
         @focus="focus"
         @blur="blur"
       />
+      <div
+        :class="{ passwordBox: true, passwordBoxShow: isShow }"
+        v-if="type === 'password'"
+        @click="isShowHandle"
+      ></div>
     </div>
     <template v-if="$slots['button-right']">
       <div class="te-input__button--right">
@@ -39,14 +49,16 @@ export default {
       default: "text",
       validator(val) {
         return ["text", "textarea", "password", "tel"].indexOf(val) > -1;
-      }
+      },
     },
-    maxLength: [String, Number]
+    maxLength: [String, Number],
   },
   emits: ["update:modelValue", "change", "focus", "blur"],
   setup(props, { emit }) {
     const state = reactive({
-      focus: false
+      focus: false,
+      changeType: props.type,
+      isShow: false,
     });
 
     const focus = () => {
@@ -59,10 +71,19 @@ export default {
       emit("blur");
     };
 
+    const isShowHandle = () => {
+      state.isShow = !state.isShow;
+      if (state.isShow) {
+        state.changeType = "text";
+      } else {
+        state.changeType = "password";
+      }
+    };
+
     const inputClass = computed(() => {
       return {
         "is-disabled": props.disabled,
-        "is-focus": state.focus
+        "is-focus": state.focus,
       };
     });
 
@@ -70,9 +91,10 @@ export default {
       ...toRefs(state),
       inputClass,
       focus,
-      blur
+      blur,
+      isShowHandle,
     };
-  }
+  },
 };
 </script>
 
@@ -86,6 +108,25 @@ export default {
     background: @input-background-color;
     border-radius: 6px;
     border: 2px solid @input-background-color;
+  }
+  .password_type {
+    .te-input__inner {
+      width: 92%;
+      display: inline-block;
+    }
+    .passwordBox {
+      width: 22px;
+      height: 22px;
+      background: url("../../assets/imgs/btn_conceal_normal@2x.png") center center no-repeat;
+      background-size: 100%;
+      display: inline-block;
+      vertical-align: top;
+      cursor: pointer;
+    }
+    .passwordBoxShow {
+      background: url("../../assets/imgs/btn_show_normal@2x.png") center center no-repeat;
+      background-size: 100%;
+    }
   }
 
   &__inner {

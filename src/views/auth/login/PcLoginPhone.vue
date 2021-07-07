@@ -1,27 +1,14 @@
 <template>
   <p class="title">log in</p>
   <te-form :model="form" ref="formRef">
-    <te-form-item
-      :label="$t('Auth.PhoneNumber')"
-      prop="fullPhone"
-      :rules="phoneFindRules"
-    >
+    <te-form-item :label="$t('Auth.PhoneNumber')" prop="fullPhone" :rules="phoneFindRules">
       <template #label-right>
-        <te-button
-          type="text"
-          size="mini"
-          :tab-index="-1"
-          :to="{ name: 'LoginAccount' }"
-          replace
-        >
+        <te-button type="text" size="mini" :tab-index="-1" :to="{ name: 'LoginAccount' }" replace>
           {{ $t("Auth.LoginWithUserIDorEmail") }}
         </te-button>
       </template>
       <div>
-        <te-phone-input
-          v-model:phone="form.phone"
-          v-model:code="form.phoneAreaCode"
-        />
+        <te-phone-input-pc v-model:phone="form.phone" v-model:code="form.phoneAreaCode" />
       </div>
     </te-form-item>
 
@@ -34,26 +21,16 @@
       :purpose="CAPTCHA_PURPOSE.LOGIN"
     >
       <template #label-right>
-        <te-button
-          type="text"
-          size="mini"
-          :tab-index="-1"
-          :to="{ name: 'ForgetPassword' }"
-        >
+        <te-button type="text" size="mini" :tab-index="-1" :to="{ name: 'ForgetPassword' }">
           {{ $t("Auth.ForgotPassword") }}
         </te-button>
       </template>
     </captcha-form-item>
 
     <te-form-item>
-      <te-button
-        type="warning"
-        block
-        dark
-        :loading="loading"
-        @click="handleSubmit"
-        >{{ $t("Auth.Login") }}</te-button
-      >
+      <te-button type="warning" block dark :loading="loading" @click="handleSubmit">{{
+        $t("Auth.Login")
+      }}</te-button>
     </te-form-item>
 
     <div class="tips">
@@ -73,20 +50,18 @@ import { toastPassportAxiosError } from "@/utils";
 import TeFormItem from "../../../components/Form/FormItem";
 import TeForm from "../../../components/Form/Form";
 import TeButton from "../../../components/Button";
-import TePhoneInput from "../../../components/Form/PhoneInput";
+import TePhoneInputPc from "../../../components/Form/PhoneInputPc";
 import CaptchaFormItem from "@/views/auth/components/CaptchaFormItem";
 import { CAPTCHA_PURPOSE, CAPTCHA_TYPE } from "@/constants";
-import Desc from "../../../components/desc";
 
 export default {
   name: "PcLoginPhone",
   components: {
     CaptchaFormItem,
-    TePhoneInput,
+    TePhoneInputPc,
     TeButton,
     TeForm,
     TeFormItem,
-    Desc,
   },
   setup() {
     const formRef = ref(null);
@@ -94,7 +69,7 @@ export default {
     const state = reactive({
       form: {
         phone: "",
-        phoneAreaCode: "+62",
+        phoneAreaCode: "+86",
         fullPhone: computed(() => state.form.phoneAreaCode + state.form.phone),
         code: "",
       },
@@ -123,7 +98,7 @@ export default {
       handleSubmit,
       CAPTCHA_PURPOSE,
       CAPTCHA_TYPE,
-      Desc,
+      TePhoneInputPc,
     };
   },
 };

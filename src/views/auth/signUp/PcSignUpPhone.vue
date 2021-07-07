@@ -1,27 +1,15 @@
 <template>
-  <p class="title">log in</p>
+  <p class="title">sign up</p>
 
   <te-form :model="form" ref="formRef">
-    <te-form-item
-      :label="$t('Auth.PhoneNumber')"
-      prop="fullPhone"
-      :rules="phoneSignUpRules"
-    >
+    <te-form-item :label="$t('Auth.PhoneNumber')" prop="fullPhone" :rules="phoneSignUpRules">
       <template #label-right>
-        <te-button
-          type="text"
-          size="mini"
-          :to="{ name: 'SignUpEmail' }"
-          replace
-        >
+        <te-button type="text" size="mini" :to="{ name: 'SignUpEmail' }" replace>
           {{ $t("Auth.SignUpWithEmail") }}
         </te-button>
       </template>
       <div>
-        <te-phone-input
-          v-model:phone="form.phone"
-          v-model:code="form.phoneAreaCode"
-        />
+        <te-phone-input-pc v-model:phone="form.phone" v-model:code="form.phoneAreaCode" />
       </div>
     </te-form-item>
 
@@ -34,7 +22,7 @@
       :purpose="CAPTCHA_PURPOSE.CHECK"
     ></captcha-form-item>
 
-    <div class="tips" style="margin-bottom: 14px;">
+    <!-- <div class="tips" style="margin-bottom: 14px;">
       <p class="tips__text">{{ $t("Auth.ByClick") }}</p>
       <te-button type="text" size="mini" :to="{ name: 'UserAgreement' }">
         {{ $t("Auth.TermsOfService") }}
@@ -42,18 +30,32 @@
       <te-button type="text" size="mini" :to="{ name: 'Privacy' }">
         {{ $t("Auth.PrivacyPolicy") }}
       </te-button>
-    </div>
+    </div> -->
 
     <te-form-item>
-      <te-button
-        type="warning"
-        block
-        dark
-        :loading="submitLoading"
-        @click="handleSubmit"
-        >{{ $t("Auth.CreateAccount") }}</te-button
-      >
+      <te-button type="warning" block dark :loading="submitLoading" @click="handleSubmit">{{
+        $t("Auth.CreateAccount")
+      }}</te-button>
     </te-form-item>
+
+    <div class="tips" style="margin-bottom: 14px; font-size: 12px;color: #999999;">
+      By continuing,you agree to Ziel’s
+      <te-button
+        type="text"
+        size="mini"
+        :to="{ name: 'UserAgreement' }"
+        style="color: black;height: 20px;"
+        >{{ $t("Auth.TermsOfService") }}</te-button
+      >
+      and congirm that you have read Ziel’s
+      <te-button
+        type="text"
+        size="mini"
+        :to="{ name: 'Privacy' }"
+        style="color: black;height: 20px;"
+        >{{ $t("Auth.PrivacyPolicy") }}.</te-button
+      >If you sign up with SMS,SMS fees may apply.
+    </div>
 
     <div class="tips">
       <p class="tips__text">{{ $t("Auth.AlreadyAMember") }}</p>
@@ -72,20 +74,18 @@ import { toastPassportAxiosError } from "@/utils";
 import TeFormItem from "../../../components/Form/FormItem";
 import TeForm from "../../../components/Form/Form";
 import TeButton from "../../../components/Button";
-import TePhoneInput from "../../../components/Form/PhoneInput";
+import TePhoneInputPc from "../../../components/Form/PhoneInputPc";
 import CaptchaFormItem from "@/views/auth/components/CaptchaFormItem";
 import { CAPTCHA_PURPOSE, CAPTCHA_TYPE } from "@/constants";
-import Desc from "../../../components/desc";
 
 export default {
   name: "PcSignUpPhone",
   components: {
     CaptchaFormItem,
-    TePhoneInput,
+    TePhoneInputPc,
     TeButton,
     TeForm,
     TeFormItem,
-    Desc,
   },
   setup() {
     const router = useRouter();
@@ -126,7 +126,7 @@ export default {
       handleSubmit,
       CAPTCHA_PURPOSE,
       CAPTCHA_TYPE,
-      Desc,
+      TePhoneInputPc,
     };
   },
 };
@@ -152,10 +152,11 @@ form {
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 
   &__text {
     font-size: 12px;
-    line-height: 24px;
+    // line-height: 24px;
     color: @color-info;
   }
 }

@@ -1,8 +1,4 @@
-import {
-  subAppIdPersistence,
-  passportTokenPersistence,
-  redirectUriPersistence,
-} from "@/utils";
+import { subAppIdPersistence, passportTokenPersistence, redirectUriPersistence } from "@/utils";
 import store from "../store/index";
 import { authorizedLogin } from "@/apis/auth";
 import QueryString from "query-string";
@@ -13,18 +9,14 @@ import QueryString from "query-string";
 export function registerBeforeRoute(router) {
   router.beforeEach(async (to, from, next) => {
     const isLogged = !!passportTokenPersistence.get();
-    const isLoginSignUpRoute = [
-      "/login",
-      "/signup",
-      "/forget",
-      "/auth",
-    ].includes(to.matched?.[0]?.path);
+    // 登陆或注册路由
+    const isLoginSignUpRoute = ["/login", "/signup", "/forget", "/auth"].includes(
+      to.matched?.[0]?.path
+    );
+    // 登陆路由
     const isLoginRoute = ["/login", "/auth"].includes(to.matched?.[0]?.path);
-    const isWhiteRoute =
-      isLoginSignUpRoute ||
-      ["Home", "Privacy", "UserAgreement", "TeamUp", "JoinTeamUp"].includes(
-        to.name
-      );
+    // 白名单
+    const isWhiteRoute = isLoginSignUpRoute || ["Privacy", "UserAgreement"].includes(to.name);
     const subAppId = subAppIdPersistence.get();
     // 本站的redirect_uri
     const redirectUri = redirectUriPersistence.get();
@@ -54,7 +46,7 @@ export function registerBeforeRoute(router) {
         await store.dispatch("user/getUserInfo");
       } catch (e) {
         await store.commit("auth/REMOVE_AUTH");
-        next({ name: "LoginAccount", query: from.query });
+        next({ name: "LoginHome", query: { ...from.query, ...to.query } });
         return;
       }
     }
@@ -66,12 +58,8 @@ export function registerBeforeRoute(router) {
       let token;
       const deviceId = store.state.auth.deviceId;
       const appId = subAppId;
-      if (subAppId === process.env.VUE_APP_BRAND_CENTER_APP_ID) {
-        token = store.state.auth.brandCenterToken;
-      } else {
-        const { data } = await authorizedLogin();
-        token = data.token;
-      }
+      const { data } = await authorizedLogin();
+      token = data.token;
       const queryStringObj = QueryString.parseUrl(redirectUri);
       queryStringObj.query.token = token;
       queryStringObj.query.device_id = deviceId;
@@ -86,20 +74,20 @@ export function registerBeforeRoute(router) {
     /**
      * 登录了，跳转redirect_uri地址
      */
-    // if (isLogged && redirectUri) {
-    //   redirectUriPersistence.remove();
-    //   window.location.href = decodeURIComponent(redirectUri);
-    //   return;
-    // }
+    if (isLogged && redirectUri) {
+      redirectUriPersistence.remove();
+      window.location.href = decodeURIComponent(redirectUri);
+      return;
+    }
 
     /**
      * 登录了，访问登陆注册页面，跳转首页
      */
-    // if (isLogged && isLoginSignUpRoute) {
-    //   return next({
-    //     name: "Home",
-    //   });
-    // }
+    if (isLogged && isLoginSignUpRoute) {
+      return next({
+        name: "LoginSuccess",
+      });
+    }
 
     /**
      * 未登录，跳转需要登录页面

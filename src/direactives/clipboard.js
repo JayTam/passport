@@ -20,7 +20,7 @@ const clipboard = {
         },
         action() {
           return binding.arg === "cut" ? "cut" : "copy";
-        }
+        },
       });
       clipboard.on("success", e => {
         const callback = el._v_clipboard_success;
@@ -58,7 +58,7 @@ const clipboard = {
       el._v_clipboard?.destroy();
       delete el._v_clipboard;
     }
-  }
+  },
 };
 
 export default clipboard;

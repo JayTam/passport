@@ -27,9 +27,7 @@
           />
         </div>
         <div class="below__progress-text">
-          <span class="below__progress-text__pre"> {{ reputation }} </span>/{{
-            vipInfo.max
-          }}
+          <span class="below__progress-text__pre"> {{ reputation }} </span>/{{ vipInfo.max }}
         </div>
         <div class="below__level">LV.{{ parseInt(level) + 1 }}</div>
       </div>
@@ -44,23 +42,21 @@ export default {
   name: "Reputation",
   data() {
     return {
-      showPivot: false
+      showPivot: false,
     };
   },
   computed: {
     // 声望值百分比
     reqPercentage() {
-      return this.reputation > this.vipInfo.max
-        ? 100
-        : (this.reputation / this.vipInfo.max) * 100;
+      return this.reputation > this.vipInfo.max ? 100 : (this.reputation / this.vipInfo.max) * 100;
     },
-    ...mapGetters("user", ["reputation", "vipInfo", "level"])
+    ...mapGetters("user", ["reputation", "vipInfo", "level"]),
   },
   methods: {
     goToHis() {
       this.$router.push({ name: "ReputationHistory" });
-    }
-  }
+    },
+  },
 };
 </script>
 

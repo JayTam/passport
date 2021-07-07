@@ -19,13 +19,9 @@ export default function useInfiniteScroll(request, options) {
       availableOffsetY = partScrollEl.scrollHeight - document.body.clientHeight;
     } else {
       // 网页被卷去的高
-      offsetY =
-        window.pageYOffset ||
-        document.documentElement.scrollTop ||
-        document.body.scrollTop;
+      offsetY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
       // 网页可被卷去的高 =  网页正文全文高 - 网页可见区域高
-      availableOffsetY =
-        document.body.scrollHeight - document.body.clientHeight;
+      availableOffsetY = document.body.scrollHeight - document.body.clientHeight;
     }
     // 到网页底部的距离
     const toBottomDistance = availableOffsetY - offsetY;

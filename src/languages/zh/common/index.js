@@ -3,5 +3,5 @@ module.exports = {
   Resend: "重新发送",
   AreaCode: "区号",
   Cancel: "取消",
-  Confirm: "确认"
+  Confirm: "确认",
 };

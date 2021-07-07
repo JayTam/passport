@@ -11,7 +11,7 @@ const router = createRouter({
     } else {
       return { top: 0 };
     }
-  }
+  },
 });
 
 registerBeforeRoute(router);

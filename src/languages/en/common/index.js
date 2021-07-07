@@ -3,5 +3,6 @@ module.exports = {
   Resend: "Resend",
   AreaCode: "Area Code",
   Cancel: "Cancel",
-  Confirm: "Confirm"
+  Confirm: "Confirm",
+  thirdLogin: "Use a third-party login",
 };

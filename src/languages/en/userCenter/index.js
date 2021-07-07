@@ -97,5 +97,5 @@ module.exports = {
   BindTwitter: "Bind twitter",
   ChangeTwitter: "Change twitter",
 
-  Street: "Street, Address, Company Name, C/O"
+  Street: "Street, Address, Company Name, C/O",
 };

@@ -1,12 +1,8 @@
 <template>
-  <p class="title">log in</p>
+  <p class="title">sign up</p>
 
   <te-form :model="form" ref="formRef">
-    <te-form-item
-      :label="$t('Auth.Password')"
-      prop="password"
-      :rules="passwordRules"
-    >
+    <te-form-item :label="$t('Auth.Password')" prop="password" :rules="passwordRules">
       <te-input v-model="form.password" type="password" />
     </te-form-item>
 
@@ -20,14 +16,9 @@
     </te-form-item>
 
     <te-form-item>
-      <te-button
-        type="warning"
-        block
-        dark
-        :loading="loading"
-        @click="handleSubmit"
-        >{{ $t("Auth.CompleteAccount") }}</te-button
-      >
+      <te-button type="warning" block dark :loading="loading" @click="handleSubmit">{{
+        $t("Auth.CompleteAccount")
+      }}</te-button>
     </te-form-item>
   </te-form>
 </template>
@@ -92,7 +83,12 @@ export default {
         } else {
           response = await signUpEmail(email, password, code);
         }
-        await store.dispatch("auth/loginSuccess", response.data);
+        await store.commit("user/SET_USER_ID", response.data.claim.uid);
+        window.localStorage.setItem("myToken", JSON.stringify(response.data));
+        // await store.dispatch("auth/signSuccess", response.data);
+        router.push({
+          name: "editProfile",
+        });
       } catch (error) {
         toastPassportAxiosError(error);
       } finally {

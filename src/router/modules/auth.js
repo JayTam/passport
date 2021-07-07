@@ -1,6 +1,7 @@
 import LoginLayout from "@/layouts/LoginLayout";
 
 export default [
+  { path: "/", redirect: "/login" },
   {
     path: "/login",
     component: LoginLayout,
@@ -9,21 +10,17 @@ export default [
         path: "",
         name: "LoginAccount",
         component: () =>
-          import(
-            /* webpackChunkName: "LoginAccount" */ "@/views/auth/login/LoginAccount.vue"
-          ),
-        meta: { title: "Routes.Login" }
+          import(/* webpackChunkName: "LoginAccount" */ "@/views/auth/login/LoginAccount.vue"),
+        meta: { title: "Routes.Login" },
       },
       {
         path: "phone",
         name: "LoginPhone",
         component: () =>
-          import(
-            /* webpackChunkName: "LoginPhone" */ "@/views/auth/login/LoginPhone.vue"
-          ),
-        meta: { title: "Routes.Login" }
-      }
-    ]
+          import(/* webpackChunkName: "LoginPhone" */ "@/views/auth/login/LoginPhone.vue"),
+        meta: { title: "Routes.Login" },
+      },
+    ],
   },
   {
     path: "/forget",
@@ -33,10 +30,8 @@ export default [
         path: "",
         name: "ForgetPassword",
         component: () =>
-          import(
-            /* webpackChunkName: "ForgetPassword" */ "@/views/auth/forget/ForgetPassword"
-          ),
-        meta: { title: "Routes.ResetPassword" }
+          import(/* webpackChunkName: "ForgetPassword" */ "@/views/auth/forget/ForgetPassword"),
+        meta: { title: "Routes.ResetPassword" },
       },
       {
         path: "phone",
@@ -45,7 +40,7 @@ export default [
           import(
             /* webpackChunkName: "VerificationPhone" */ "@/views/auth/forget/VerificationPhone"
           ),
-        meta: { title: "Routes.PhoneVerification" }
+        meta: { title: "Routes.PhoneVerification" },
       },
       {
         path: "email",
@@ -54,18 +49,16 @@ export default [
           import(
             /* webpackChunkName: "VerificationEmail" */ "@/views/auth/forget/VerificationEmail"
           ),
-        meta: { title: "Routes.EmailVerification" }
+        meta: { title: "Routes.EmailVerification" },
       },
       {
         path: "reset",
         name: "ResetPassword",
         component: () =>
-          import(
-            /* webpackChunkName: "ResetPassword" */ "@/views/auth/forget/ResetPassword"
-          ),
-        meta: { title: "Routes.ResetPassword" }
-      }
-    ]
+          import(/* webpackChunkName: "ResetPassword" */ "@/views/auth/forget/ResetPassword"),
+        meta: { title: "Routes.ResetPassword" },
+      },
+    ],
   },
   {
     path: "/signup",
@@ -75,19 +68,15 @@ export default [
         path: "phone",
         name: "SignUpPhone",
         component: () =>
-          import(
-            /* webpackChunkName: "SignUpPhone" */ "@/views/auth/signUp/SignUpPhone.vue"
-          ),
-        meta: { title: "Routes.SignUp" }
+          import(/* webpackChunkName: "SignUpPhone" */ "@/views/auth/signUp/SignUpPhone.vue"),
+        meta: { title: "Routes.SignUp" },
       },
       {
         path: "email",
         name: "SignUpEmail",
         component: () =>
-          import(
-            /* webpackChunkName: "SignUpEmail" */ "@/views/auth/signUp/SignUpEmail.vue"
-          ),
-        meta: { title: "Routes.SignUp" }
+          import(/* webpackChunkName: "SignUpEmail" */ "@/views/auth/signUp/SignUpEmail.vue"),
+        meta: { title: "Routes.SignUp" },
       },
       {
         path: "set_password",
@@ -96,9 +85,9 @@ export default [
           import(
             /* webpackChunkName: "SignUpSetPassword" */ "@/views/auth/signUp/SignUpSetPassword.vue"
           ),
-        meta: { title: "Routes.PasswordUserID" }
-      }
-    ]
+        meta: { title: "Routes.PasswordUserID" },
+      },
+    ],
   },
   //TODO:将要第三方登陆callback页放在 /login 下
   {
@@ -112,9 +101,9 @@ export default [
           import(
             /* webpackChunkName: "ThirdLoginLandingPage" */ "@/views/auth/third/ThirdLoginLandingPage"
           ),
-        meta: { title: "Routes.Login" }
-      }
-    ]
+        meta: { title: "Routes.Login" },
+      },
+    ],
   },
   {
     path: "/change",
@@ -124,47 +113,37 @@ export default [
         path: "email",
         name: "ChangeEmailNext",
         component: () =>
-          import(
-            /* webpackChunkName: "ChangeEmailNext" */ "@/views/auth/change/ChangeEmailNext"
-          ),
-        meta: { title: "Routes.ChangeEmail" }
+          import(/* webpackChunkName: "ChangeEmailNext" */ "@/views/auth/change/ChangeEmailNext"),
+        meta: { title: "Routes.ChangeEmail" },
       },
       {
         path: "email_done",
         name: "ChangeEmailDone",
         component: () =>
-          import(
-            /* webpackChunkName: "ChangeEmailDone" */ "@/views/auth/change/ChangeEmailDone"
-          ),
-        meta: { title: "Routes.ChangeEmail" }
+          import(/* webpackChunkName: "ChangeEmailDone" */ "@/views/auth/change/ChangeEmailDone"),
+        meta: { title: "Routes.ChangeEmail" },
       },
       {
         path: "phone",
         name: "ChangePhoneNext",
         component: () =>
-          import(
-            /* webpackChunkName: "ChangePhoneNext" */ "@/views/auth/change/ChangePhoneNext"
-          ),
-        meta: { title: "Routes.ChangePhoneNumber" }
+          import(/* webpackChunkName: "ChangePhoneNext" */ "@/views/auth/change/ChangePhoneNext"),
+        meta: { title: "Routes.ChangePhoneNumber" },
       },
       {
         path: "phone_done",
         name: "ChangePhoneDone",
         component: () =>
-          import(
-            /* webpackChunkName: "ChangePhoneDone" */ "@/views/auth/change/ChangePhoneDone"
-          ),
-        meta: { title: "Routes.ChangePhoneNumber" }
+          import(/* webpackChunkName: "ChangePhoneDone" */ "@/views/auth/change/ChangePhoneDone"),
+        meta: { title: "Routes.ChangePhoneNumber" },
       },
       {
         path: "password",
         name: "ChangePassWord",
         component: () =>
-          import(
-            /* webpackChunkName: "ChangePassWord" */ "@/views/others/ChangePassWord.vue"
-          ),
-        meta: { title: "Routes.ChangePassWord" }
-      }
-    ]
-  }
+          import(/* webpackChunkName: "ChangePassWord" */ "@/views/others/ChangePassWord.vue"),
+        meta: { title: "Routes.ChangePassWord" },
+      },
+    ],
+  },
 ];
