@@ -44,7 +44,7 @@
         type="text"
         size="mini"
         :to="{ name: 'UserAgreement' }"
-        style="color: black;height: 20px;"
+        style="color: black;height: 14px;border:none"
         >{{ $t("Auth.TermsOfService") }}</te-button
       >
       and congirm that you have read Ziel’s
@@ -52,14 +52,14 @@
         type="text"
         size="mini"
         :to="{ name: 'Privacy' }"
-        style="color: black;height: 20px;"
+        style="color: black;height: 14px;border:none"
         >{{ $t("Auth.PrivacyPolicy") }}.</te-button
       >If you sign up with SMS,SMS fees may apply.
     </div>
 
     <div class="tips">
       <p class="tips__text">{{ $t("Auth.AlreadyAMember") }}</p>
-      <te-button type="text" size="mini" :to="{ name: 'LoginAccount' }" replace>
+      <te-button type="other" size="mini" :to="{ name: 'LoginAccount' }" replace>
         {{ $t("Auth.Login") }}
       </te-button>
     </div>
@@ -93,7 +93,7 @@ export default {
     const state = reactive({
       form: {
         phone: "",
-        phoneAreaCode: "+62",
+        phoneAreaCode: "+1",
         fullPhone: computed(() => state.form.phoneAreaCode + state.form.phone),
         code: "",
       },

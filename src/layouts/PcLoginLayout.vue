@@ -36,8 +36,8 @@ export default {
   background-size: 100%;
   border-top: 1px solid transparent;
   > .logo {
-    width: 141px;
-    height: 20px;
+    width: 110px;
+    height: 24px;
     background: #fff url("../assets/imgs/ZIEL HOMElogo.png") no-repeat center center;
     background-size: 100%;
     margin-top: 20px;

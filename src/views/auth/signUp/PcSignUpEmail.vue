@@ -45,7 +45,7 @@
         type="text"
         size="mini"
         :to="{ name: 'UserAgreement' }"
-        style="color: black;height: 20px;"
+        style="height: 14px; color: black; border: none;"
       >
         {{ $t("Auth.TermsOfService") }}
       </te-button>
@@ -54,7 +54,7 @@
         type="text"
         size="mini"
         :to="{ name: 'Privacy' }"
-        style="color: black;height: 20px;"
+        style="height: 14px; color: black; border: none;"
       >
         {{ $t("Auth.PrivacyPolicy") }} </te-button
       >.
@@ -62,7 +62,7 @@
 
     <div class="tips">
       <p class="tips__text">{{ $t("Auth.AlreadyAMember") }}</p>
-      <te-button type="text" size="mini" :to="{ name: 'LoginAccount' }" replace>
+      <te-button type="other" size="mini" :to="{ name: 'LoginAccount' }" replace>
         {{ $t("Auth.Login") }}
       </te-button>
     </div>
@@ -80,7 +80,6 @@ import TeButton from "../../../components/Button";
 import { useValidate } from "@/composables/useValidate";
 import CaptchaFormItem from "@/views/auth/components/CaptchaFormItem";
 import { CAPTCHA_PURPOSE, CAPTCHA_TYPE } from "@/constants";
-import Desc from "../../../components/desc";
 
 export default {
   name: "PcSignUpEmail",
@@ -90,7 +89,6 @@ export default {
     TeForm,
     TeFormItem,
     TeInput,
-    Desc,
   },
   setup() {
     const router = useRouter();
@@ -129,7 +127,6 @@ export default {
       handleSubmit,
       CAPTCHA_PURPOSE,
       CAPTCHA_TYPE,
-      Desc,
     };
   },
 };
