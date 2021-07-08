@@ -10,4 +10,5 @@ module.exports = {
   invalidEmail: "invalid email",
   emailAreadyRegistered: "email already registered",
   emailUnregistered: "email unregistered",
+  userNameVer: "The username format is 4-20 letters or numbers",
 };

@@ -10,4 +10,5 @@ module.exports = {
   invalidEmail: "无效的邮箱地址",
   emailAreadyRegistered: "该邮箱已被注册",
   emailUnregistered: "邮箱未注册",
+  userNameVer: "用户名格式为4-20位字母或数字",
 };

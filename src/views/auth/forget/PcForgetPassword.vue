@@ -16,7 +16,7 @@
     </te-button>
   </div>
 
-  <te-button type="text" size="mini" :to="{ name: 'home' }" replace class="btn"
+  <te-button type="text" size="mini" :to="{ name: 'LoginAccount' }" replace class="btn"
     >Back to Log in</te-button
   >
 </template>
