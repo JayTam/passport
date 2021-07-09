@@ -2,17 +2,10 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import { redirectToTenantUrl } from "@/utils";
 import VueI18n from "./languages";
 // 样式
 import "normalize.css";
 import "./styles/index.less";
-
-// 拦截 auth.mms.tevo.online
-redirectToTenantUrl();
-
-// 加载租户信息
-store.dispatch("tenant/getTenantInfo");
 
 // 导入全部svg
 const requireAll = requireContext => requireContext.keys().map(requireContext);

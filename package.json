@@ -11,7 +11,8 @@
     "precommit": "lint-staged",
     "dev": "vue-cli-service serve",
     "build:test": "vue-cli-service build --mode test",
-    "build:production": "vue-cli-service build --mode production",
+    "build:beta": "vue-cli-service build --mode beta",
+    "build:master": "vue-cli-service build --mode production",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

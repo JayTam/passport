@@ -10,9 +10,6 @@ import {
 import {
   deviceIdPersistence,
   passportTokenPersistence,
-  thirdTypePersistence,
-  thirdBehaviorPersistence,
-  tenantNamePersistence,
   parseThirdParameters,
   postMessage,
   subAppIdPersistence,
@@ -117,7 +114,7 @@ export default {
     },
   },
   actions: {
-    async loginSuccess({ commit }, { token, claim: { device_id: deviceId }, type }) {
+    async loginSuccess({ commit }, { token, claim: { device_id: deviceId } }) {
       commit("SET_PASSPORT_TOKEN", token);
       commit("SET_DEVICE_ID", deviceId);
       const subAppId = subAppIdPersistence.get();
@@ -125,8 +122,8 @@ export default {
         const { data } = await authorizedLogin(subAppId);
         postMessage("loginSuccess", data);
       }
-      if (type === "LoginThied") return;
       await router.push({ name: "LoginSuccess" });
+      // 如果是第三方登陆，
     },
 
     async signSuccess({ commit }, { token, claim: { device_id: deviceId } }) {
@@ -155,11 +152,7 @@ export default {
     async loginThird({ dispatch }) {
       const { code, type, verifier } = parseThirdParameters();
       const { data } = await loginThirdSecondStep(code, type, verifier);
-      await dispatch("loginSuccess", data, "LoginThied");
-      // 第三方登陆成功，清除第三方登陆所需参数
-      thirdTypePersistence.remove();
-      thirdBehaviorPersistence.remove();
-      tenantNamePersistence.remove();
+      await dispatch("loginSuccess", data);
     },
 
     async bindThird({ commit }) {
