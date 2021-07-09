@@ -18,7 +18,7 @@ export function useValidate() {
     // 以下是直接可用的规则
     accountRules: [requiredRule],
 
-    userNameRules: [requiredRule, { pattern: NAME_REG, message: "用户名格式为4-20位字母或数字" }],
+    userNameRules: [requiredRule, { pattern: NAME_REG, message: t("UseValidate.userNameVer") }],
     passwordRules: [
       requiredRule,
       { min: 8, max: 16, message: t("UseValidate.mustBeBetween8And16") },

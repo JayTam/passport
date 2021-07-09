@@ -3,7 +3,7 @@
   <te-form :model="form" ref="formRef">
     <te-form-item :label="$t('Auth.PhoneNumber')" prop="fullPhone" :rules="phoneFindRules">
       <div>
-        <te-phone-input v-model:phone="form.phone" v-model:code="form.phoneAreaCode" />
+        <te-phone-input-pc v-model:phone="form.phone" v-model:code="form.phoneAreaCode" />
       </div>
     </te-form-item>
 
@@ -32,20 +32,20 @@ import { useValidate } from "@/composables/useValidate";
 import TeFormItem from "../../../components/Form/FormItem";
 import TeForm from "../../../components/Form/Form";
 import TeButton from "../../../components/Button";
-import TePhoneInput from "../../../components/Form/PhoneInput";
+import TePhoneInputPc from "../../../components/Form/PhoneInputPc";
 import CaptchaFormItem from "@/views/auth/components/CaptchaFormItem";
 import { CAPTCHA_PURPOSE, CAPTCHA_TYPE } from "@/constants";
 
 export default {
   name: "VerificationPhone",
-  components: { CaptchaFormItem, TePhoneInput, TeButton, TeForm, TeFormItem },
+  components: { CaptchaFormItem, TePhoneInputPc, TeButton, TeForm, TeFormItem },
   setup() {
     const router = useRouter();
     const formRef = ref(null);
     const state = reactive({
       form: {
         phone: "",
-        phoneAreaCode: "+62",
+        phoneAreaCode: "+1",
         fullPhone: computed(() => state.form.phoneAreaCode + state.form.phone),
         code: "",
       },

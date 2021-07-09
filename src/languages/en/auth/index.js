@@ -28,25 +28,25 @@ module.exports = {
   Done: "Done",
 
   /** login */
-  UserIdEmail: "User ID & Email",
-  NotaMember: "Not a member?",
+  UserIdEmail: "Email or Username",
+  NotaMember: "already have an account?",
   tips: "Login with email/phone",
 
   /** signUp */
-  LoginPhone: "Login with your phone",
-  LoginWithUserIDorEmail: "Login with User ID or Email",
+  LoginPhone: "Log in with phone",
+  LoginWithUserIDorEmail: "log in with email or username",
   ForgotPassword: "Forgot passsword？",
   GetCode: "Get Code",
   Resend: "Resend",
-  SignUpNow: "Sign up now",
+  SignUpNow: "sign up",
 
-  SignUpWithPhone: "Sign up with Phone Number",
+  SignUpWithPhone: "sign up with phone",
   ByClick: 'By Clicking "Creating Account" you agree to our',
   TermsOfService: "Terms of Service",
   PrivacyPolicy: "Privacy Policy",
   CreateAccount: "Create Account",
   AlreadyAMember: "Already a member？",
-  SignUpWithEmail: "Sign up with Email address",
+  SignUpWithEmail: "sign up with email",
   CompleteAccount: "Complete Account",
 
   /** third */

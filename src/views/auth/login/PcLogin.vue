@@ -6,7 +6,7 @@
   </te-button>
   <div class="tips">
     <p class="tips__text">{{ $t("Auth.NotaMember") }}</p>
-    <te-button type="text" size="mini" :to="{ name: 'SignUpPhone' }" replace>{{
+    <te-button type="other" size="mini" :to="{ name: 'SignUpPhone' }" replace>{{
       $t("Auth.SignUpNow")
     }}</te-button>
   </div>
@@ -19,9 +19,6 @@ import { reactive, ref, toRefs } from "vue";
 import { useValidate } from "@/composables/useValidate";
 import { toastPassportAxiosError } from "@/utils";
 import { useStore } from "vuex";
-import TeFormItem from "../../../components/Form/FormItem";
-import TeForm from "../../../components/Form/Form";
-import TeInput from "../../../components/Form/Input";
 import TeButton from "../../../components/Button";
 import Desc from "../../../components/desc";
 import OtherChanner from "../../../components/OtherChanner";
@@ -30,9 +27,6 @@ export default {
   name: "PcLoginAccount",
   components: {
     TeButton,
-    TeForm,
-    TeFormItem,
-    TeInput,
     Desc,
     OtherChanner,
   },
@@ -84,7 +78,7 @@ form {
 .logobg {
   width: 100%;
   height: 71px;
-  background: url("../../../assets/imgs/ZIEL HOMEmin.png") center center no-repeat;
+  // background: url("../../../assets/imgs/ZIEL HOMEmin.png") center center no-repeat;
   background-size: 100%;
   margin-bottom: 16px;
 }

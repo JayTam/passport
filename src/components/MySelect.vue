@@ -77,7 +77,6 @@ export default {
 
 <style lang="less" scoped>
 .MySelect {
-  outline: none;
   // padding: 11px 20px;
   font-size: 14px;
   padding: 7px 7px;
@@ -86,10 +85,10 @@ export default {
   border-radius: 8px;
   text-align: center;
   select {
+    outline: none;
     width: 100%;
     border: none;
     box-sizing: border-box;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
     background-color: transparent;
     option {
       width: 100%;

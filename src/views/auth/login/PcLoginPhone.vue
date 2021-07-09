@@ -35,7 +35,7 @@
 
     <div class="tips">
       <p class="tips__text">{{ $t("Auth.NotaMember") }}</p>
-      <te-button type="text" size="mini" :to="{ name: 'SignUpPhone' }" replace>
+      <te-button type="other" size="mini" :to="{ name: 'SignUpPhone' }" replace>
         {{ $t("Auth.SignUpNow") }}
       </te-button>
     </div>
@@ -69,7 +69,7 @@ export default {
     const state = reactive({
       form: {
         phone: "",
-        phoneAreaCode: "+86",
+        phoneAreaCode: "+1",
         fullPhone: computed(() => state.form.phoneAreaCode + state.form.phone),
         code: "",
       },

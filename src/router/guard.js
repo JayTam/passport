@@ -74,11 +74,11 @@ export function registerBeforeRoute(router) {
     /**
      * 登录了，跳转redirect_uri地址
      */
-    if (isLogged && redirectUri) {
-      redirectUriPersistence.remove();
-      window.location.href = decodeURIComponent(redirectUri);
-      return;
-    }
+    // if (isLogged && redirectUri) {
+    //   redirectUriPersistence.remove();
+    //   window.location.href = decodeURIComponent(redirectUri);
+    //   return;
+    // }
 
     /**
      * 登录了，访问登陆注册页面，跳转首页

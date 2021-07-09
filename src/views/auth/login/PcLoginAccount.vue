@@ -27,7 +27,7 @@
 
     <div class="tips">
       <p class="tips__text">{{ $t("Auth.NotaMember") }}</p>
-      <te-button type="text" size="mini" :to="{ name: 'SignUpPhone' }" replace>{{
+      <te-button type="other" size="mini" :to="{ name: 'SignUpPhone' }" replace>{{
         $t("Auth.SignUpNow")
       }}</te-button>
     </div>

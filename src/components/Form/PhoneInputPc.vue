@@ -29,16 +29,17 @@ export default {
   props: {
     placeholder: String,
     disabled: { type: Boolean, default: false },
-    code: { type: String, default: "+86" },
+    code: { type: String, default: "+1" },
     phone: String,
   },
   emits: ["update:code", "update:phone", "input"],
   setup(props, { emit }) {
     const state = reactive({
       columns: [
-        { value: "", label: "请选择" },
-        { value: "+62", label: "ID +62" },
-        { value: "+86", label: "CN +86" },
+        { value: "", label: "Area" },
+        { value: "+1", label: "US +1" },
+        // { value: "+62", label: "ID +62" },
+        // { value: "+86", label: "CN +86" },
       ],
     });
     const { t } = useI18n();

@@ -217,6 +217,12 @@ export default {
     border: 2px solid transparent;
   }
 
+  &--other {
+    color: @color-text-other;
+    background-color: transparent;
+    border: 2px solid transparent;
+  }
+
   &--plain {
     background-color: @color-light;
 
