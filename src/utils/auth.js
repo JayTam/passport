@@ -40,17 +40,17 @@ class Persistence {
   }
 }
 
-// 租户名
-export const tenantNamePersistence = new Persistence("tenant_name", PAN_DOMAIN);
-// 第三方登陆类型
-export const thirdTypePersistence = new Persistence("third_type", PAN_DOMAIN);
-// 第三方登陆行为
-export const thirdBehaviorPersistence = new Persistence("third_behavior", PAN_DOMAIN);
 // 登陆回跳地址
 export const redirectUriPersistence = new Persistence("redirect_uri", PAN_DOMAIN);
+// 第三方登陆类型
+export const thirdTypePersistence = new Persistence("passport_third_type", PAN_DOMAIN);
+// 第三方登陆行为
+export const thirdBehaviorPersistence = new Persistence("passport_third_behavior", PAN_DOMAIN);
+// 租户名
+export const tenantNamePersistence = new Persistence("passport_tenant_name", PAN_DOMAIN);
 // 子应用ID
-export const subAppIdPersistence = new Persistence("sub_app_id", PAN_DOMAIN);
+export const subAppIdPersistence = new Persistence("passport_sub_app_id", PAN_DOMAIN);
 // 设备ID
-export const deviceIdPersistence = new Persistence("device_id", PAN_DOMAIN);
+export const deviceIdPersistence = new Persistence("passport_device_id", PAN_DOMAIN);
 // passport 登陆凭证
-export const passportTokenPersistence = new Persistence("pp_token");
+export const passportTokenPersistence = new Persistence("passport_token", PAN_DOMAIN);

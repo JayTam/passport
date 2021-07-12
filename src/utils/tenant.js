@@ -1,12 +1,8 @@
 /**
- * 根据二级域名前缀，获取租户名
+ * 获取passport租户名，租户名用于标识环境，test为测试环境，paasport为正式和beta环境
  */
 export function resolveTenantName() {
-  if (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "beta") {
-    return process.env.VUE_APP_DEFAULT_TENANT_NAME;
-  } else {
-    return process.env.VUE_APP_TEST_TENANT_NAME;
-  }
+  return process.env.VUE_APP_PAASPORT_TENANT_NAME;
 }
 
 /**
