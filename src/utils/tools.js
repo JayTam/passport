@@ -59,6 +59,7 @@ export function isPC() {
  * @param {string} targetOrigin
  */
 export function postMessage(action, payload, targetOrigin = "*") {
+  console.warn(`[passport message]:`, action, payload);
   window.parent.postMessage(
     {
       name: "passport",
