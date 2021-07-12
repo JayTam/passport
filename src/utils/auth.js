@@ -32,7 +32,7 @@ class Persistence {
 
   set(val) {
     if (isDef(val)) {
-      return Cookies.set(this.key, val, { domain: this.domain, sameSite: this.sameSite });
+      return Cookies.set(this.key, val, { domain: this.domain, sameSite: this.sameSite, security: true });
     }
   }
 
