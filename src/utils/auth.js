@@ -9,6 +9,7 @@ class Persistence {
   constructor(key, domain) {
     this.key = key;
     this.domain = domain;
+    this.sameSite = "None";
   }
 
   get() {
@@ -31,7 +32,7 @@ class Persistence {
 
   set(val) {
     if (isDef(val)) {
-      return Cookies.set(this.key, val, { domain: this.domain });
+      return Cookies.set(this.key, val, { domain: this.domain, sameSite: this.sameSite });
     }
   }
 
