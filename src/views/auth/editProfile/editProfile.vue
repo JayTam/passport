@@ -11,7 +11,7 @@
 
   <te-form :model="form" ref="formRef">
     <!-- 用户名 -->
-    <te-form-item label="Create username" prop="username" :rules="userNameRules">
+    <te-form-item label="Create name" prop="name" :rules="userNameRules">
       <te-input v-model="form.name"></te-input>
       <p class="account_tip">You can always change this later.</p>
     </te-form-item>
@@ -228,16 +228,24 @@ form {
   margin-bottom: 22px;
   position: relative;
   img {
-    width: 100%;
-    height: 100%;
+    width: 88px;
+    height: 88px;
   }
   .van-uploader {
-    width: 100%;
-    height: 100%;
+    width: 88px;
+    height: 88px;
+    .van-uploader__wrapper {
+      width: 88px;
+      height: 88px;
+      .van-uploader__input-wrapper {
+        width: 88px;
+        height: 88px;
+      }
+    }
   }
   .mask {
-    width: 100%;
-    height: 50%;
+    width: 88px;
+    height: 44px;
     position: absolute;
     bottom: 0;
     left: 0;

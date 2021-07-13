@@ -30,7 +30,7 @@ export default {
         },
         {
           value: "1",
-          label: "secrecy",
+          label: "SECRECY",
         },
       ],
 
