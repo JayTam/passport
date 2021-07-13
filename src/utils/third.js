@@ -84,8 +84,7 @@ export function parseThirdParameters() {
  */
 export function redirectToTenantUrl() {
   const tenantNameFromUrl = resolveTenantName();
-  const tenantNameFromCookie =
-    tenantNamePersistence.get() ?? process.env.VUE_APP_DEFAULT_TENANT_NAME;
+  const tenantNameFromCookie = tenantNamePersistence.get();
   if (tenantNameFromUrl === "auth") {
     const url = window.location.href;
     window.location.href = url.replace("auth", tenantNameFromCookie);

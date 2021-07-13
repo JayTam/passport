@@ -1,22 +1,8 @@
 /**
- * 根据二级域名前缀，获取租户名
+ * 获取passport租户名，租户名用于标识环境，test为测试环境，paasport为正式和beta环境
  */
 export function resolveTenantName() {
-  const tenantName = window.location.host.split(/[.|:]/)[0];
-  if (
-    process.env.NODE_ENV === "development" ||
-    process.env.NODE_ENV === "test" ||
-    tenantName === "localhost"
-  ) {
-    // 测试租户名
-    return process.env.VUE_APP_TEST_TENANT_NAME;
-  } else if (process.env.NODE_ENV === "production" && !tenantName) {
-    // 默认租户名
-    return process.env.VUE_APP_DEFAULT_TENANT_NAME;
-  } else {
-    // URL中截取的租户名
-    return tenantName;
-  }
+  return process.env.VUE_APP_PAASPORT_TENANT_NAME;
 }
 
 /**

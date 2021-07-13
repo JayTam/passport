@@ -28,6 +28,11 @@ export default {
         }
       } catch (e) {
         toastPassportAxiosError(e);
+      } finally {
+        // 第三方登陆成功，清除第三方登陆所需参数
+        // thirdTypePersistence.remove();
+        // thirdBehaviorPersistence.remove();
+        // tenantNamePersistence.remove();
       }
     };
 

@@ -1,9 +1,8 @@
 import axios from "axios";
 import store from "@/store";
-import { generateTenantUrl } from "@/utils";
 
 const instance = axios.create({
-  baseURL: generateTenantUrl(process.env.VUE_APP_BRAND_CENTER_URL),
+  baseURL: process.env.VUE_APP_BRAND_CENTER_URL,
   headers: {
     "Paasport-App-Id": process.env.VUE_APP_BRAND_CENTER_APP_ID,
   },
