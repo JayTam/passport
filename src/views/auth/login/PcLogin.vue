@@ -11,7 +11,7 @@
     }}</te-button>
   </div>
 
-  // TODO 第三方登录暂时隐藏
+  <!-- TODO 第三方登录暂时隐藏 -->
   <!-- <other-channer type="login"></other-channer> -->
 </template>
 
