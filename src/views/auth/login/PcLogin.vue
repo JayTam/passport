@@ -11,7 +11,8 @@
     }}</te-button>
   </div>
 
-  <other-channer type="login"></other-channer>
+  // TODO 第三方登录暂时隐藏
+  <!-- <other-channer type="login"></other-channer> -->
 </template>
 
 <script>
@@ -83,6 +84,7 @@ form {
   margin-bottom: 16px;
 }
 .tips {
+  margin-bottom: 20px;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;

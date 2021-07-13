@@ -29,7 +29,7 @@ module.exports = {
 
   /** login */
   UserIdEmail: "Email or Username",
-  NotaMember: "already have an account?",
+  NotaMember: "Don’t have an account?",
   tips: "Login with email/phone",
 
   /** signUp */
