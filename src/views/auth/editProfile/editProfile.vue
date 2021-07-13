@@ -12,7 +12,7 @@
   <te-form :model="form" ref="formRef">
     <!-- 用户名 -->
     <te-form-item label="Create username" prop="username" :rules="userNameRules">
-      <te-input v-model="form.username"></te-input>
+      <te-input v-model="form.name"></te-input>
       <p class="account_tip">You can always change this later.</p>
     </te-form-item>
 
@@ -75,7 +75,7 @@ export default {
     const store = useStore();
     const state = reactive({
       form: {
-        username: "",
+        name: "",
         birthday: "",
         gender: "",
         Month: "",
@@ -87,13 +87,13 @@ export default {
     });
 
     const handleMonth = async arg => {
-      if (arg < 100) {
+      if (arg < 10) {
         arg = "0" + arg;
       }
       state.form.Month = arg;
     };
     const handleDay = async arg => {
-      if (arg < 100) {
+      if (arg < 10) {
         arg = "0" + arg;
       }
       state.form.Day = arg;
@@ -108,7 +108,7 @@ export default {
     // 进入这个页面则代表用户注册成功,然后用户根据选择填写用户信息
     const handleSubmit = async () => {
       let obj = {};
-      obj.username = state.form.username;
+      obj.name = state.form.name;
       obj.gender = Number(state.form.gender);
       obj.birthday = state.form.Year + "-" + state.form.Month + "-" + state.form.Day;
       // const token = JSON.parse(localStorage.getItem("myToken"));
