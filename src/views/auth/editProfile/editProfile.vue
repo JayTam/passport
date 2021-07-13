@@ -1,6 +1,13 @@
 <template>
   <p class="title">Edit your profile</p>
-  <photo-view></photo-view>
+
+  <div class="PhotoView" @mouseenter="avatarChange = true" @mouseleave="avatarChange = false">
+    <van-uploader :after-read="afterRead">
+      <img v-if="avatar" :src="avatar" alt="avatar" />
+      <img v-else src="https://b.yzcdn.cn/vant/icon-demo-1126.png" alt="" />
+      <div class="mask" v-if="avatarChange">change</div>
+    </van-uploader>
+  </div>
 
   <te-form :model="form" ref="formRef">
     <!-- 用户名 -->
@@ -34,9 +41,7 @@
     </te-form-item>
 
     <div class="tips">
-      <te-button type="text" size="mini" :to="{ name: 'SignUpPhone' }" @click="handleskip" replace
-        >Skip</te-button
-      >
+      <te-button type="text" size="mini" @click="handleskip" replace>Skip</te-button>
     </div>
   </te-form>
 </template>
@@ -50,10 +55,10 @@ import TeFormItem from "../../../components/Form/FormItem";
 import TeForm from "../../../components/Form/Form";
 import TeInput from "../../../components/Form/Input";
 import TeButton from "../../../components/Button";
-import PhotoView from "../../../components/PhotoView";
 import MySelect from "../../../components/MySelect";
 import { Toast } from "vant";
 import { useStore } from "vuex";
+import { updateUserAvatar, uploadUserAvatar } from "@/apis/user";
 
 export default {
   name: "editProfile",
@@ -62,7 +67,6 @@ export default {
     TeForm,
     TeFormItem,
     TeInput,
-    PhotoView,
     MySelect,
   },
   setup() {
@@ -78,6 +82,8 @@ export default {
         Day: "",
         Year: "",
       },
+      avatar: "",
+      avatarChange: false,
     });
 
     const handleMonth = async arg => {
@@ -100,14 +106,13 @@ export default {
     };
 
     // 进入这个页面则代表用户注册成功,然后用户根据选择填写用户信息
-
     const handleSubmit = async () => {
       let obj = {};
       obj.username = state.form.username;
       obj.gender = Number(state.form.gender);
       obj.birthday = state.form.Year + "-" + state.form.Month + "-" + state.form.Day;
-      const token = JSON.parse(localStorage.getItem("myToken"));
-      await store.dispatch("auth/signSuccess", token);
+      // const token = JSON.parse(localStorage.getItem("myToken"));
+      // await store.dispatch("auth/signSuccess", token);
       try {
         loading.value = true;
         await formRef.value.validate();
@@ -122,9 +127,24 @@ export default {
     };
 
     const handleskip = async () => {
-      const token = JSON.parse(localStorage.getItem("myToken"));
-      await store.dispatch("auth/signSuccess", token);
       await store.dispatch("auth/editSuccess");
+    };
+
+    const upload = file => {
+      const formData = new FormData();
+      formData.append("file", file.file, file.file.name);
+      return formData;
+    };
+    const afterRead = async file => {
+      try {
+        state.loading = true;
+        const response = await uploadUserAvatar(upload(file));
+        const avatar = response.data.data[0];
+        state.avatar = avatar;
+        await updateUserAvatar({ avatar });
+      } finally {
+        state.loading = false;
+      }
     };
 
     return {
@@ -137,9 +157,9 @@ export default {
       handleDay,
       handleYear,
       handleGender,
-      PhotoView,
       MySelect,
       handleskip,
+      afterRead,
     };
   },
 };
@@ -154,10 +174,6 @@ export default {
   line-height: 33px;
   width: 100%;
   text-align: center;
-}
-.PhotoView {
-  margin-top: 40px;
-  margin-bottom: 22px;
 }
 form {
   width: 80%;
@@ -197,6 +213,40 @@ form {
   }
   .te-form-item__error-message {
     display: none;
+  }
+}
+.PhotoView {
+  width: 88px;
+  height: 88px;
+  background: #f6f6f6;
+  border: 1px solid #c4c4c4;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 22px;
+  position: relative;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  .van-uploader {
+    width: 100%;
+    height: 100%;
+  }
+  .mask {
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    line-height: 44px;
+    background: rgba(0, 0, 0, 0.5);
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: bold;
   }
 }
 </style>

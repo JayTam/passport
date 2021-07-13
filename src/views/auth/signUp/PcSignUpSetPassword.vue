@@ -83,9 +83,11 @@ export default {
         } else {
           response = await signUpEmail(email, password, code);
         }
+        console.log(response.data);
         await store.commit("user/SET_USER_ID", response.data.claim.uid);
-        window.localStorage.setItem("myToken", JSON.stringify(response.data));
-        // await store.dispatch("auth/signSuccess", response.data);
+        // await store.commit("auth/SET_PASSPORT_TOKEN", response.data.token);
+        // window.localStorage.setItem("myToken", JSON.stringify(response.data));
+        await store.dispatch("auth/signSuccess", response.data);
         router.push({
           name: "editProfile",
         });

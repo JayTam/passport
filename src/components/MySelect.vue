@@ -28,7 +28,12 @@ export default {
           value: "3",
           label: "WOMEN",
         },
+        {
+          value: "1",
+          label: "secrecy",
+        },
       ],
+
       MySelectStyle: {
         width: this.width,
       },

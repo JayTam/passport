@@ -83,11 +83,12 @@ export function registerBeforeRoute(router) {
     /**
      * 登录了，访问登陆注册页面，跳转首页
      */
-    if (isLogged && isLoginSignUpRoute) {
-      return next({
-        name: "LoginSuccess",
-      });
-    }
+    // TODO 设置密码后需要进入设置个人信息页,所以将这注释
+    // if (isLogged && isLoginSignUpRoute) {
+    //   return next({
+    //     name: "LoginSuccess",
+    //   });
+    // }
 
     /**
      * 未登录，跳转需要登录页面

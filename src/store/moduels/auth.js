@@ -135,6 +135,7 @@ export default {
     },
 
     async editSuccess() {
+      await router.push({ name: "LoginSuccess" });
       const subAppId = subAppIdPersistence.get();
       if (subAppId) {
         const { data } = await authorizedLogin(subAppId);
