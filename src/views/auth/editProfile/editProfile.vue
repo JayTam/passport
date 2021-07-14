@@ -49,15 +49,14 @@
 <script>
 import { reactive, ref, toRefs } from "vue";
 import { useValidate } from "@/composables/useValidate";
-import { toastPassportAxiosError } from "@/utils";
+import { toastPassportAxiosError, postMessage } from "@/utils";
 import { updateUserInfo } from "@/apis/user";
 import TeFormItem from "../../../components/Form/FormItem";
 import TeForm from "../../../components/Form/Form";
 import TeInput from "../../../components/Form/Input";
 import TeButton from "../../../components/Button";
 import MySelect from "../../../components/MySelect";
-import { Toast } from "vant";
-import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 import { updateUserAvatar, uploadUserAvatar } from "@/apis/user";
 
 export default {
@@ -72,7 +71,7 @@ export default {
   setup() {
     const formRef = ref(null);
     const loading = ref(false);
-    const store = useStore();
+    const router = useRouter();
     const state = reactive({
       form: {
         name: "",
@@ -111,14 +110,12 @@ export default {
       obj.name = state.form.name;
       obj.gender = Number(state.form.gender);
       obj.birthday = state.form.Year + "-" + state.form.Month + "-" + state.form.Day;
-      // const token = JSON.parse(localStorage.getItem("myToken"));
-      // await store.dispatch("auth/signSuccess", token);
       try {
         loading.value = true;
         await formRef.value.validate();
         await updateUserInfo(obj);
-        await Toast.success("success");
-        await store.dispatch("auth/editSuccess");
+        postMessage("profileComplete", { isSkip: false });
+        await router.push({ name: "LoginSuccess" });
       } catch (error) {
         toastPassportAxiosError(error);
       } finally {
@@ -127,7 +124,8 @@ export default {
     };
 
     const handleskip = async () => {
-      await store.dispatch("auth/editSuccess");
+      postMessage("profileComplete", { isSkip: true });
+      await router.push({ name: "LoginSuccess" });
     };
 
     const upload = file => {

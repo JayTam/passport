@@ -85,12 +85,7 @@ export default {
         }
         console.log(response.data);
         await store.commit("user/SET_USER_ID", response.data.claim.uid);
-        // await store.commit("auth/SET_PASSPORT_TOKEN", response.data.token);
-        // window.localStorage.setItem("myToken", JSON.stringify(response.data));
         await store.dispatch("auth/signSuccess", response.data);
-        router.push({
-          name: "editProfile",
-        });
       } catch (error) {
         toastPassportAxiosError(error);
       } finally {

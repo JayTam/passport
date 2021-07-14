@@ -129,15 +129,14 @@ export default {
     async signSuccess({ commit }, { token, claim: { device_id: deviceId } }) {
       commit("SET_PASSPORT_TOKEN", token);
       commit("SET_DEVICE_ID", deviceId);
-    },
-
-    async editSuccess() {
-      await router.push({ name: "LoginSuccess" });
       const subAppId = subAppIdPersistence.get();
       if (subAppId) {
         const { data } = await authorizedLogin(subAppId);
-        postMessage("loginSuccess", data);
+        postMessage("signSuccess", data);
       }
+      router.push({
+        name: "editProfile",
+      });
     },
 
     async loginAccount({ dispatch }, { account, password }) {
