@@ -47,7 +47,7 @@
         style="color: black;height: 14px;border:none"
         >{{ $t("Auth.TermsOfService") }}</te-button
       >
-      and congirm that you have read Ziel’s
+      and confirm that you have read Ziel’s
       <te-button
         type="text"
         size="mini"
