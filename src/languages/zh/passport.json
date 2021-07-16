@@ -60,7 +60,7 @@
     "prompt": "未提供设备名称，请提供设备名称"
   },
   "10016": {
-    "message": "帐户不存在",
+    "message": "account not exist",
     "prompt": "该帐户未注册，请先注册"
   },
   "10017": {
