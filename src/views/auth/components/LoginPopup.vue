@@ -56,7 +56,7 @@
     <div class="login-popup__tips">
       <span>{{ isLogin ? $t("Auth.NotaMember") : $t("Auth.AlreadyAMember") }}</span>
       <te-button
-        type="text"
+        type="primary" plain
         size="mini"
         @click="$emit('update:type', isLogin ? 'signup' : 'login')"
       >

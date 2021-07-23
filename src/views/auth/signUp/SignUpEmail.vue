@@ -2,7 +2,7 @@
   <te-form :model="form" ref="formRef">
     <te-form-item :label="$t('Auth.Email')" prop="email" :rules="emailSignUpRule">
       <template #label-right>
-        <te-button type="text" size="mini" :to="{ name: 'SignUpPhone' }" replace>
+        <te-button type="primary" plain size="mini" :to="{ name: 'SignUpPhone' }" replace>
           {{ $t("Auth.SignUpWithPhone") }}
         </te-button>
       </template>
@@ -22,10 +22,10 @@
 
     <div class="tips" style="margin-bottom: 14px;">
       <p class="tips__text">{{ $t("Auth.ByClick") }}</p>
-      <te-button type="text" size="mini" :to="{ name: 'UserAgreement' }">
+      <te-button type="primary" plain size="mini" :to="{ name: 'UserAgreement' }">
         {{ $t("Auth.TermsOfService") }}
       </te-button>
-      <te-button type="text" size="mini" :to="{ name: 'Privacy' }">
+      <te-button type="primary" plain size="mini" :to="{ name: 'Privacy' }">
         {{ $t("Auth.PrivacyPolicy") }}
       </te-button>
     </div>
@@ -38,7 +38,7 @@
 
     <div class="tips">
       <p class="tips__text">{{ $t("Auth.AlreadyAMember") }}</p>
-      <te-button type="text" size="mini" :to="{ name: 'LoginAccount' }" replace>
+      <te-button type="primary" plain size="mini" :to="{ name: 'LoginAccount' }" replace>
         {{ $t("Auth.Login") }}
       </te-button>
     </div>

@@ -2,7 +2,7 @@
   <te-form :model="form" ref="formRef">
     <te-form-item :label="$t('Auth.UserIdEmail')" prop="account" :rules="accountRules">
       <template #label-right>
-        <te-button type="text" size="mini" :tab-index="-1" :to="{ name: 'LoginPhone' }" replace>
+        <te-button type="primary" plain size="mini" :tab-index="-1" :to="{ name: 'LoginPhone' }" replace>
           {{ $t("Auth.LoginPhone") }}
         </te-button>
       </template>
@@ -11,7 +11,7 @@
 
     <te-form-item :label="$t('Auth.Password')" prop="password" :rules="passwordRules">
       <template #label-right>
-        <te-button type="text" size="mini" :tab-index="-1" :to="{ name: 'ForgetPassword' }">
+        <te-button type="primary" plain size="mini" :tab-index="-1" :to="{ name: 'ForgetPassword' }">
           {{ $t("Auth.ForgotPassword") }}
         </te-button>
       </template>
@@ -26,7 +26,7 @@
 
     <div class="tips">
       <p class="tips__text">{{ $t("Auth.NotaMember") }}</p>
-      <te-button type="text" size="mini" :to="{ name: 'SignUpPhone' }" replace>{{
+      <te-button type="primary" plain size="mini" :to="{ name: 'SignUpPhone' }" replace>{{
         $t("Auth.SignUpNow")
       }}</te-button>
     </div>

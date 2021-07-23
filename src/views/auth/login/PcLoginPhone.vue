@@ -3,7 +3,7 @@
   <te-form :model="form" ref="formRef">
     <te-form-item :label="$t('Auth.PhoneNumber')" prop="fullPhone" :rules="phoneFindRules">
       <template #label-right>
-        <te-button type="text" size="mini" :tab-index="-1" :to="{ name: 'LoginAccount' }" replace>
+        <te-button type="primary" plain size="mini" :tab-index="-1" :to="{ name: 'LoginAccount' }" replace>
           {{ $t("Auth.LoginWithUserIDorEmail") }}
         </te-button>
       </template>
@@ -21,7 +21,7 @@
       :purpose="CAPTCHA_PURPOSE.LOGIN"
     >
       <template #label-right>
-        <te-button type="text" size="mini" :tab-index="-1" :to="{ name: 'ForgetPassword' }">
+        <te-button type="primary" plain size="mini" :tab-index="-1" :to="{ name: 'ForgetPassword' }">
           {{ $t("Auth.ForgotPassword") }}
         </te-button>
       </template>
@@ -35,7 +35,7 @@
 
     <div class="tips">
       <p class="tips__text">{{ $t("Auth.NotaMember") }}</p>
-      <te-button type="other" size="mini" :to="{ name: 'SignUpPhone' }" replace>
+      <te-button type="danger" plain size="mini" :to="{ name: 'SignUpPhone' }" replace>
         {{ $t("Auth.SignUpNow") }}
       </te-button>
     </div>

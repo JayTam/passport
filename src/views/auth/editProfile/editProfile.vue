@@ -41,7 +41,7 @@
     </te-form-item>
 
     <div class="tips">
-      <te-button type="text" size="mini" @click="handleskip" replace>Skip</te-button>
+      <te-button type="primary" plain size="mini" @click="handleskip" replace>Skip</te-button>
     </div>
   </te-form>
 </template>

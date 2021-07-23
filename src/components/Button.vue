@@ -37,6 +37,7 @@ export default {
     dark: { type: Boolean, default: false },
     loading: { type: Boolean, default: false },
     disabled: { type: Boolean, default: false },
+    text: { type: Boolean, default: false },
     icon: String,
     color: String,
     type: {
@@ -211,20 +212,9 @@ export default {
     border: 2px solid @color-info;
   }
 
-  &--text {
-    color: @color-primary;
-    background-color: transparent;
-    border: 2px solid transparent;
-  }
-
-  &--other {
-    color: @color-text-other;
-    background-color: transparent;
-    border: 2px solid transparent;
-  }
-
   &--plain {
-    background-color: @color-light;
+    background-color: transparent;
+    border-color: transparent;
 
     &.te-button {
       &--primary {

@@ -4,7 +4,7 @@
   <te-form :model="form" ref="formRef">
     <te-form-item :label="$t('Auth.Email')" prop="email" :rules="emailSignUpRule">
       <template #label-right>
-        <te-button type="text" size="mini" :to="{ name: 'SignUpPhone' }" replace>
+        <te-button type="primary" plain size="mini" :to="{ name: 'SignUpPhone' }" replace>
           {{ $t("Auth.SignUpWithPhone") }}
         </te-button>
       </template>
@@ -25,10 +25,10 @@
     <!-- 原有的 -->
     <!-- <div class="tips" style="margin-bottom: 14px;">
       <p class="tips__text">{{ $t("Auth.ByClick") }}</p>
-      <te-button type="text" size="mini" :to="{ name: 'UserAgreement' }">
+      <te-button type="primary" plain size="mini" :to="{ name: 'UserAgreement' }">
         {{ $t("Auth.TermsOfService") }}
       </te-button>
-      <te-button type="text" size="mini" :to="{ name: 'Privacy' }">
+      <te-button type="primary" plain size="mini" :to="{ name: 'Privacy' }">
         {{ $t("Auth.PrivacyPolicy") }}
       </te-button>
     </div> -->
@@ -42,7 +42,7 @@
     <div class="tips" style="margin-bottom: 14px; font-size: 12px;color: #999999;">
       By continuing,you agree to Ziel’s
       <te-button
-        type="text"
+        type="primary" plain
         size="mini"
         :to="{ name: 'UserAgreement' }"
         style="height: 14px; color: black; border: none;"
@@ -51,7 +51,7 @@
       </te-button>
       and confirm that you have read Ziel’s
       <te-button
-        type="text"
+        type="primary" plain
         size="mini"
         :to="{ name: 'Privacy' }"
         style="height: 14px; color: black; border: none;"
@@ -62,7 +62,7 @@
 
     <div class="tips">
       <p class="tips__text">{{ $t("Auth.AlreadyAMember") }}</p>
-      <te-button type="other" size="mini" :to="{ name: 'LoginAccount' }" replace>
+      <te-button type="danger" plain size="mini" :to="{ name: 'LoginAccount' }" replace>
         {{ $t("Auth.Login") }}
       </te-button>
     </div>
